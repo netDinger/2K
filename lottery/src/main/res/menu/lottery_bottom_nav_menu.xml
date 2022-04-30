@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/history_tab"
+        android:title="@string/betSlips"
+        android:icon="@mipmap/ic_about_fill_green"/>
+
+    <item android:id="@+id/lottery_tab"
+        android:title="@string/lottery"
+        android:icon="@mipmap/ic_about_fill_green"/>
+
+    <item android:id="@+id/account_tab"
+        android:title="@string/account"
+        android:icon="@drawable/ic_account_circle_filled"/>
+
+</menu>

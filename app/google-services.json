@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1090554085779",
+    "firebase_url": "https://twok-dingar-default-rtdb.firebaseio.com",
+    "project_id": "twok-dingar",
+    "storage_bucket": "twok-dingar.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1090554085779:android:6c5f1a5028eccd8b24a866",
+        "android_client_info": {
+          "package_name": "com.dingar.twok"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1090554085779-dkgas2s0k04jjv63on06tam5rpd2enod.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.dingar.twok",
+            "certificate_hash": "fbf3cd3fbfb29a9848934f745a08c1a1d18bbb5b"
+          }
+        },
+        {
+          "client_id": "1090554085779-hqqvl2cnhjlermm3eakplqmj0pnhe8k5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC7KtpFT1HK0kRW5R5qZ4eBV-iYdmNlCqk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1090554085779-hqqvl2cnhjlermm3eakplqmj0pnhe8k5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

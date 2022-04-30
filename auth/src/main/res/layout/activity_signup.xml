@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.view.Activity_Signup">
+
+    <TextView
+        android:id="@+id/welcome_signup_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:text="@string/welcome_signup"
+        android:textStyle="bold"
+        android:textSize="28sp" />
+
+    <EditText
+        android:id="@+id/userName"
+        android:layout_width="250dp"
+        android:layout_height="45dp"
+        android:layout_below="@id/welcome_signup_text"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:hint="@string/username"
+        android:imeOptions="actionNext"
+        android:inputType="text"
+        android:lines="1"
+        android:paddingStart="5dp"
+        android:paddingTop="5dp"
+        android:singleLine="true"
+        android:textColor="#000000"
+        android:textColorHint="#9E9E9E"
+        android:textSize="14sp" />
+
+    <EditText
+        android:id="@+id/phoneNumber"
+        android:layout_width="250dp"
+        android:layout_height="45dp"
+        android:layout_below="@id/userName"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:hint="@string/phNumber"
+        android:imeOptions="actionNext"
+        android:inputType="phone|number"
+        android:lines="1"
+        android:paddingStart="5dp"
+        android:paddingTop="5dp"
+        android:paddingEnd="5dp"
+        android:singleLine="true"
+        android:textColor="#000000"
+        android:textColorHint="#9E9E9E"
+        android:textSize="14sp" />
+
+
+    <Button
+        android:id="@+id/signup"
+        android:layout_width="150dp"
+        android:layout_height="60dp"
+        android:layout_below="@id/phoneNumber"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="50dp"
+        android:text="@string/send_code"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp" />
+</RelativeLayout>

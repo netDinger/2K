@@ -1,0 +1,13 @@
+<resources>
+    <string name="bet">bet</string>
+    <string name="amount">Amount</string>
+    <string name="total">Total</string>
+    <string name="kyat" translatable="false">00Kyats</string>
+    <string name="lottery">Lottery</string>
+    <string name="default_amount" translatable="false">100</string>
+
+    <string name="amount_warning">Please add amount</string>
+    <string name="default_lottery" translatable="false">12</string>
+    <string name="date" translatable="false">date</string>
+
+</resources>

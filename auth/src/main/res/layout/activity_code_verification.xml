@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.dingar.twok.core.ui.OTPEdittext
+        android:id="@+id/otpInput"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp" />
+
+
+    <RelativeLayout
+        android:id="@+id/send_again_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/otpInput"
+        android:layout_marginTop="15dp"
+        android:gravity="center_horizontal">
+
+        <TextView
+            android:id="@+id/send_again_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="3dp"
+            android:text="@string/send_code_again" />
+
+        <TextView
+            android:id="@+id/resend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/send_again_text"
+            android:padding="3dp"
+            android:text="@string/resend"
+            android:textColor="@color/purple_200"
+            android:textStyle="bold"/>
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/signup"
+        android:layout_width="120dp"
+        android:layout_height="55dp"
+        android:layout_below="@id/send_again_layout"
+        android:layout_marginTop="20dp"
+        android:text="@string/signup"
+        android:layout_centerHorizontal="true"
+        />
+
+</RelativeLayout>

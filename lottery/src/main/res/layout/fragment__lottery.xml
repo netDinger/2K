@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.dingar.twok.lottery.presentation.view.Fragment_Lottery">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:ignore="UselessParent">
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        tools:ignore="UselessParent">
+
+        <GridLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:clipToPadding="true"
+            android:columnCount="2"
+            android:rowCount="3">
+
+            <include
+                android:id="@+id/diceLottery"
+                layout="@layout/item_lottery_dice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_row="0"
+                android:layout_rowWeight="1"
+                android:layout_column="0"
+                android:layout_columnWeight="1"
+                android:layout_margin="11dp" />
+
+            <include
+                android:id="@+id/daily3dLottery"
+                layout="@layout/item_lottery_htee"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_row="0"
+                android:layout_rowWeight="1"
+                android:layout_column="1"
+                android:layout_columnWeight="1"
+                android:layout_margin="11dp" />
+
+
+            <include
+                android:id="@+id/twoDLottery"
+                layout="@layout/item_lottery_2d"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_row="1"
+                android:layout_rowWeight="1"
+                android:layout_column="0"
+                android:layout_columnWeight="1"
+                android:layout_margin="11dp" />
+
+            <include
+                android:id="@+id/threeDLottery"
+                layout="@layout/item_lottery_3d"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_row="1"
+                android:layout_rowWeight="1"
+                android:layout_column="1"
+                android:layout_columnWeight="1"
+                android:layout_margin="11dp" />
+
+            <include
+                android:id="@+id/maung"
+                layout="@layout/item_lottery_maung"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_row="2"
+                android:layout_rowWeight="1"
+                android:layout_column="0"
+                android:layout_columnWeight="1"
+                android:layout_margin="11dp" />
+
+            <include
+                android:id="@+id/body"
+                layout="@layout/item_lottery_body"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_row="2"
+                android:layout_rowWeight="1"
+                android:layout_column="1"
+                android:layout_columnWeight="1"
+                android:layout_margin="11dp" />
+        </GridLayout>
+    </ScrollView>
+
+</RelativeLayout>
+
+</FrameLayout>
