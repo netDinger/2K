@@ -41,7 +41,7 @@ public class WinLotteryPresenter implements WinLotteryContract.Presenter {
 
             @Override
             public void onNext(@NonNull WinLotteryModel winLotteryModel) {
-
+                view.onLuckyHistoryLoaded(winLotteryModel);
             }
 
             @Override
