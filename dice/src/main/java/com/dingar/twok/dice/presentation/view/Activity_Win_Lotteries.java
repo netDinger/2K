@@ -34,6 +34,5 @@ public class Activity_Win_Lotteries extends AppCompatActivity implements WinLott
 
     @Override
     public void onLuckyHistoryLoaded(WinLotteryModel model) {
-
     }
 }
