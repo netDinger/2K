@@ -10,4 +10,7 @@
     <string name="default_lottery" translatable="false">12</string>
     <string name="date" translatable="false">date</string>
 
+
+    <string name="help">Abut this game</string>
+
 </resources>

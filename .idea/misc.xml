@@ -12,12 +12,14 @@
         <entry key="..\:/2K/auth/src/main/res/layout/activity_login.xml" value="0.22" />
         <entry key="..\:/2K/auth/src/main/res/layout/activity_signup.xml" value="0.2" />
         <entry key="..\:/2K/auth/src/main/res/layout/layout_verification_code.xml" value="0.2" />
+        <entry key="..\:/2K/dice/src/main/res/layout/activity_acitivity_help.xml" value="0.18342391304347827" />
         <entry key="..\:/2K/dice/src/main/res/layout/activity_bet.xml" value="0.22" />
         <entry key="..\:/2K/dice/src/main/res/layout/activity_bet_slips.xml" value="0.16" />
         <entry key="..\:/2K/dice/src/main/res/layout/activity_win_lotteries.xml" value="0.18795289855072464" />
         <entry key="..\:/2K/dice/src/main/res/layout/item_add_bet_slip.xml" value="0.209375" />
         <entry key="..\:/2K/dice/src/main/res/layout/item_appbar.xml" value="0.18795289855072464" />
         <entry key="..\:/2K/dice/src/main/res/layout/item_bet_slip.xml" value="0.1983695652173913" />
+        <entry key="..\:/2K/dice/src/main/res/layout/item_betlist_header.xml" value="0.2" />
         <entry key="..\:/2K/dice/src/main/res/layout/item_lottery.xml" value="0.75" />
         <entry key="..\:/2K/dice/src/main/res/layout/item_lucky_lottery.xml" value="0.22" />
         <entry key="..\:/2K/lottery/src/main/res/drawable/arc_backgrround.xml" value="0.15462962962962962" />

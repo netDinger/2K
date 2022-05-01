@@ -4,6 +4,9 @@
 
     <application android:theme="@style/Theme.2K">
         <activity
+            android:name=".presentation.view.Acitivity_Help"
+            android:exported="false" />
+        <activity
             android:name=".presentation.view.Activity_Win_Lotteries"
             android:exported="false" />
         <activity

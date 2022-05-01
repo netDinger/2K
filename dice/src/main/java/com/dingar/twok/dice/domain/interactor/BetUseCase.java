@@ -10,6 +10,10 @@ import javax.inject.Inject;
 
 import io.reactivex.Single;
 
+/**
+ * Bet all the bet slips
+ * @author PPK
+ */
 public class BetUseCase {
 
     @Inject

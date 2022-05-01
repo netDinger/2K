@@ -88,6 +88,7 @@ public class Activity_DiceBet extends AppCompatActivity implements DiceBetContra
     private void widgets(){
         lotteryModels = new ArrayList<>();
         Button bet = findViewById(R.id.bet);
+        Button history = findViewById(R.id.history);
         EditText amount = findViewById(R.id.amount);
         bet.setOnClickListener(v-> {
             if (presenter.isStringValid(amount.getText().toString())&&!lotteryModels.isEmpty()){
@@ -101,5 +102,8 @@ public class Activity_DiceBet extends AppCompatActivity implements DiceBetContra
             else
                 Toast.makeText(this,R.string.amount_warning,Toast.LENGTH_SHORT).show();
         });
+
+        //navigate to lucky number history
+        history.setOnClickListener(view -> startActivity(new Intent(this,Activity_Win_Lotteries.class)));
     }
 }

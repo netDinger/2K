@@ -61,9 +61,9 @@
             android:id="@+id/textTotal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
             android:layout_marginStart="21dp"
             android:padding="7dp"
-            android:layout_centerVertical="true"
             android:text="@string/total"
             android:textSize="16sp"
             android:textStyle="bold" />

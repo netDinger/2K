@@ -23,7 +23,7 @@ import javax.inject.Inject;
 
 public class BetListRecyclerviewAdapter extends RecyclerView.Adapter<BetListRecyclerviewAdapter.ViewHolder> {
 
-    private final String TAG = "BetListRecyclerviewAdapter";
+    private final String TAG = "BetListRecyclerAdapter";
     @Inject
     public BetListContract.Presenter presenter;
 

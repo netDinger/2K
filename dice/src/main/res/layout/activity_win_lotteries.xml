@@ -8,7 +8,7 @@
 
     <include
         android:id="@+id/appbar_layout"
-        layout="@layout/item_appbar"/>
+        layout="@layout/item_appbar" />
 
     <RelativeLayout
         android:id="@+id/lottery_layout"
@@ -41,4 +41,5 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/lottery_layout"
         tools:listitem="@layout/item_lucky_lottery" />
+
 </RelativeLayout>

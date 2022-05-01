@@ -43,10 +43,22 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:layout_below="@id/appbar">
+
         <Button
+            android:id="@+id/history"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="history"/>
+            android:text="history" />
+
+        <ImageView
+            android:id="@+id/aboutBetType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="14dp"
+            android:layout_toEndOf="@id/history"
+            android:src="@drawable/ic_help" />
+
     </RelativeLayout>
 
     <com.dingar.twok.dice.presentation.GridRecyclerView

@@ -10,6 +10,7 @@ import com.dingar.twok.auth.di.module.SignupModule;
 import com.dingar.twok.di.module.AppModule;
 import com.dingar.twok.dice.di.component.BetSlipComponent;
 import com.dingar.twok.dice.di.component.DiceBetComponent;
+import com.dingar.twok.dice.di.component.WinLotteryComponent;
 
 import javax.inject.Singleton;
 
@@ -23,6 +24,7 @@ public interface AppComponent {
     VerifyCodeComponent.Factory verifyCodeComponentFactory();
     DiceBetComponent.Builder diceComponentBuilder();
     BetSlipComponent.Builder betSlipComponentBuilder();
+    WinLotteryComponent.Builder winLotteryComponentBuilder();
 
     void inject(MainActivity mainActivity);
 

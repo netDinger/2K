@@ -14,6 +14,7 @@ import com.dingar.twok.dice.di.component.BetSlipComponent;
 import com.dingar.twok.dice.di.component.BetSlipComponentProvider;
 import com.dingar.twok.dice.di.component.DiceBetComponent;
 import com.dingar.twok.dice.di.component.DiceBetComponentProvider;
+import com.dingar.twok.dice.di.component.WinLotteryComponent;
 import com.dingar.twok.firebaseadapter.FirebaseOffline;
 
 
@@ -69,5 +70,10 @@ public class BaseApplication extends Application implements LoginComponentProvid
     @Override
     public BetSlipComponent provideBetSlipComponent() {
         return getAppComponent().betSlipComponentBuilder().build();
+    }
+
+    @Override
+    public WinLotteryComponent provideWinLotteryComponent() {
+        return getAppComponent().winLotteryComponentBuilder().build();
     }
 }
