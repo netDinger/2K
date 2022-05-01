@@ -28,7 +28,6 @@ public class Activity_Win_Lotteries extends AppCompatActivity implements WinLott
         component.inject(this);
 
         presenter.loadLuckyHistory();
-
     }
 
 
