@@ -17,6 +17,7 @@
             <option value="$PROJECT_DIR$/dice" />
             <option value="$PROJECT_DIR$/firebaseAdapter" />
             <option value="$PROJECT_DIR$/lottery" />
+            <option value="$PROJECT_DIR$/threeD" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

@@ -8,7 +8,7 @@ import com.dingar.twok.dice.presentation.presenter.WinLotteryPresenter;
 import dagger.Module;
 import dagger.Provides;
 
-@Module
+@Module(includes = WinLotteryRepoModule.class)
 public class WinLotteryModule {
 
     @FeatureScope

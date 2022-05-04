@@ -8,6 +8,6 @@ public class Static_Config {
     public static final String TWOD  = "twoD";
 
     public static final String LUCKY_NUMBERS = "luckyNumbers";
-
+    public static final String NEXT_WIN = "next_win";
 
 }

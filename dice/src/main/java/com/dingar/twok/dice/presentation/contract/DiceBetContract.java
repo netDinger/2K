@@ -24,6 +24,12 @@ public interface DiceBetContract {
         void removeBetSlip(LotteryModel lotteryModel);
 
         void onBalanceLoaded(String balance);
+
+        /**
+         *
+         * @param timeRemaining remaining timer countdown in string format
+         */
+        void setTimeRemaining(String timeRemaining);
     }
 
     interface Presenter extends BasePresenter<View> {
@@ -37,6 +43,11 @@ public interface DiceBetContract {
          * @return if amount is empty or less than minimum amount
          */
         boolean isStringValid(String amount);
+
+        /**
+         *
+         */
+        void loadTimeRemaining();
     }
 
 }

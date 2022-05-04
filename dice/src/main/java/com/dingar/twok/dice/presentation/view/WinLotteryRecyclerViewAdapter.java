@@ -9,8 +9,22 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.dingar.twok.dice.R;
+import com.dingar.twok.dice.data.model.WinLotteryModel;
+
+import java.util.ArrayList;
 
 public class WinLotteryRecyclerViewAdapter extends RecyclerView.Adapter<WinLotteryRecyclerViewAdapter.ViewHolder> {
+
+    ArrayList<WinLotteryModel> winLotteryArrayList;
+
+    public WinLotteryRecyclerViewAdapter(ArrayList<WinLotteryModel> winLotteryArrayList){
+        winLotteryArrayList = new ArrayList<>();
+        this.winLotteryArrayList = winLotteryArrayList;
+    }
+
+    public void setData(ArrayList<WinLotteryModel> winLotteryArrayList){
+        this.winLotteryArrayList = winLotteryArrayList;
+    }
 
     @NonNull
     @Override

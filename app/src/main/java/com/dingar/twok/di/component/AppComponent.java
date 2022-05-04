@@ -19,6 +19,7 @@ import dagger.Component;
 @Singleton
 @Component(modules = {AppModule.class, AuthModule.class})
 public interface AppComponent {
+
     LoginComponent.Builder loginComponentBuilder();
     SignupComponent.Factory signupComponentBuilder();
     VerifyCodeComponent.Factory verifyCodeComponentFactory();

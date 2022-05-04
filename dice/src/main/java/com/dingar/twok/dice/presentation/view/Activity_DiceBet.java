@@ -29,7 +29,7 @@ public class Activity_DiceBet extends AppCompatActivity implements DiceBetContra
     DiceBetComponent diceBetComponent;
 
     private GridRecyclerviewAdapter gridRecyclerviewAdapter;
-    private TextView balance;
+    private TextView balance,time_remaining;
 
     private ArrayList<LotteryModel> lotteryModels;
 
@@ -38,6 +38,7 @@ public class Activity_DiceBet extends AppCompatActivity implements DiceBetContra
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bet);
         balance = findViewById(R.id.balance);
+        time_remaining = findViewById(R.id.time_remaining);
 
         //initiate the login component and inject the view
         diceBetComponent = ((DiceBetComponentProvider)getApplicationContext())
@@ -51,10 +52,7 @@ public class Activity_DiceBet extends AppCompatActivity implements DiceBetContra
         gridRecyclerviewAdapter = new GridRecyclerviewAdapter(this);
         gridRecyclerView.setAdapter(gridRecyclerviewAdapter);
 
-        //load available bet slips (not all because some are excluded by provider)
-        presenter.loadLotteries();
-        presenter.onLoadBalance();
-
+        initiate();
         widgets();
     }
 
@@ -85,6 +83,17 @@ public class Activity_DiceBet extends AppCompatActivity implements DiceBetContra
         this.balance.setText(balance);
     }
 
+    @Override
+    public void setTimeRemaining(String timeRemaining) {
+
+    }
+
+    private void initiate(){
+        //load available bet slips (not all because some are excluded by provider)
+        presenter.loadLotteries();
+        presenter.onLoadBalance();
+        presenter.loadTimeRemaining();
+    }
     private void widgets(){
         lotteryModels = new ArrayList<>();
         Button bet = findViewById(R.id.bet);

@@ -1,5 +1,6 @@
 package com.dingar.twok.dice.presentation.presenter;
 
+import android.os.CountDownTimer;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -85,6 +86,26 @@ public class DiceBetPresenter implements DiceBetContract.Presenter {
     @Override
     public boolean isStringValid(String amount) {
         return !amount.isEmpty() && Integer.parseInt(amount)>=100;
+    }
+
+    @Override
+    public void loadTimeRemaining() {
+       CountDownTimer timer = new CountDownTimer(5000,1000){
+
+            @Override
+            public void onTick(long l) {
+
+            }
+
+            @Override
+            public void onFinish() {
+
+            }
+        };
+
+       timer.start();
+
+
     }
 
     /**

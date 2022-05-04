@@ -6,9 +6,12 @@ import com.dingar.twok.core.firebase.Result;
 import com.dingar.twok.dice.domain.model.LotteryModel;
 import com.dingar.twok.firebaseadapter.Get_Current_User;
 import com.dingar.twok.firebaseadapter.Static_Config;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import io.reactivex.Single;
 
@@ -27,7 +30,6 @@ public class FirebaseBetSlip {
         return Single.create(emitter -> {
             count = 0;
             for (LotteryModel lotteryModel :lotteryModels){
-                Log.e("bet","betting the lottery");
                 FirebaseDatabase.getInstance().getReference().child(Static_Config.BETSLIP)
                         .child(Get_Current_User.getCurrentUserID())
                         .child(Static_Config.TWOD)
