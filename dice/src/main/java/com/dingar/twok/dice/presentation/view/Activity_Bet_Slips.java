@@ -108,11 +108,11 @@ public class Activity_Bet_Slips extends AppCompatActivity implements BetListCont
             }
         }
 
-
         presenter.setBetList(betList);
         presenter.calculateTotalAmount();
-        betListRecyclerviewAdapter.setData(betList);
+        betListRecyclerviewAdapter.addData(betList);
         betListRecyclerviewAdapter.notifyDataSetChanged();
+
     }
 
     private void addToolbar() {

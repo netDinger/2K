@@ -1,5 +1,6 @@
 package com.dingar.twok.dice.presentation.view;
 
+import android.annotation.SuppressLint;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -24,6 +25,7 @@ import javax.inject.Inject;
 public class BetListRecyclerviewAdapter extends RecyclerView.Adapter<BetListRecyclerviewAdapter.ViewHolder> {
 
     private final String TAG = "BetListRecyclerAdapter";
+
     @Inject
     public BetListContract.Presenter presenter;
 
@@ -38,9 +40,9 @@ public class BetListRecyclerviewAdapter extends RecyclerView.Adapter<BetListRecy
     /**
      * @param lotteryModels list of lotteries loaded by View (with amount for each lottery)
      */
-    public void setData(ArrayList<LotteryModel> lotteryModels){
+    public void addData(ArrayList<LotteryModel> lotteryModels){
         this.lotteryModels = new ArrayList<>();
-        this.lotteryModels = lotteryModels;
+       this.lotteryModels = lotteryModels;
     }
 
     @NonNull
@@ -50,6 +52,7 @@ public class BetListRecyclerviewAdapter extends RecyclerView.Adapter<BetListRecy
         return new ViewHolder(view);
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         LotteryModel lotteryModel = lotteryModels.get(position);
@@ -57,14 +60,18 @@ public class BetListRecyclerviewAdapter extends RecyclerView.Adapter<BetListRecy
         holder.amount.setText(String.valueOf(lotteryModel.getAmount()));
 
         holder.delete.setOnClickListener(view -> {
-            //presenter will removed it from bet list
-            presenter.onBetRemoved(position);
+            try {
+                //remove from recyclerview
+                lotteryModels.remove(position);
+                notifyItemRemoved(position);
+                notifyItemRangeChanged(position, lotteryModels.size() - 1);
 
-            //remove from recyclerview
-            lotteryModels.remove(position);
-            notifyItemRemoved(position);
-            notifyItemRangeChanged(position,lotteryModels.size());
-            Log.e("lotteryModels.size",""+lotteryModels.size());
+                //presenter will removed it from bet list and sub the total amount too
+                presenter.onBetRemoved(position);
+            }catch (Exception e){
+                Log.e("Error",e.getMessage());
+            }
+
         });
 
         holder.amount.addTextChangedListener(new TextWatcher() {
@@ -88,6 +95,19 @@ public class BetListRecyclerviewAdapter extends RecyclerView.Adapter<BetListRecy
                         Log.e(TAG,e.getMessage());
                     }
                 }
+                else{
+                    try {
+                        //change amount for recycler view
+                        lotteryModel.setAmount(0);
+                        lotteryModels.remove(holder.getAdapterPosition());
+                        lotteryModels.add(holder.getAdapterPosition(), lotteryModel);
+
+                        //presenter will changed the amount of the lottery in bet list
+                        presenter.onAmountChanged(holder.getAdapterPosition(), "0");
+                    }catch (Exception e){
+                        Log.e(TAG,e.getMessage());
+                    }
+                }
             }
         });//end of addTextChangedListener
     }
@@ -101,6 +121,7 @@ public class BetListRecyclerviewAdapter extends RecyclerView.Adapter<BetListRecy
         TextView lottery;
         EditText amount;
         ImageView delete;
+
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);

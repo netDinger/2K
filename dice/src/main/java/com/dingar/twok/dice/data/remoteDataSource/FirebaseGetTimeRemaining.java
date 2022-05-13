@@ -7,6 +7,7 @@ import com.dingar.twok.firebaseadapter.Static_Config;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ServerValue;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.Objects;
@@ -26,13 +27,18 @@ public class FirebaseGetTimeRemaining {
     }
 
     public Single<String> getTimeRemaining(){
+        FirebaseDatabase.getInstance().getReference().setValue(ServerValue.TIMESTAMP);
        return Single.create(emitter -> FirebaseDatabase.getInstance().getReference()
                .child(Static_Config.NEXT_WIN)
                .child(Static_Config.TWOD)
                .addValueEventListener(new ValueEventListener() {
                    @Override
                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                       if (snapshot.exists())
                        emitter.onSuccess(Objects.requireNonNull(snapshot.getValue(String.class)));
+
+                       else
+                           emitter.onSuccess("1652147222");
                    }
 
                    @Override

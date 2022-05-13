@@ -58,6 +58,7 @@ public class Activity_DiceBet extends AppCompatActivity implements DiceBetContra
 
     @Override
     public void onBackPressed() {
+        presenter.dropView();
         finish();
     }
 

@@ -5,10 +5,15 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
+import com.dingar.twok.dice.domain.interactor.CountDownUseCase;
 import com.dingar.twok.dice.domain.interactor.GetBalanceUseCase;
 import com.dingar.twok.dice.domain.interactor.LoadBetsUseCase;
 import com.dingar.twok.dice.domain.model.LotteryModel;
 import com.dingar.twok.dice.presentation.contract.DiceBetContract;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -20,6 +25,8 @@ public class DiceBetPresenter implements DiceBetContract.Presenter {
     private final String TAG = "DiceBetPresenter";
     private DiceBetContract.View view;
 
+    private CountDownTimer timer;
+
     /** list of available lotteries*/
     ArrayList<LotteryModel> lotteriesList = new ArrayList<>();
 
@@ -28,10 +35,14 @@ public class DiceBetPresenter implements DiceBetContract.Presenter {
 
     LoadBetsUseCase loadBetsUseCase;
     GetBalanceUseCase getBalanceUseCase;
+    CountDownUseCase countDownUseCase;
 
-    public DiceBetPresenter(LoadBetsUseCase loadBetsUseCase,GetBalanceUseCase getBalanceUseCase){
+    public DiceBetPresenter(LoadBetsUseCase loadBetsUseCase,
+                            GetBalanceUseCase getBalanceUseCase,
+                            CountDownUseCase countDownUseCase){
         this.loadBetsUseCase = loadBetsUseCase;
         this.getBalanceUseCase = getBalanceUseCase;
+        this.countDownUseCase = countDownUseCase;
     }
 
     //retrieve available lotteries
@@ -90,21 +101,22 @@ public class DiceBetPresenter implements DiceBetContract.Presenter {
 
     @Override
     public void loadTimeRemaining() {
-       CountDownTimer timer = new CountDownTimer(5000,1000){
-
+        countDownUseCase.execute().subscribe(new SingleObserver<String>() {
             @Override
-            public void onTick(long l) {
+            public void onSubscribe(@NonNull Disposable d) {
 
             }
 
             @Override
-            public void onFinish() {
+            public void onSuccess(@NonNull String s) {
+                calculateTimeRemaining(s);
+            }
+
+            @Override
+            public void onError(@NonNull Throwable e) {
 
             }
-        };
-
-       timer.start();
-
+        });
 
     }
 
@@ -136,5 +148,40 @@ public class DiceBetPresenter implements DiceBetContract.Presenter {
     @Override
     public void dropView() {
         view = null;
+        timer.cancel();
+    }
+
+
+    private void calculateTimeRemaining(String futureTimeStamp){
+
+        FirebaseDatabase.getInstance().getReference().addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists())
+                {long currentTime = (Long) snapshot.getValue();
+                long futureTime = Long.parseLong(futureTimeStamp);
+                long diff = futureTime - currentTime;
+                timer = new CountDownTimer(diff,1000){
+                    @Override
+                    public void onTick(long l) {
+                        String remainingTime = "+"+l;
+                        view.setTimeRemaining(remainingTime);
+                    }
+
+                    @Override
+                    public void onFinish() {
+
+                    }
+                };
+                timer.start();}
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
     }
 }

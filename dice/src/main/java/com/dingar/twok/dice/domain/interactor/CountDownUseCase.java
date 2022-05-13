@@ -14,7 +14,7 @@ public class CountDownUseCase {
     @Inject
     public CountDownUseCase(){}
 
-    private Single<String> execute(){
+    public Single<String> execute(){
         return timeRemainRepository.getTimeRemain();
     }
 }

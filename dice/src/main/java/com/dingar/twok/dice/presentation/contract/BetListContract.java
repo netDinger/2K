@@ -20,12 +20,14 @@ public interface BetListContract {
 
         /**to get the user balance*/
         void onLoadBalance();
+
         /**invoked by {@link com.dingar.twok.dice.presentation.view.BetListRecyclerviewAdapter#onBindViewHolder(BetListRecyclerviewAdapter.ViewHolder, int)}
-         * whenever bet amount is changed or lottery is removed*/
+         * whenever bet amount is changed or lottery is removed
+         **/
         void setBetList(ArrayList<LotteryModel> lotteryModels);
 
         /**
-         *to calculate initial total amount all amount are same for all lotteries
+         *to calculate initial total amount. all amount are same for all lotteries
          */
         void calculateTotalAmount();
 

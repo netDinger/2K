@@ -87,11 +87,12 @@ public class BetSlipPresenter implements BetListContract.Presenter {
 
     @Override
     public void onBetRemoved(int position) {
-        lotteryModelArrayList.remove(position);
         totalAmount = 0;
-        for (LotteryModel model: lotteryModelArrayList){
-            totalAmount+= model.getAmount();
-        }
+
+        //re calculate the total amount
+        for (LotteryModel model: lotteryModelArrayList)
+           totalAmount+= model.getAmount();
+
         view.onTotalAmountCalculated(totalAmount);
     }
 
