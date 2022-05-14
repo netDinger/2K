@@ -1,5 +1,8 @@
 package com.dingar.twok.dice.presentation.presenter;
 
+import android.annotation.SuppressLint;
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 
 import com.dingar.twok.dice.data.model.WinLotteryModel;
@@ -7,8 +10,16 @@ import com.dingar.twok.dice.domain.interactor.WinHistoryUseCase;
 import com.dingar.twok.dice.presentation.contract.WinLotteryContract;
 
 import io.reactivex.Observer;
+import io.reactivex.Scheduler;
+import io.reactivex.SingleObserver;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 
+/**
+ * {@link com.dingar.twok.dice.presentation.view.Activity_Win_Lotteries}
+ * {@link WinLotteryContract}
+ */
 public class WinLotteryPresenter implements WinLotteryContract.Presenter {
 
     WinLotteryContract.View view;
@@ -30,12 +41,10 @@ public class WinLotteryPresenter implements WinLotteryContract.Presenter {
     }
 
 
-
     @Override
     public void loadLuckyHistory() {
         winHistoryUseCase.execute().subscribe(new Observer<WinLotteryModel>() {
-            @Override
-            public void onSubscribe(@NonNull Disposable d) {
+            @Override public void onSubscribe(@NonNull Disposable d) {
 
             }
 
@@ -54,5 +63,25 @@ public class WinLotteryPresenter implements WinLotteryContract.Presenter {
 
             }
         });
+
+        //load current twoD result
+      winHistoryUseCase.currentTwoD().subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new SingleObserver<String>() {
+            @Override
+            public void onSubscribe(@NonNull Disposable d) {}
+
+            @Override
+            public void onSuccess(@NonNull String twoD) {
+                view.onCurrentTwoDLoaded(twoD);
+            }
+
+            @Override
+            public void onError(@NonNull Throwable e) {
+                e.printStackTrace();
+                view.onCurrentTwoDLoaded("A");
+            }
+        });
+
     }
 }

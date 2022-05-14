@@ -38,7 +38,7 @@ public class FirebaseGetTimeRemaining {
                        emitter.onSuccess(Objects.requireNonNull(snapshot.getValue(String.class)));
 
                        else
-                           emitter.onSuccess("1652147222");
+                           emitter.onSuccess("1652538685715");
                    }
 
                    @Override

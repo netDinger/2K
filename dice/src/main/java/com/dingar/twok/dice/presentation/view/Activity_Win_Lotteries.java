@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.widget.TextView;
 
 import com.dingar.twok.dice.R;
 import com.dingar.twok.dice.data.model.WinLotteryModel;
@@ -16,6 +17,9 @@ import java.util.ArrayList;
 
 import javax.inject.Inject;
 
+/**
+ * show the win lottery history
+ */
 public class Activity_Win_Lotteries extends AppCompatActivity implements WinLotteryContract.View {
 
     @Inject
@@ -25,6 +29,7 @@ public class Activity_Win_Lotteries extends AppCompatActivity implements WinLott
 
     private ArrayList<WinLotteryModel> winLotteryArrayList;
     private RecyclerView winHistoryRecyclerview;
+    private TextView luckyNumber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,8 +39,9 @@ public class Activity_Win_Lotteries extends AppCompatActivity implements WinLott
         component = ((BetSlipComponentProvider)getApplicationContext()).provideWinLotteryComponent();
         component.inject(this);
 
-        initiate();
         widgets();
+        initiate();
+
     }
 
 
@@ -44,10 +50,9 @@ public class Activity_Win_Lotteries extends AppCompatActivity implements WinLott
         winLotteryArrayList.add(model);
     }
 
-    private void initiate(){
-        winLotteryArrayList = new ArrayList<>();
-        //Tell presenter to load all lucky number within a month
-        presenter.loadLuckyHistory();
+    @Override
+    public void onCurrentTwoDLoaded(String twoD) {
+        luckyNumber.setText(twoD);
     }
 
     private void widgets(){
@@ -57,7 +62,17 @@ public class Activity_Win_Lotteries extends AppCompatActivity implements WinLott
         WinLotteryRecyclerViewAdapter winLotteryRecyclerViewAdapter =
                 new WinLotteryRecyclerViewAdapter(winLotteryArrayList);
         winHistoryRecyclerview.setAdapter(winLotteryRecyclerViewAdapter);
+
+        //current TwoD result
+        luckyNumber = findViewById(R.id.lottery_number);
     }
 
+    private void initiate(){
+        winLotteryArrayList = new ArrayList<>();
+
+        presenter.setView(this);
+        //Tell presenter to load all lucky number within a month
+        presenter.loadLuckyHistory();
+    }
 
 }

@@ -59,5 +59,16 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/balance_layout"
         android:layout_marginTop="7dp" />
+    <TextView
+        android:id="@+id/logout"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:layout_below="@id/additional_layout"
+        android:text="@string/logout"
+        android:gravity="center_vertical"
+        android:textColor="@color/white"
+        android:textSize="21sp"
+        android:background="#D32626"
+        android:textStyle="bold"/>
 
 </RelativeLayout>

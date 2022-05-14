@@ -9,8 +9,14 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.dingar.twok.account.R;
+import com.dingar.twok.account.presentation.contract.AccountContract;
 
-public class Fragment_Account extends Fragment {
+import javax.inject.Inject;
+
+public class Fragment_Account extends Fragment implements AccountContract.View {
+
+    @Inject
+    AccountContract.Presenter presenter;
 
     public Fragment_Account(){}
 
@@ -24,7 +30,20 @@ public class Fragment_Account extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_account,container,false);
-
+        widgets();
+        initiate();
         return view;
+    }
+
+    private void widgets(){}
+
+    private void initiate() {
+        presenter.setView(this);
+        presenter.loadUserBalance();
+    }
+
+    @Override
+    public void onBalanceLoaded(String balance) {
+
     }
 }

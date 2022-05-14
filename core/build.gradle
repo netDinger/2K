@@ -57,6 +57,6 @@ dependencies {
     api 'com.google.firebase:firebase-firestore'
 
     //jsoup HTML parser
-    implementation 'org.jsoup:jsoup:1.14.3'
+    api 'org.jsoup:jsoup:1.14.3'
 
 }

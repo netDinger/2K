@@ -2,10 +2,14 @@ package com.dingar.twok.dice.data.model;
 
 import java.io.Serializable;
 
+/**
+ * BetSlip model for retrieving user's bet list
+ */
 public class BetSlipModel implements Serializable {
 
     private String lottery;
     private int amount;
+    private String winDateTimeStamp;
 
     public BetSlipModel(String lottery, int amount) {
         this.lottery = lottery;

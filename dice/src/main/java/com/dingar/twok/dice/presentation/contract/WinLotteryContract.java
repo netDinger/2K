@@ -6,6 +6,7 @@ import com.dingar.twok.dice.data.model.WinLotteryModel;
 public interface WinLotteryContract {
     interface View{
         void onLuckyHistoryLoaded(WinLotteryModel model);
+        void onCurrentTwoDLoaded(String twoD);
     }
 
     interface Presenter extends BasePresenter<View> {

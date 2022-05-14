@@ -4,8 +4,12 @@ import com.dingar.twok.core.BasePresenter;
 
 public interface AccountContract {
 
-    interface View{}
+    interface View{
+        void onBalanceLoaded(String balance);
+    }
 
-    interface Presenter extends BasePresenter<View> {}
+    interface Presenter extends BasePresenter<View> {
+        void loadUserBalance();
+    }
 
 }

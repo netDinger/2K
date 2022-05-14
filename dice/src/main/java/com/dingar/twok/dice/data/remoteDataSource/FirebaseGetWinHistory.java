@@ -10,8 +10,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import io.reactivex.Observable;
-import io.reactivex.ObservableEmitter;
-import io.reactivex.ObservableOnSubscribe;
 
 public class FirebaseGetWinHistory {
     //singleton
@@ -25,7 +23,7 @@ public class FirebaseGetWinHistory {
     }
 
     public Observable<WinLotteryModel> getWinHistory(){
-        return Observable.create(emitter -> {
+        return Observable.create(emitter ->
             FirebaseDatabase.getInstance().getReference().child(Static_Config.LUCKY_NUMBERS)
                     .child(Static_Config.TWOD)
                     .addValueEventListener(new ValueEventListener() {
@@ -41,8 +39,8 @@ public class FirebaseGetWinHistory {
                         public void onCancelled(@NonNull DatabaseError error) {
 
                         }
-                    });
-        });
+                    })
+        );
     }
 
 }

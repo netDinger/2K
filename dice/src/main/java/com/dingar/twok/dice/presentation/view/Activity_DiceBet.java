@@ -86,7 +86,7 @@ public class Activity_DiceBet extends AppCompatActivity implements DiceBetContra
 
     @Override
     public void setTimeRemaining(String timeRemaining) {
-
+        time_remaining.setText(timeRemaining);
     }
 
     private void initiate(){

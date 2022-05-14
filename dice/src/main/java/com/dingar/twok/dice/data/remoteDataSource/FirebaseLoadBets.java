@@ -1,9 +1,8 @@
 package com.dingar.twok.dice.data.remoteDataSource;
 
-import android.util.Log;
-
 import androidx.annotation.NonNull;
 
+import com.dingar.twok.firebaseadapter.Static_Config;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -14,6 +13,9 @@ import java.util.Objects;
 
 import io.reactivex.Observable;
 
+/**
+ * load the excluded bets by admin. To create available bet list
+ */
 public class FirebaseLoadBets {
 
     //Singleton building
@@ -26,11 +28,9 @@ public class FirebaseLoadBets {
     }
 
     public Observable<String> loadBets(){
-        Log.e("loading","bets");
         return Observable.create(emitter -> {
             DatabaseReference reference = FirebaseDatabase.getInstance().getReference()
-                    .child("excludedbet").child("twod");
-
+                    .child(Static_Config.EXCLUDED_BET).child(Static_Config.TWOD);
             reference.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {

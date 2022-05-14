@@ -6,6 +6,7 @@ import com.dingar.twok.dice.domain.model.LotteryModel;
 import java.util.ArrayList;
 
 public interface DiceBetContract {
+
     interface View{
         void onLotteriesLoad(ArrayList<LotteryModel> lotteries);
 
@@ -33,8 +34,14 @@ public interface DiceBetContract {
     }
 
     interface Presenter extends BasePresenter<View> {
+        /**
+         * load the available lotteries by excluding the unavailable lotteries
+         */
         void loadLotteries();
 
+        /**
+         * load the user balance
+         */
         void onLoadBalance();
 
         /**
@@ -45,7 +52,7 @@ public interface DiceBetContract {
         boolean isStringValid(String amount);
 
         /**
-         *
+         *load the future time when the next lottery will be opened
          */
         void loadTimeRemaining();
     }

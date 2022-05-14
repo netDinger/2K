@@ -22,6 +22,9 @@ import java.util.Objects;
 
 import javax.inject.Inject;
 
+/**
+ * to bet all the bet slip selected by user
+ */
 public class Activity_Bet_Slips extends AppCompatActivity implements BetListContract.View {
 
     /**

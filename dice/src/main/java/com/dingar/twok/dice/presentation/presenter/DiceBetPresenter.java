@@ -1,21 +1,21 @@
 package com.dingar.twok.dice.presentation.presenter;
 
+import android.annotation.SuppressLint;
 import android.os.CountDownTimer;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
 
+import com.dingar.twok.core.firebase.Get_FirebaseCurrentTime;
 import com.dingar.twok.dice.domain.interactor.CountDownUseCase;
 import com.dingar.twok.dice.domain.interactor.GetBalanceUseCase;
 import com.dingar.twok.dice.domain.interactor.LoadBetsUseCase;
 import com.dingar.twok.dice.domain.model.LotteryModel;
 import com.dingar.twok.dice.presentation.contract.DiceBetContract;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+
+import java.util.concurrent.TimeUnit;
 
 import io.reactivex.Observer;
 import io.reactivex.SingleObserver;
@@ -30,7 +30,7 @@ public class DiceBetPresenter implements DiceBetContract.Presenter {
     /** list of available lotteries*/
     ArrayList<LotteryModel> lotteriesList = new ArrayList<>();
 
-    /** list for adding excluded lotteries*/
+    /** list for adding excluded lotteries (user can't bet these lotteries)*/
     ArrayList<Integer> excludedLotteriesList = new ArrayList<>();
 
     LoadBetsUseCase loadBetsUseCase;
@@ -148,40 +148,58 @@ public class DiceBetPresenter implements DiceBetContract.Presenter {
     @Override
     public void dropView() {
         view = null;
-        timer.cancel();
+        timer.cancel(); // remove timer
     }
 
-
+    //calculate the time remaining to open the next lottery
     private void calculateTimeRemaining(String futureTimeStamp){
+        try {
+            Get_FirebaseCurrentTime.getInstance().gerCurrentTime().subscribe(new SingleObserver<String>() {
+                @Override
+                public void onSubscribe(@NonNull Disposable d) {}
 
-        FirebaseDatabase.getInstance().getReference().addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists())
-                {long currentTime = (Long) snapshot.getValue();
-                long futureTime = Long.parseLong(futureTimeStamp);
-                long diff = futureTime - currentTime;
-                timer = new CountDownTimer(diff,1000){
-                    @Override
-                    public void onTick(long l) {
-                        String remainingTime = "+"+l;
-                        view.setTimeRemaining(remainingTime);
-                    }
+                @Override
+                public void onSuccess(@NonNull String s) {
+                    //function call to create the count down timer
+                    timerTask(Long.parseLong(futureTimeStamp),Long.parseLong(s));
+                }
 
-                    @Override
-                    public void onFinish() {
+                @Override
+                public void onError(@NonNull Throwable e) {
 
-                    }
-                };
-                timer.start();}
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
-
+                }
+            });
+        } catch (Exception e) {
+           view.setTimeRemaining("Error Getting Time");
+        }
     }
+
+    /**
+     *
+     * @param future timestamp when next lottery will be opend
+     * @param current current server timestamp
+     */
+    private void timerTask(long future,long current){
+        Long diff = future - current;
+
+        timer = new CountDownTimer(diff,1000){
+            @Override
+            public void onTick(long remainingTime) {
+                @SuppressLint("DefaultLocale")
+                String remainTime = String.format("%02d:%02d:%02d",
+                        TimeUnit.MILLISECONDS.toHours(remainingTime)%60,
+                        TimeUnit.MILLISECONDS.toMinutes(remainingTime)%60,
+                        TimeUnit.MILLISECONDS.toSeconds(remainingTime) % 60);
+
+                view.setTimeRemaining(remainTime);
+            }
+
+            @Override
+            public void onFinish() {
+
+            }
+        };
+        timer.start();
+    }
+
 }
