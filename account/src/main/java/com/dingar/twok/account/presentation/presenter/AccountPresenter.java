@@ -1,9 +1,26 @@
 package com.dingar.twok.account.presentation.presenter;
 
+import androidx.annotation.NonNull;
+
+import com.dingar.twok.account.data.model.User;
+import com.dingar.twok.account.domain.interactor.GetBalanceUseCase;
+import com.dingar.twok.account.domain.interactor.GetUserInfoUseCase;
 import com.dingar.twok.account.presentation.contract.AccountContract;
 
+import javax.inject.Inject;
+
+import io.reactivex.SingleObserver;
+import io.reactivex.disposables.Disposable;
+
 public class AccountPresenter implements AccountContract.Presenter {
-    public AccountPresenter(){}
+
+    public GetBalanceUseCase getBalanceUseCase;
+    private GetUserInfoUseCase getUserInfoUseCase;
+
+    public AccountPresenter(GetBalanceUseCase getBalanceUseCase,GetUserInfoUseCase getUserInfoUseCase){
+        this.getBalanceUseCase = getBalanceUseCase;
+        this.getUserInfoUseCase = getUserInfoUseCase;
+    }
 
     private AccountContract.View view;
 
@@ -19,6 +36,42 @@ public class AccountPresenter implements AccountContract.Presenter {
 
     @Override
     public void loadUserBalance() {
+      getBalanceUseCase.execute().subscribe(new SingleObserver<Double>() {
+          @Override
+          public void onSubscribe(@NonNull Disposable d) { }
 
+          @Override
+          public void onSuccess(@NonNull Double balance) {
+              view.onBalanceLoaded(String.valueOf(balance));
+          }
+
+          @Override
+          public void onError(@NonNull Throwable e) {
+              view.onBalanceLoaded("No Balance");
+          }
+      });
+    }
+
+    @Override
+    public void logout() { }
+
+    @Override
+    public void loadUserInfo() {
+        getUserInfoUseCase.execute().subscribe(new SingleObserver<User>() {
+            @Override
+            public void onSubscribe(@NonNull Disposable d) {
+
+            }
+
+            @Override
+            public void onSuccess(@NonNull User user) {
+                view.onUserInfoLoaded(user);
+            }
+
+            @Override
+            public void onError(@NonNull Throwable e) {
+
+            }
+        });
     }
 }

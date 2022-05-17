@@ -8,6 +8,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.dingar.twok.core.util.DateUtil;
 import com.dingar.twok.dice.R;
 import com.dingar.twok.dice.data.model.WinLotteryModel;
 
@@ -15,10 +16,10 @@ import java.util.ArrayList;
 
 public class WinLotteryRecyclerViewAdapter extends RecyclerView.Adapter<WinLotteryRecyclerViewAdapter.ViewHolder> {
 
-    ArrayList<WinLotteryModel> winLotteryArrayList;
+    private ArrayList<WinLotteryModel> winLotteryArrayList;
 
     public WinLotteryRecyclerViewAdapter(ArrayList<WinLotteryModel> winLotteryArrayList){
-        winLotteryArrayList = new ArrayList<>();
+        this.winLotteryArrayList = new ArrayList<>();
         this.winLotteryArrayList = winLotteryArrayList;
     }
 
@@ -35,11 +36,14 @@ public class WinLotteryRecyclerViewAdapter extends RecyclerView.Adapter<WinLotte
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        WinLotteryModel winLotteryModel = winLotteryArrayList.get(position);
+        holder.date.setText(DateUtil.timeStampToDate(winLotteryModel.getDate()));
+        holder.lucky_number.setText(winLotteryModel.getLucky_number());
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return winLotteryArrayList.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder{

@@ -30,7 +30,8 @@ public class FirebaseGetWinHistory {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             for (DataSnapshot dataSnapshot : snapshot.getChildren()){
-                                emitter.onNext(new WinLotteryModel(dataSnapshot.getKey(),dataSnapshot.getValue(String.class)));
+                                emitter.onNext(new WinLotteryModel(dataSnapshot.getKey(),
+                                        String.valueOf(dataSnapshot.getValue())));
                             }
                             emitter.onComplete();
                         }

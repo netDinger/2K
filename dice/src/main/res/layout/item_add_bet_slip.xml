@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/addBetSlip"
     android:layout_width="match_parent"
     android:layout_height="?attr/actionBarSize"
     android:weightSum="6">
@@ -13,7 +14,7 @@
         android:paddingStart="20dp"
         android:paddingVertical="5dp"
         android:textSize="14sp"
-        android:text="@string/lottery"
+        android:hint="@string/lottery"
         tools:ignore="RtlSymmetry"
         android:gravity="center"
         android:inputType="number"/>
@@ -23,7 +24,7 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="3"
-        android:text="@string/kyat"
+        android:hint="@string/kyat"
         android:textSize="14sp"
         android:paddingVertical="5dp"
         tools:ignore="RtlSymmetry"

@@ -34,22 +34,17 @@ public class BetSlipPresenter implements BetListContract.Presenter {
         if(lotteryModelArrayList != null)
         betUseCase.execute(lotteryModelArrayList).subscribe(new SingleObserver<Result>() {
             @Override
-            public void onSubscribe(@NonNull Disposable d) {
-
-            }
+            public void onSubscribe(@NonNull Disposable d) {}
             @Override
             public void onSuccess(@NonNull Result result) {
                 if(result.isSuccess())
                 view.onBettingSuccess();
-
             }
 
             @Override
             public void onError(@NonNull Throwable e) {
-
             }
         });
-
         else
             Log.e("BetSlipPresenter","list is null");
     }
@@ -88,11 +83,9 @@ public class BetSlipPresenter implements BetListContract.Presenter {
     @Override
     public void onBetRemoved(int position) {
         totalAmount = 0;
-
         //re calculate the total amount
         for (LotteryModel model: lotteryModelArrayList)
            totalAmount+= model.getAmount();
-
         view.onTotalAmountCalculated(totalAmount);
     }
 

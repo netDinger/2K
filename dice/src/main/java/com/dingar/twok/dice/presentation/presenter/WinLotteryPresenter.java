@@ -1,8 +1,5 @@
 package com.dingar.twok.dice.presentation.presenter;
 
-import android.annotation.SuppressLint;
-import android.util.Log;
-
 import androidx.annotation.NonNull;
 
 import com.dingar.twok.dice.data.model.WinLotteryModel;
@@ -10,7 +7,6 @@ import com.dingar.twok.dice.domain.interactor.WinHistoryUseCase;
 import com.dingar.twok.dice.presentation.contract.WinLotteryContract;
 
 import io.reactivex.Observer;
-import io.reactivex.Scheduler;
 import io.reactivex.SingleObserver;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
@@ -24,7 +20,6 @@ public class WinLotteryPresenter implements WinLotteryContract.Presenter {
 
     WinLotteryContract.View view;
     WinHistoryUseCase winHistoryUseCase;
-
 
     public WinLotteryPresenter(WinHistoryUseCase winHistoryUseCase){
         this.winHistoryUseCase = winHistoryUseCase;
@@ -55,7 +50,6 @@ public class WinLotteryPresenter implements WinLotteryContract.Presenter {
 
             @Override
             public void onError(@NonNull Throwable e) {
-
             }
 
             @Override

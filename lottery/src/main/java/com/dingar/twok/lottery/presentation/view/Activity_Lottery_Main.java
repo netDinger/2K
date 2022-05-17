@@ -72,12 +72,10 @@ public class Activity_Lottery_Main extends AppCompatActivity {
                new ViewPagerAdapter(this);
         viewPagerAdapter.addFragment(new Fragment_History());
         viewPagerAdapter.addFragment(new Fragment_Lottery());
-        viewPagerAdapter.addFragment(new Fragment_Setting());
-
+        viewPagerAdapter.addFragment(new com.dingar.twok.account.presentation.view.Fragment_Account());
         viewPager.setAdapter(viewPagerAdapter);
         viewPager.setCurrentItem(1);
     }
-
 
     @Override
     public void onBackPressed() {

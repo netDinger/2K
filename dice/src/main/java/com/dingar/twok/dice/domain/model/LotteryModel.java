@@ -1,7 +1,5 @@
 package com.dingar.twok.dice.domain.model;
 
-import android.os.Parcelable;
-
 import java.io.Serializable;
 
 public class LotteryModel  implements Serializable {
@@ -13,6 +11,11 @@ public class LotteryModel  implements Serializable {
         this.lotteryNumber = lotteryNumber;
         this.selected = selected;
         this.amount = 0;
+    }
+
+    public LotteryModel(String lotteryNumber, int amount) {
+        this.lotteryNumber = lotteryNumber;
+        this.amount = amount;
     }
 
     public String getLotteryNumber() {

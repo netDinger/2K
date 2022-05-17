@@ -2,6 +2,7 @@ package com.dingar.twok.di.component;
 
 
 import com.dingar.twok.MainActivity;
+import com.dingar.twok.account.di.component.AccountComponent;
 import com.dingar.twok.auth.di.component.LoginComponent;
 import com.dingar.twok.auth.di.component.SignupComponent;
 import com.dingar.twok.auth.di.component.VerifyCodeComponent;
@@ -26,6 +27,7 @@ public interface AppComponent {
     DiceBetComponent.Builder diceComponentBuilder();
     BetSlipComponent.Builder betSlipComponentBuilder();
     WinLotteryComponent.Builder winLotteryComponentBuilder();
+    AccountComponent.Builder accountComponentBuilder();
 
     void inject(MainActivity mainActivity);
 

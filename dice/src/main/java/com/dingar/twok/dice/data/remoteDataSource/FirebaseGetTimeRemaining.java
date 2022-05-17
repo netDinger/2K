@@ -10,11 +10,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ServerValue;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Map;
 import java.util.Objects;
 
 import io.reactivex.Single;
-import io.reactivex.SingleEmitter;
-import io.reactivex.SingleOnSubscribe;
 
 public class FirebaseGetTimeRemaining {
     //Singleton
@@ -27,7 +26,8 @@ public class FirebaseGetTimeRemaining {
     }
 
     public Single<String> getTimeRemaining(){
-        FirebaseDatabase.getInstance().getReference().setValue(ServerValue.TIMESTAMP);
+
+        FirebaseDatabase.getInstance().getReference().child("date").setValue(ServerValue.TIMESTAMP);
        return Single.create(emitter -> FirebaseDatabase.getInstance().getReference()
                .child(Static_Config.NEXT_WIN)
                .child(Static_Config.TWOD)
@@ -35,10 +35,10 @@ public class FirebaseGetTimeRemaining {
                    @Override
                    public void onDataChange(@NonNull DataSnapshot snapshot) {
                        if (snapshot.exists())
-                       emitter.onSuccess(Objects.requireNonNull(snapshot.getValue(String.class)));
+                       emitter.onSuccess(Objects.requireNonNull(String.valueOf(snapshot.getValue())));
 
                        else
-                           emitter.onSuccess("1652538685715");
+                           emitter.onSuccess("1652539995715");
                    }
 
                    @Override

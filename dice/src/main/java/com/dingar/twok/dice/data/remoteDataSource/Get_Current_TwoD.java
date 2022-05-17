@@ -33,12 +33,11 @@ public class Get_Current_TwoD {
      */
     public Single<String> getResult(){
         return Single.create(emitter -> {
-
             final String url = "https://classic.set.or.th/mkt/marketsummary.do?language=en&country=US";
 
             ArrayList<String> arrayList = new ArrayList<>();
             try{ //get the url web page source as document
-                Document document = Jsoup.connect(url).timeout(2000).get();
+                Document document = Jsoup.connect(url).timeout(5000).get();
                 //get html table as elements 'table'
                 Elements table = document.getElementsByClass("table-info");
                 Elements tr = table.get(0).select("tr");

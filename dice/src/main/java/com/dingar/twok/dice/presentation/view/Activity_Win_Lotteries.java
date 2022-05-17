@@ -27,6 +27,8 @@ public class Activity_Win_Lotteries extends AppCompatActivity implements WinLott
 
     WinLotteryComponent component;
 
+    WinLotteryRecyclerViewAdapter winLotteryRecyclerViewAdapter;
+
     private ArrayList<WinLotteryModel> winLotteryArrayList;
     private RecyclerView winHistoryRecyclerview;
     private TextView luckyNumber;
@@ -41,13 +43,13 @@ public class Activity_Win_Lotteries extends AppCompatActivity implements WinLott
 
         widgets();
         initiate();
-
     }
 
 
     @Override
     public void onLuckyHistoryLoaded(WinLotteryModel model) {
         winLotteryArrayList.add(model);
+        winLotteryRecyclerViewAdapter.notifyItemInserted(winLotteryArrayList.size()-1);
     }
 
     @Override
@@ -57,18 +59,17 @@ public class Activity_Win_Lotteries extends AppCompatActivity implements WinLott
 
     private void widgets(){
         winHistoryRecyclerview = findViewById(R.id.winHistory);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this,RecyclerView.VERTICAL,false);
-        winHistoryRecyclerview.setLayoutManager(layoutManager);
-        WinLotteryRecyclerViewAdapter winLotteryRecyclerViewAdapter =
-                new WinLotteryRecyclerViewAdapter(winLotteryArrayList);
-        winHistoryRecyclerview.setAdapter(winLotteryRecyclerViewAdapter);
-
         //current TwoD result
         luckyNumber = findViewById(R.id.lottery_number);
     }
 
     private void initiate(){
         winLotteryArrayList = new ArrayList<>();
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this,RecyclerView.VERTICAL,false);
+        winHistoryRecyclerview.setLayoutManager(layoutManager);
+        winLotteryRecyclerViewAdapter =
+                new WinLotteryRecyclerViewAdapter(winLotteryArrayList);
+        winHistoryRecyclerview.setAdapter(winLotteryRecyclerViewAdapter);
 
         presenter.setView(this);
         //Tell presenter to load all lucky number within a month

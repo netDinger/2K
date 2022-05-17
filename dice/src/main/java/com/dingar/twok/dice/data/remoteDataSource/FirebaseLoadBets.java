@@ -39,7 +39,6 @@ public class FirebaseLoadBets {
                             emitter.onNext(Objects.requireNonNull(dataSnapshot.getKey()));
                         }
                     }
-
                     emitter.onComplete();
                 }
 

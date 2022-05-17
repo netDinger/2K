@@ -25,6 +25,7 @@ public class Get_FirebaseCurrentTime {
     //Get the current time of firebase server
     public Single<String> gerCurrentTime() throws Exception{
         return Single.create(emitter -> FirebaseDatabase.getInstance().getReference()
+                .child("date")
         .addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

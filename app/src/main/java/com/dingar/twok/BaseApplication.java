@@ -2,6 +2,8 @@ package com.dingar.twok;
 
 import android.app.Application;
 
+import com.dingar.twok.account.di.component.AccountComponent;
+import com.dingar.twok.account.di.component.ComponentProviderAccount;
 import com.dingar.twok.auth.di.component.LoginComponent;
 import com.dingar.twok.auth.di.component.LoginComponentProvider;
 import com.dingar.twok.auth.di.component.SignupComponent;
@@ -22,7 +24,8 @@ public class BaseApplication extends Application implements LoginComponentProvid
         SignupComponentProvider,
         VerifyCodeComponentProvider,
         DiceBetComponentProvider,
-        BetSlipComponentProvider
+        BetSlipComponentProvider,
+        ComponentProviderAccount
 
 {
     AppComponent appComponent;
@@ -75,5 +78,10 @@ public class BaseApplication extends Application implements LoginComponentProvid
     @Override
     public WinLotteryComponent provideWinLotteryComponent() {
         return getAppComponent().winLotteryComponentBuilder().build();
+    }
+
+    @Override
+    public AccountComponent provideAccountComponent() {
+        return getAppComponent().accountComponentBuilder().build();
     }
 }

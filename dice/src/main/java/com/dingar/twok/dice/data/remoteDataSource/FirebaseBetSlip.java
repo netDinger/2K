@@ -43,6 +43,7 @@ public class FirebaseBetSlip {
                         .child(Get_Current_User.getCurrentUserID())
                         .child(Static_Config.TWOD)
                         .child(lotteryModel.getLotteryNumber())
+                        .push()
                         .updateChildren(betMap)
                         .addOnSuccessListener(unused -> {
                             count+=1;
