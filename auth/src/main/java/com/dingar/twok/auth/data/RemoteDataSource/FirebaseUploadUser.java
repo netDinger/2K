@@ -15,6 +15,9 @@ import javax.inject.Inject;
 
 import io.reactivex.Single;
 
+/**
+ * Upload new user information
+ */
 public class FirebaseUploadUser {
 
     String TAG = "FirebaseUploadUser";
@@ -31,14 +34,13 @@ public class FirebaseUploadUser {
             userMap.put("phone",phoneNumber);
             reference.child(Get_Current_User.getCurrentUserID()).updateChildren(userMap)
                     .addOnCompleteListener(task -> {
+                        //if upload user info complete
                         Log.e(TAG,"upload user complete");
                         if (task.isSuccessful())
                             emitter.onSuccess(new Result(true));
                         else
                             emitter.onSuccess(new Result(false));
             });
-
-            reference.push().updateChildren(userMap);
         });
     }
 }

@@ -42,5 +42,7 @@ public interface BetListContract {
          * @param amount the new amount of the lottery number
          */
         void onAmountChanged(int position,String amount);
+
+
     }
 }

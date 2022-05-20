@@ -1,5 +1,7 @@
 package com.dingar.twok.account.presentation.presenter;
 
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 
 import com.dingar.twok.account.data.model.User;
@@ -62,7 +64,6 @@ public class AccountPresenter implements AccountContract.Presenter {
             public void onSubscribe(@NonNull Disposable d) {
 
             }
-
             @Override
             public void onSuccess(@NonNull User user) {
                 view.onUserInfoLoaded(user);
@@ -70,7 +71,7 @@ public class AccountPresenter implements AccountContract.Presenter {
 
             @Override
             public void onError(@NonNull Throwable e) {
-
+                Log.e("Account Presenter",e.getMessage());
             }
         });
     }

@@ -33,6 +33,7 @@ dependencies {
     implementation project(path: ':lottery')
     implementation project(path: ':dice')
     implementation project(path: ':account')
+    implementation project(path: ':history')
     implementation project(path: ':firebaseAdapter')
 
     annotationProcessor 'com.google.dagger:dagger-android-processor:2.35.1'

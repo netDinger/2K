@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.annotation.SuppressLint;
 import android.net.ParseException;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -26,11 +27,13 @@ import java.util.Objects;
 import javax.inject.Inject;
 
 /**
+ * show the user selected bet slips,
  * to bet all the bet slip selected by user
  */
 public class Activity_Bet_Slips extends AppCompatActivity implements BetListContract.View {
 
     //TODO: change betList add amount from previous activity
+    //remove a arraylist later
     /**
      * to add arraylist of lottery form {@link Activity_DiceBet}
      * with no amount (default is 0)

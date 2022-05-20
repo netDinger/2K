@@ -40,8 +40,8 @@ public class FirebaseBetSlip {
                 betMap.put("time",ServerValue.TIMESTAMP);
 
                 FirebaseDatabase.getInstance().getReference().child(Static_Config.BETSLIP)
-                        .child(Get_Current_User.getCurrentUserID())
                         .child(Static_Config.TWOD)
+                        .child(Get_Current_User.getCurrentUserID())
                         .child(lotteryModel.getLotteryNumber())
                         .push()
                         .updateChildren(betMap)

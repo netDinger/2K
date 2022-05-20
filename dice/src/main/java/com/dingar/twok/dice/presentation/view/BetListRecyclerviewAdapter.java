@@ -60,18 +60,20 @@ public class BetListRecyclerviewAdapter extends RecyclerView.Adapter<BetListRecy
         holder.amount.setText(String.valueOf(lotteryModel.getAmount()));
 
         holder.delete.setOnClickListener(view -> {
-            try {
+            int pos = holder.getAdapterPosition();
+            Log.e("position",""+position);
+            Log.e("adapter position",""+ pos);
+           try {
                 //remove from recyclerview
-                lotteryModels.remove(position);
-                notifyItemRemoved(position);
-                notifyItemRangeChanged(position, lotteryModels.size() - 1);
+                lotteryModels.remove(holder.getAdapterPosition());
+                notifyItemRemoved(pos);
+               // notifyItemRangeChanged(position, lotteryModels.size()-1);
 
                 //presenter will removed it from bet list and sub the total amount too
-                presenter.onBetRemoved(position);
+                presenter.onBetRemoved(pos);
             }catch (Exception e){
                 Log.e("Error",e.getMessage());
             }
-
         });
 
         holder.amount.addTextChangedListener(new TextWatcher() {
@@ -82,32 +84,10 @@ public class BetListRecyclerviewAdapter extends RecyclerView.Adapter<BetListRecy
 
             @Override
             public void afterTextChanged(Editable editable) {
-                if (!editable.toString().isEmpty()){
-                    try {
-                        //change amount for recycler view
-                        lotteryModel.setAmount(Integer.parseInt(editable.toString()));
-                        lotteryModels.remove(holder.getAdapterPosition());
-                        lotteryModels.add(holder.getAdapterPosition(), lotteryModel);
-
-                        //presenter will changed the amount of the lottery in bet list
-                        presenter.onAmountChanged(holder.getAdapterPosition(), editable.toString());
-                    }catch (Exception e){
-                        Log.e(TAG,e.getMessage());
-                    }
-                }
-                else{
-                    try {
-                        //change amount for recycler view
-                        lotteryModel.setAmount(0);
-                        lotteryModels.remove(holder.getAdapterPosition());
-                        lotteryModels.add(holder.getAdapterPosition(), lotteryModel);
-
-                        //presenter will changed the amount of the lottery in bet list
-                        presenter.onAmountChanged(holder.getAdapterPosition(), "0");
-                    }catch (Exception e){
-                        Log.e(TAG,e.getMessage());
-                    }
-                }
+                if (!editable.toString().isEmpty())
+                    onTextChange(lotteryModel, holder.getAdapterPosition(), Integer.parseInt(editable.toString()));
+                else
+                    onTextChange(lotteryModel,holder.getAdapterPosition(),0);
             }
         });//end of addTextChangedListener
     }
@@ -122,12 +102,22 @@ public class BetListRecyclerviewAdapter extends RecyclerView.Adapter<BetListRecy
         EditText amount;
         ImageView delete;
 
-
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             lottery = itemView.findViewById(R.id.lottery_number);
             amount = itemView.findViewById(R.id.amount);
             delete = itemView.findViewById(R.id.delete);
+        }
+    }
+
+    private void onTextChange(LotteryModel lotteryModel,int position,int amount){
+        try {
+            //change amount for recycler view
+            lotteryModels.get(position).setAmount(amount);
+            //presenter will changed the amount of the lottery in bet list
+            presenter.onAmountChanged(position, String.valueOf(amount));
+        }catch (Exception e){
+            Log.e(TAG,e.getMessage());
         }
     }
 

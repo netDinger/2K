@@ -8,6 +8,8 @@ import androidx.viewpager2.widget.ViewPager2;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.dingar.twok.account.presentation.view.Fragment_Account;
+import com.dingar.twok.history.presentation.view.Fragment_History;
 import com.dingar.twok.lottery.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -72,7 +74,7 @@ public class Activity_Lottery_Main extends AppCompatActivity {
                new ViewPagerAdapter(this);
         viewPagerAdapter.addFragment(new Fragment_History());
         viewPagerAdapter.addFragment(new Fragment_Lottery());
-        viewPagerAdapter.addFragment(new com.dingar.twok.account.presentation.view.Fragment_Account());
+        viewPagerAdapter.addFragment(new Fragment_Account());
         viewPager.setAdapter(viewPagerAdapter);
         viewPager.setCurrentItem(1);
     }

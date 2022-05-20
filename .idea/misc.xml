@@ -3,7 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/2K/account/src/main/res/layout/fragment_account.xml" value="0.2" />
+        <entry key="..\:/2K/account/src/main/res/layout/fragment_account.xml" value="0.33" />
         <entry key="..\:/2K/account/src/main/res/layout/item_additionals.xml" value="0.209375" />
         <entry key="..\:/2K/account/src/main/res/layout/item_balance.xml" value="0.2" />
         <entry key="..\:/2K/account/src/main/res/layout/test.xml" value="0.19610507246376813" />
@@ -22,12 +22,14 @@
         <entry key="..\:/2K/dice/src/main/res/layout/item_betlist_header.xml" value="0.2" />
         <entry key="..\:/2K/dice/src/main/res/layout/item_lottery.xml" value="0.75" />
         <entry key="..\:/2K/dice/src/main/res/layout/item_lucky_lottery.xml" value="0.22" />
+        <entry key="..\:/2K/history/src/main/res/layout/fragment_history.xml" value="0.18568840579710144" />
+        <entry key="..\:/2K/history/src/main/res/layout/item_bet_history.xml" value="0.33" />
         <entry key="..\:/2K/lottery/src/main/res/drawable/arc_backgrround.xml" value="0.15462962962962962" />
         <entry key="..\:/2K/lottery/src/main/res/drawable/ic_account_fill_black_background.xml" value="0.1574074074074074" />
         <entry key="..\:/2K/lottery/src/main/res/drawable/ic_account_fill_black_foreground.xml" value="0.1574074074074074" />
         <entry key="..\:/2K/lottery/src/main/res/layout/activity_lottery_main.xml" value="0.18931159420289856" />
         <entry key="..\:/2K/lottery/src/main/res/layout/fragment__history.xml" value="0.209375" />
-        <entry key="..\:/2K/lottery/src/main/res/layout/fragment__lottery.xml" value="0.3053097345132743" />
+        <entry key="..\:/2K/lottery/src/main/res/layout/fragment__lottery.xml" value="0.18" />
         <entry key="..\:/2K/lottery/src/main/res/layout/fragment_account.xml" value="0.20380434782608695" />
         <entry key="..\:/2K/lottery/src/main/res/layout/item_appbar_lottery.xml" value="0.1875" />
         <entry key="..\:/2K/lottery/src/main/res/layout/item_lottery_2d.xml" value="0.20742753623188406" />

@@ -34,6 +34,7 @@
             android:layout_marginStart="10dp"
             android:layout_toEndOf="@id/profile"
             android:text="@string/id" />
+
     </RelativeLayout>
 
 

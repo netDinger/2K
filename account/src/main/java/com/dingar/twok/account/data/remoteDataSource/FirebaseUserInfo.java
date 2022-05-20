@@ -23,7 +23,7 @@ public class FirebaseUserInfo {
     }
 
     public Single<User> getUserInfo(){
-        return Single.create(emitter -> {
+        return Single.create(emitter ->
             FirebaseDatabase.getInstance().getReference(Static_Config.USERS)
                     .child(Get_Current_User.getCurrentUserID())
                     .addValueEventListener(new ValueEventListener() {
@@ -31,8 +31,8 @@ public class FirebaseUserInfo {
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             try {
                                 User user = snapshot.getValue(User.class);
-                                assert user != null;
                                 user.setUid(snapshot.getKey());
+
                                 emitter.onSuccess(user);
                             }catch (Exception e){
                                 emitter.onError(e);
@@ -43,7 +43,7 @@ public class FirebaseUserInfo {
                         public void onCancelled(@NonNull DatabaseError error) {
                             emitter.onError(error.toException());
                         }
-                    });
-        });
+                    })
+        );
     }
 }
