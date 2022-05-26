@@ -37,12 +37,12 @@ public class GetBalance {
                             }
                             }
                             else
-                               emitter.onError(new Exception());
+                               emitter.onError(new NullPointerException("LOL no data"));
                         }
 
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {
-                            emitter.onError(new Exception());
+                            emitter.onError(error.toException());
                         }
                     });
         });

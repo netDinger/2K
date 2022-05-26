@@ -22,15 +22,14 @@
             app:titleMarginStart="12dp">
 
             <TextView
-                android:id="@+id/balance"
+                android:id="@+id/time_remaining"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:layout_marginEnd="21dp"
-                android:text="@string/kyat"
+                android:layout_centerVertical="true"
+                android:text="@string/time_remaining"
+                android:textSize="21sp"
                 android:textColor="@color/white"
-                android:textSize="20sp"
-                android:textStyle="bold"
                 android:layout_gravity="right"
                 tools:ignore="RtlHardcoded" />
 
@@ -50,23 +49,27 @@
             android:layout_height="wrap_content"
             android:text="history" />
 
-        <TextView
-            android:id="@+id/time_remaining"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_toEndOf="@id/aboutBetType"
-            android:text="@string/time_remaining"
-            android:textSize="21sp" />
 
         <ImageView
-            android:id="@+id/aboutBetType"
+            android:id="@+id/help"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_marginStart="14dp"
+            android:layout_marginStart="25dp"
             android:layout_toEndOf="@id/history"
+            android:padding="7dp"
             android:src="@drawable/ic_help" />
+
+        <TextView
+            android:id="@+id/win_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerInParent="true"
+            android:padding="7dp"
+            android:text="@string/select_win_date"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
     </RelativeLayout>
 
@@ -82,38 +85,40 @@
     <RelativeLayout
         android:id="@+id/betLayout"
         android:layout_width="match_parent"
-        android:layout_height="?android:attr/actionBarSize"
-        android:layout_alignParentBottom="true"
-        android:gravity="center_vertical">
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
 
-        <EditText
-            android:id="@+id/amount"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/amountTextField"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="14dp"
-            android:hint="@string/amount"
-            android:inputType="number"
-            android:paddingHorizontal="21dp"
-            android:text="@string/default_amount" />
+            android:layout_marginStart="7dp"
+            android:hint="@string/amount">
 
-        <ImageView
-            android:id="@+id/help"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="14dp"
-            android:layout_toEndOf="@id/amount"
-            android:src="@drawable/ic_help" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:paddingHorizontal="34dp"
+                android:layout_marginBottom="5dp"
+                android:text="@string/default_amount" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
 
         <Button
             android:id="@+id/bet"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
             android:padding="7dp"
             android:paddingStart="7dp"
             android:paddingBottom="3dp"
             android:text="@string/bet" />
+
 
     </RelativeLayout>
 

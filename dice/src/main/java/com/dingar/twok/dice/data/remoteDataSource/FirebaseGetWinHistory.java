@@ -11,6 +11,9 @@ import com.google.firebase.database.ValueEventListener;
 
 import io.reactivex.Observable;
 
+/**get the previous win history for 1 months
+ *
+ */
 public class FirebaseGetWinHistory {
     //singleton
     private FirebaseGetWinHistory(){}
@@ -18,7 +21,6 @@ public class FirebaseGetWinHistory {
     public static FirebaseGetWinHistory getInstance(){
         if (instance == null)
             instance = new FirebaseGetWinHistory();
-
         return instance;
     }
 

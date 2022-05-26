@@ -32,6 +32,7 @@ dependencies {
     implementation project(path: ':core')
     implementation project(path: ':lottery')
     implementation project(path: ':dice')
+    implementation project(path: ':twoD')
     implementation project(path: ':account')
     implementation project(path: ':history')
     implementation project(path: ':firebaseAdapter')

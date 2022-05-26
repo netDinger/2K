@@ -2,8 +2,16 @@ package com.dingar.twok.dice.domain.model;
 
 import java.io.Serializable;
 
+/**
+ * data model with user selected lucky number and amount
+ */
 public class LotteryModel  implements Serializable {
     private String lotteryNumber;
+    /**
+     * {@link com.dingar.twok.dice.presentation.view.Activity_DiceBet}
+     * to know if the user selected the lucky number or not
+     * help in loading recyclerview on scroll not to randomly selected
+     */
     private boolean selected;
     private int amount;
 

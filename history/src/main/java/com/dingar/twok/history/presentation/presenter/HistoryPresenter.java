@@ -38,7 +38,7 @@ public class HistoryPresenter implements HistoryContract.Presenter {
 
             @Override
             public void onNext(@NonNull BetSlipModel betSlipModel) {
-
+                view.onHistoryLoaded(betSlipModel);
             }
 
             @Override

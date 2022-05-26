@@ -13,9 +13,8 @@ import com.dingar.twok.auth.di.component.VerifyCodeComponentProvider;
 import com.dingar.twok.di.component.AppComponent;
 import com.dingar.twok.di.component.DaggerAppComponent;
 import com.dingar.twok.dice.di.component.BetSlipComponent;
-import com.dingar.twok.dice.di.component.BetSlipComponentProvider;
+import com.dingar.twok.dice.di.component.ComponentProviderDice;
 import com.dingar.twok.dice.di.component.DiceBetComponent;
-import com.dingar.twok.dice.di.component.DiceBetComponentProvider;
 import com.dingar.twok.dice.di.component.WinLotteryComponent;
 import com.dingar.twok.firebaseadapter.FirebaseOffline;
 import com.dingar.twok.history.di.component.ComponentProviderHistory;
@@ -25,8 +24,7 @@ import com.dingar.twok.history.di.component.HistoryComponent;
 public class BaseApplication extends Application implements LoginComponentProvider,
         SignupComponentProvider,
         VerifyCodeComponentProvider,
-        DiceBetComponentProvider,
-        BetSlipComponentProvider,
+        ComponentProviderDice,
         ComponentProviderAccount,
         ComponentProviderHistory
 

@@ -1,5 +1,8 @@
 package com.dingar.twok.account.presentation.view;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -9,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.dingar.twok.account.R;
 import com.dingar.twok.account.data.model.User;
@@ -21,12 +25,12 @@ import javax.inject.Inject;
 public class Fragment_Account extends Fragment implements AccountContract.View {
 
     @Inject
-    AccountContract.Presenter presenter;
+    AccountContract.Presenter presenter; //inject the presenter
 
-    AccountComponent accountComponent;
-    private TextView username,id,balance;
+    AccountComponent accountComponent;  //component
+    private TextView username,id,balance,points;
 
-    public Fragment_Account(){}
+    public Fragment_Account(){} //empty constructor
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -36,6 +40,7 @@ public class Fragment_Account extends Fragment implements AccountContract.View {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+        //initiate the component and inject the view
         accountComponent = ((ComponentProviderAccount) requireActivity().getApplicationContext()).provideAccountComponent();
         accountComponent.inject(this);
 
@@ -51,24 +56,35 @@ public class Fragment_Account extends Fragment implements AccountContract.View {
         id = view.findViewById(R.id.id);
         RelativeLayout layout = view.findViewById(R.id.balance_layout);
         balance = layout.findViewById(R.id.balance);
+        points = layout.findViewById(R.id.points);
         TextView logout = view.findViewById(R.id.logout);
         logout.setOnClickListener(view1 -> presenter.logout());
+
+        id.setOnClickListener(v->{ //on user id textview is clicked
+            //copy id to clipboard
+            ClipboardManager manager = (ClipboardManager) requireContext().getSystemService(Context.CLIPBOARD_SERVICE);
+            ClipData clipData = ClipData.newPlainText(id.getText().toString(),id.getText().toString());
+            manager.setPrimaryClip(clipData);
+
+            Toast.makeText(requireContext(),"Copied to ClipBoard",Toast.LENGTH_SHORT).show();
+        });
     }
 
     private void initiate() {
-        presenter.setView(this);
-        presenter.loadUserBalance();
-        presenter.loadUserInfo();
+        presenter.setView(this);        //attach the view
+        presenter.loadUserBalance();    //get user balance
+        presenter.loadUserInfo();       //get user info
     }
 
     @Override
     public void onBalanceLoaded(String balance) {
         this.balance.setText(balance);
+        points.setText("1000 P");
     }
 
     @Override
     public void onUserInfoLoaded(User user) {
-       username.setText(user.getUserName());
+       username.setText(user.getName());
        id.setText(user.getUid());
     }
 }

@@ -65,12 +65,12 @@ public class BetListRecyclerviewAdapter extends RecyclerView.Adapter<BetListRecy
             Log.e("adapter position",""+ pos);
            try {
                 //remove from recyclerview
-                lotteryModels.remove(holder.getAdapterPosition());
+                lotteryModels.remove(pos);
                 notifyItemRemoved(pos);
                // notifyItemRangeChanged(position, lotteryModels.size()-1);
 
                 //presenter will removed it from bet list and sub the total amount too
-                presenter.onBetRemoved(pos);
+                presenter.onBetRemoved();
             }catch (Exception e){
                 Log.e("Error",e.getMessage());
             }

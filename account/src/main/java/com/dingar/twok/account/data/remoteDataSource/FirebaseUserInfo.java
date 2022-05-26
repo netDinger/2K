@@ -1,5 +1,7 @@
 package com.dingar.twok.account.data.remoteDataSource;
 
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 
 import com.dingar.twok.account.data.model.User;
@@ -30,7 +32,9 @@ public class FirebaseUserInfo {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             try {
+                                Log.e("user info",snapshot.getKey());
                                 User user = snapshot.getValue(User.class);
+                                Log.e("user info",""+user.getName());
                                 user.setUid(snapshot.getKey());
 
                                 emitter.onSuccess(user);

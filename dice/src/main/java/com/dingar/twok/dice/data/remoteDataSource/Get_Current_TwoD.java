@@ -33,6 +33,7 @@ public class Get_Current_TwoD {
      */
     public Single<String> getResult(){
         return Single.create(emitter -> {
+            //official website url
             final String url = "https://classic.set.or.th/mkt/marketsummary.do?language=en&country=US";
 
             ArrayList<String> arrayList = new ArrayList<>();

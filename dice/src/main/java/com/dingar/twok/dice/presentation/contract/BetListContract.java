@@ -33,9 +33,8 @@ public interface BetListContract {
 
         /**
          * invoked by {@link BetListRecyclerviewAdapter} when a lottery number removed
-         * @param position the position of removed lottery
          */
-        void onBetRemoved(int position);
+        void onBetRemoved();
 
         /**
          * invoked by {@link BetListRecyclerviewAdapter} when the amount of the lottery number is changed

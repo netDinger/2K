@@ -71,7 +71,6 @@ public class BetSlipPresenter implements BetListContract.Presenter {
     @Override
     public void setBetList(ArrayList<LotteryModel> lotteryModels) {
         lotteryModelArrayList = lotteryModels;
-        Log.e("size",lotteryModelArrayList.size()+"");
     }
 
     @Override
@@ -82,15 +81,13 @@ public class BetSlipPresenter implements BetListContract.Presenter {
     }
 
     @Override
-    public void onBetRemoved(int position) {
+    public void onBetRemoved() {
         totalAmount = 0;
         //re calculate the total amount
         for (LotteryModel model: lotteryModelArrayList) {
             totalAmount += model.getAmount();
         }
         view.onTotalAmountCalculated(totalAmount);
-
-
     }
 
     @Override

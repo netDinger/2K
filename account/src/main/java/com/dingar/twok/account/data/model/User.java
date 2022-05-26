@@ -5,24 +5,26 @@ import com.google.firebase.database.PropertyName;
 public class User {
 
     @PropertyName("name")
-    String userName;
+    String name;
     @PropertyName("phone")
-    String phoneNumber;
+    String phone;
     String uid;
 
-    public User(String userName, String phoneNumber, String uid) {
-        this.userName = userName;
-        this.phoneNumber = phoneNumber;
+    public User(){}
+    public User(String name, String phone, String uid) {
+        this.name = name;
+        this.phone = phone;
         this.uid = uid;
     }
 
     @PropertyName("name")
-    public String getUserName() {
-        return userName;
+    public String getName() {
+        return name;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    @PropertyName("name")
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getUid() {
@@ -34,11 +36,12 @@ public class User {
     }
 
     @PropertyName("phone")
-    public String getPhoneNumber() {
-        return phoneNumber;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    @PropertyName("phone")
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }

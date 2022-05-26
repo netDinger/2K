@@ -7,8 +7,10 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 
 import com.dingar.twok.core.firebase.Get_FirebaseCurrentTime;
+import com.dingar.twok.core.util.DateUtil;
+
+import com.dingar.twok.dice.domain.interactor.BetableTimeUseCase;
 import com.dingar.twok.dice.domain.interactor.CountDownUseCase;
-import com.dingar.twok.dice.domain.interactor.GetBalanceUseCase;
 import com.dingar.twok.dice.domain.interactor.LoadBetsUseCase;
 import com.dingar.twok.dice.domain.model.LotteryModel;
 import com.dingar.twok.dice.presentation.contract.DiceBetContract;
@@ -21,6 +23,10 @@ import io.reactivex.Observer;
 import io.reactivex.SingleObserver;
 import io.reactivex.disposables.Disposable;
 
+/**
+ * {@link com.dingar.twok.dice.presentation.view.Activity_DiceBet}
+ * @see DiceBetContract.Presenter
+ */
 public class DiceBetPresenter implements DiceBetContract.Presenter {
     private final String TAG = "DiceBetPresenter";
     private DiceBetContract.View view;
@@ -33,16 +39,20 @@ public class DiceBetPresenter implements DiceBetContract.Presenter {
     /** list for adding excluded lotteries (user can't bet these lotteries)*/
     ArrayList<Integer> excludedLotteriesList = new ArrayList<>();
 
-    LoadBetsUseCase loadBetsUseCase;
-    GetBalanceUseCase getBalanceUseCase;
-    CountDownUseCase countDownUseCase;
+    private final ArrayList<String> winDates;
+
+    LoadBetsUseCase loadBetsUseCase;    //to get the available lottery numbers
+    CountDownUseCase countDownUseCase;  //to get the next bet opening time
+    BetableTimeUseCase betableTimeUseCase; // to get the bet opening times
 
     public DiceBetPresenter(LoadBetsUseCase loadBetsUseCase,
-                            GetBalanceUseCase getBalanceUseCase,
-                            CountDownUseCase countDownUseCase){
+                            CountDownUseCase countDownUseCase,
+                            BetableTimeUseCase betableTimeUseCase){
         this.loadBetsUseCase = loadBetsUseCase;
-        this.getBalanceUseCase = getBalanceUseCase;
+
         this.countDownUseCase = countDownUseCase;
+        this.betableTimeUseCase = betableTimeUseCase;
+        winDates = new ArrayList<>();
     }
 
     //retrieve available lotteries
@@ -74,25 +84,6 @@ public class DiceBetPresenter implements DiceBetContract.Presenter {
         });
     }
 
-    @Override
-    public void onLoadBalance() {
-        getBalanceUseCase.execute().subscribe(new SingleObserver<Double>() {
-            @Override
-            public void onSubscribe(@NonNull Disposable d) {
-
-            }
-
-            @Override
-            public void onSuccess(@NonNull Double aDouble) {
-                view.onBalanceLoaded(aDouble+"Kyats");
-            }
-
-            @Override
-            public void onError(@NonNull Throwable e) {
-                view.onBalanceLoaded("0Kyats");
-            }
-        });
-    }
 
     @Override
     public boolean isStringValid(String amount) {
@@ -103,9 +94,7 @@ public class DiceBetPresenter implements DiceBetContract.Presenter {
     public void loadTimeRemaining() {
         countDownUseCase.execute().subscribe(new SingleObserver<String>() {
             @Override
-            public void onSubscribe(@NonNull Disposable d) {
-
-            }
+            public void onSubscribe(@NonNull Disposable d) {}
 
             @Override
             public void onSuccess(@NonNull String s) {
@@ -113,14 +102,37 @@ public class DiceBetPresenter implements DiceBetContract.Presenter {
             }
 
             @Override
-            public void onError(@NonNull Throwable e) {
-
-            }
+            public void onError(@NonNull Throwable e) {}
         });
-
     }
 
-    /**
+    //TODO: this is not ended yet
+    //(1) call this method from Activity
+    //(2) create number picker dialog and show this dates
+    @Override
+    public void loadBetableTime() {
+        betableTimeUseCase.execute().subscribe(new Observer<String>() {
+            @Override
+            public void onSubscribe(@NonNull Disposable d) {}
+
+            @Override
+            public void onNext(@NonNull String s) {
+                winDates.add(DateUtil.timeStampToDate(s));
+            }
+
+            @Override
+            public void onError(@NonNull Throwable e) {
+                Log.e("Error",e.getMessage());
+            }
+
+            @Override
+            public void onComplete() {
+                view.onBetAbleTimeLoaded(winDates);
+            }
+        });
+    }
+
+    /**invoked after {@link #loadLotteries()} get all excluded lotteries
      * for 2d lotteries list 00 to 99, excluding numbers blocked by admin*/
     private void initiateLotteryList(){
         String s;
@@ -128,14 +140,12 @@ public class DiceBetPresenter implements DiceBetContract.Presenter {
             if (excludedLotteriesList.contains(i))
                 //if number is in excluded list
                 continue;
-
             if (i<10)//add prefix if number less than 10 (to get the formation of 00,01,...)
                 s = "0"+i;
             else
                 s = String.valueOf(i);
             lotteriesList.add(new LotteryModel(s,false));
         }
-
         //tell the view to load the lotteries
         view.onLotteriesLoad(lotteriesList);
     }
@@ -191,13 +201,11 @@ public class DiceBetPresenter implements DiceBetContract.Presenter {
                         TimeUnit.MILLISECONDS.toMinutes(remainingTime)%60,
                         TimeUnit.MILLISECONDS.toSeconds(remainingTime) % 60);
 
-                view.setTimeRemaining(remainTime);
+                view.setTimeRemaining("ထီဖွင့်ရန်: "+remainTime);
             }
 
             @Override
-            public void onFinish() {
-
-            }
+            public void onFinish() {}
         };
         timer.start();
     }

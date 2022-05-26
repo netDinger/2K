@@ -73,7 +73,7 @@ public class WinLotteryPresenter implements WinLotteryContract.Presenter {
             @Override
             public void onError(@NonNull Throwable e) {
                 e.printStackTrace();
-                view.onCurrentTwoDLoaded("A");
+                view.onCurrentTwoDLoaded("--");
             }
         });
 

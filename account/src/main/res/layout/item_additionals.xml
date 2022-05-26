@@ -1,14 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:background="@drawable/round_corner">
 
     <TextView
-        android:id="@+id/setting"
+        android:id="@+id/language"
         android:layout_width="match_parent"
         android:layout_height="?android:attr/actionBarSize"
         android:gravity="center_vertical"
         android:paddingStart="21dp"
-        android:text="@string/setting"
+        android:text="@string/language"
+        android:textSize="17sp" />
+
+    <TextView
+        android:id="@+id/help"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:layout_below="@id/language"
+        android:gravity="center_vertical"
+        android:paddingStart="21dp"
+        android:text="@string/help"
+        android:textSize="17sp" />
+
+    <TextView
+        android:id="@+id/privacyPolicy"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:layout_below="@id/help"
+        android:gravity="center_vertical"
+        android:paddingStart="21dp"
+        android:text="@string/privacy"
+        android:textSize="17sp" />
+
+    <TextView
+        android:id="@+id/about"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:layout_below="@id/privacyPolicy"
+        android:gravity="center_vertical"
+        android:paddingStart="21dp"
+        android:text="@string/about"
+        android:textSize="17sp" />
+
+    <TextView
+        android:id="@+id/share"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:layout_below="@id/about"
+        android:gravity="center_vertical"
+        android:paddingStart="21dp"
+        android:text="@string/share"
         android:textSize="17sp" />
 </RelativeLayout>

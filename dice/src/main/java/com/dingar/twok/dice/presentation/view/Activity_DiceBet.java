@@ -1,18 +1,22 @@
 package com.dingar.twok.dice.presentation.view;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.NumberPicker;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.dingar.twok.dice.R;
+import com.dingar.twok.dice.di.component.ComponentProviderDice;
 import com.dingar.twok.dice.di.component.DiceBetComponent;
-import com.dingar.twok.dice.di.component.DiceBetComponentProvider;
 import com.dingar.twok.dice.domain.model.LotteryModel;
 import com.dingar.twok.dice.presentation.GridRecyclerView;
 import com.dingar.twok.dice.presentation.contract.DiceBetContract;
@@ -21,27 +25,34 @@ import java.util.ArrayList;
 
 import javax.inject.Inject;
 
+/**
+ * show the available (bet able) lottery list to user
+ * @see DiceBetContract for better understanding
+ */
 public class Activity_DiceBet extends AppCompatActivity implements DiceBetContract.View {
-    //private final String TAG = "Activity Dice Bet";
+    private final String TAG = "Activity Dice Bet";
+
     @Inject
     public DiceBetContract.Presenter presenter;
 
     DiceBetComponent diceBetComponent;
 
     private GridRecyclerviewAdapter gridRecyclerviewAdapter;
-    private TextView balance,time_remaining;
+    private TextView time_remaining,win_date;
+    private ImageView help;
 
-    private ArrayList<LotteryModel> lotteryModels;
+    private AlertDialog alertDialog; //to show the available win date
+
+    private ArrayList<LotteryModel> lotteryModels;  //contains user selected lotteries
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bet);
-        balance = findViewById(R.id.balance);
         time_remaining = findViewById(R.id.time_remaining);
 
         //initiate the login component and inject the view
-        diceBetComponent = ((DiceBetComponentProvider)getApplicationContext())
+        diceBetComponent = ((ComponentProviderDice)getApplicationContext())
                 .provideDiceBetComponent();
         diceBetComponent.inject(this);
         presenter.setView(this);
@@ -59,6 +70,7 @@ public class Activity_DiceBet extends AppCompatActivity implements DiceBetContra
     @Override
     public void onBackPressed() {
         presenter.dropView();
+        alertDialog = null;
         finish();
     }
 
@@ -80,26 +92,30 @@ public class Activity_DiceBet extends AppCompatActivity implements DiceBetContra
     }
 
     @Override
-    public void onBalanceLoaded(String balance) {
-        this.balance.setText(balance);
+    public void setTimeRemaining(String timeRemaining) {
+        time_remaining.setText(timeRemaining);
     }
 
     @Override
-    public void setTimeRemaining(String timeRemaining) {
-        time_remaining.setText(timeRemaining);
+    public void onBetAbleTimeLoaded(ArrayList<String> dates) {
+        //TODO: on bet able date was loaded
+        winDatePicker(dates);
     }
 
     private void initiate(){
         //load available bet slips (not all because some are excluded by provider)
         presenter.loadLotteries();
-        presenter.onLoadBalance();
+        presenter.loadBetableTime();
         presenter.loadTimeRemaining();
     }
+
     private void widgets(){
         lotteryModels = new ArrayList<>();
         Button bet = findViewById(R.id.bet);
         Button history = findViewById(R.id.history);
         EditText amount = findViewById(R.id.amount);
+        win_date = findViewById(R.id.win_date);
+        help = findViewById(R.id.help);
         bet.setOnClickListener(v-> {
             if (presenter.isStringValid(amount.getText().toString())&&!lotteryModels.isEmpty()){
                 //if amount is not empty and at least one lottery is selected
@@ -115,5 +131,44 @@ public class Activity_DiceBet extends AppCompatActivity implements DiceBetContra
 
         //navigate to lucky number history
         history.setOnClickListener(view -> startActivity(new Intent(this,Activity_Win_Lotteries.class)));
+        win_date.setOnClickListener(view ->{
+            if (alertDialog == null){
+                //if winDates are still retrieving
+                Toast.makeText(this,R.string.wait,Toast.LENGTH_SHORT).show();
+            }
+            else
+                alertDialog.show();
+        });
+
+        help.setOnClickListener(view -> startActivity(new Intent(this,Activity_Help.class)));
+    }//widgets
+
+    /**
+     *
+     * @param dates list of win dates
+     * called by {@link #onBetAbleTimeLoaded(ArrayList)}
+     */
+    private void winDatePicker(ArrayList<String> dates){
+        try {
+            //Create a custom number picker dialog to show the bet able win dates
+            NumberPicker picker = new NumberPicker(this);
+            picker.setMinValue(0);
+            picker.setMaxValue(dates.size() - 1);
+            picker.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
+            picker.setDisplayedValues((String[]) dates.toArray());
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle(R.string.select_win_date);
+            builder.setView(picker);
+            builder.setCancelable(true);
+            builder.setPositiveButton("Select", (dialogInterface, i) -> {
+                win_date.setText(dates.get(picker.getValue()));
+                alertDialog.dismiss();
+            });
+            alertDialog = builder.create();
+
+        }catch(Exception e){
+            Log.e(TAG,e.getMessage());
+        }
     }
 }

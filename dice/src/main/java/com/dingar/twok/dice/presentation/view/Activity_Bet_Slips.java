@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.annotation.SuppressLint;
 import android.net.ParseException;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -17,7 +16,7 @@ import android.widget.Toast;
 
 import com.dingar.twok.dice.R;
 import com.dingar.twok.dice.di.component.BetSlipComponent;
-import com.dingar.twok.dice.di.component.BetSlipComponentProvider;
+import com.dingar.twok.dice.di.component.ComponentProviderDice;
 import com.dingar.twok.dice.domain.model.LotteryModel;
 import com.dingar.twok.dice.presentation.contract.BetListContract;
 
@@ -63,7 +62,7 @@ public class Activity_Bet_Slips extends AppCompatActivity implements BetListCont
         setContentView(R.layout.activity_bet_slips);
 
         //initiate the component
-        betSlipComponent = ((BetSlipComponentProvider) getApplicationContext()).provideBetSlipComponent();
+        betSlipComponent = ((ComponentProviderDice) getApplicationContext()).provideBetSlipComponent();
         betSlipComponent.inject(this);
 
         widget();

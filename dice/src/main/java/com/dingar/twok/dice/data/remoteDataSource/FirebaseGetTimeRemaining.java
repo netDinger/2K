@@ -15,6 +15,10 @@ import java.util.Objects;
 
 import io.reactivex.Single;
 
+/**
+ * get the next win time (lottery opening time) to calculate the time remaining
+ * {@link com.dingar.twok.dice.domain.repository.TimeRemainRepository}
+ */
 public class FirebaseGetTimeRemaining {
     //Singleton
     private FirebaseGetTimeRemaining(){}
@@ -26,8 +30,8 @@ public class FirebaseGetTimeRemaining {
     }
 
     public Single<String> getTimeRemaining(){
-
-        FirebaseDatabase.getInstance().getReference().child("date").setValue(ServerValue.TIMESTAMP);
+        //set the current server time
+        FirebaseDatabase.getInstance().getReference().child(Static_Config.DATE).setValue(ServerValue.TIMESTAMP);
        return Single.create(emitter -> FirebaseDatabase.getInstance().getReference()
                .child(Static_Config.NEXT_WIN)
                .child(Static_Config.TWOD)
@@ -37,8 +41,9 @@ public class FirebaseGetTimeRemaining {
                        if (snapshot.exists())
                        emitter.onSuccess(Objects.requireNonNull(String.valueOf(snapshot.getValue())));
 
+                       //TODO: for test case remove this later
                        else
-                           emitter.onSuccess("1652539995715");
+                           emitter.onSuccess("1653750276007");
                    }
 
                    @Override

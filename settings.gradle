@@ -17,3 +17,5 @@ include ':dice'
 include ':account'
 
 include ':history'
+include ':twoD'
+

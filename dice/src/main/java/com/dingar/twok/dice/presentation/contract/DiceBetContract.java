@@ -8,6 +8,11 @@ import java.util.ArrayList;
 public interface DiceBetContract {
 
     interface View{
+
+        /**
+         * on available lottery list is loaded
+         * @param lotteries list of available (bet able) lottery list
+         */
         void onLotteriesLoad(ArrayList<LotteryModel> lotteries);
 
         /**
@@ -24,13 +29,20 @@ public interface DiceBetContract {
          */
         void removeBetSlip(LotteryModel lotteryModel);
 
-        void onBalanceLoaded(String balance);
+
+
+        /**
+         * @param timeRemaining remaining timer countdown in string format
+         * {@link Presenter#loadTimeRemaining()}
+         */
+        void setTimeRemaining(String timeRemaining);
 
         /**
          *
-         * @param timeRemaining remaining timer countdown in string format
+         * @param date bet able win date
+         * {@link Presenter#loadBetableTime()}
          */
-        void setTimeRemaining(String timeRemaining);
+        void onBetAbleTimeLoaded(ArrayList<String> date);
     }
 
     interface Presenter extends BasePresenter<View> {
@@ -38,11 +50,6 @@ public interface DiceBetContract {
          * load the available lotteries by excluding the unavailable lotteries
          */
         void loadLotteries();
-
-        /**
-         * load the user balance
-         */
-        void onLoadBalance();
 
         /**
          *
@@ -53,8 +60,15 @@ public interface DiceBetContract {
 
         /**
          *load the future time when the next lottery will be opened
+         * example: 1:21:21 to open next lucky number
          */
         void loadTimeRemaining();
+
+        /**
+         * load the available bet able times (lottery opening time) as admin set
+         * example: win dates { 11.11.2022 4:00PM,12.11.2022 10:00AM }
+         */
+        void loadBetableTime();
     }
 
 }

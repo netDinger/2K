@@ -35,14 +35,15 @@ public class FirebaseBetSlip {
             count = 0;
             for (LotteryModel lotteryModel :lotteryModels){
                 HashMap<String,Object> betMap = new HashMap<>();
-                betMap.put("amount",lotteryModel.getAmount());
-                betMap.put("winDate","not yet");
-                betMap.put("time",ServerValue.TIMESTAMP);
+                betMap.put(Static_Config.AMOUNT,String.valueOf(lotteryModel.getAmount()));
+                betMap.put(Static_Config.WINDATE,"not yet");
+                betMap.put(Static_Config.BETDATE,ServerValue.TIMESTAMP);
+                betMap.put(Static_Config.LUCKYNO,lotteryModel.getLotteryNumber());
 
-                FirebaseDatabase.getInstance().getReference().child(Static_Config.BETSLIP)
-                        .child(Static_Config.TWOD)
-                        .child(Get_Current_User.getCurrentUserID())
-                        .child(lotteryModel.getLotteryNumber())
+                FirebaseDatabase.getInstance().getReference()
+                        .child(Static_Config.BETSLIP)// BetSlip
+                        .child(Static_Config.TWOD)//TwoD
+                        .child(Get_Current_User.getCurrentUserID()) //$uid
                         .push()
                         .updateChildren(betMap)
                         .addOnSuccessListener(unused -> {

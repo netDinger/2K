@@ -7,7 +7,6 @@ import com.dingar.twok.auth.di.component.LoginComponent;
 import com.dingar.twok.auth.di.component.SignupComponent;
 import com.dingar.twok.auth.di.component.VerifyCodeComponent;
 import com.dingar.twok.auth.di.module.AuthModule;
-import com.dingar.twok.auth.di.module.SignupModule;
 import com.dingar.twok.di.module.AppModule;
 import com.dingar.twok.dice.di.component.BetSlipComponent;
 import com.dingar.twok.dice.di.component.DiceBetComponent;
