@@ -11,7 +11,7 @@ import com.dingar.twok.core.util.DateUtil;
 import com.dingar.twok.dice.R;
 import com.dingar.twok.dice.data.model.WinLotteryModel;
 import com.dingar.twok.dice.di.component.ComponentProviderDice;
-import com.dingar.twok.dice.di.component.WinLotteryComponent;
+import com.dingar.twok.dice.di.component.DiceWinLotteryComponent;
 import com.dingar.twok.dice.presentation.contract.WinLotteryContract;
 
 import java.util.ArrayList;
@@ -27,7 +27,7 @@ public class Activity_Win_Lotteries extends AppCompatActivity implements WinLott
     @Inject
     public WinLotteryContract.Presenter presenter;
 
-    WinLotteryComponent component;
+    DiceWinLotteryComponent component;
 
     WinLotteryRecyclerViewAdapter winLotteryRecyclerViewAdapter;
 

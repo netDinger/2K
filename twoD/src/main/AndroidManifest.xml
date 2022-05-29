@@ -5,16 +5,28 @@
     <application>
         <activity
             android:name=".presentation.view.Activity_Win_Lotteries"
-            android:exported="false" />
+            android:configChanges="orientation|screenSize"
+            android:exported="false"
+            android:screenOrientation="fullUser"
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".presentation.view.Activity_Help"
-            android:exported="false" />
+            android:configChanges="orientation|screenSize"
+            android:exported="false"
+            android:screenOrientation="fullUser"
+            android:windowSoftInputMode="stateHidden"  />
         <activity
             android:name=".presentation.view.Activity_Bet_Slips"
-            android:exported="false" />
+            android:configChanges="orientation|screenSize"
+            android:exported="false"
+            android:screenOrientation="fullUser"
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".presentation.view.Activity_DiceBet"
-            android:exported="false" />
+            android:configChanges="orientation|screenSize"
+            android:exported="false"
+            android:screenOrientation="fullUser"
+            android:windowSoftInputMode="stateHidden" />
     </application>
 
 </manifest>

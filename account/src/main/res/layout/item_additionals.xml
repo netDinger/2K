@@ -4,10 +4,43 @@
     android:layout_height="wrap_content"
     android:background="@drawable/round_corner">
 
+    <RelativeLayout
+        android:id="@+id/phoneNumberLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="21dp">
+
+        <TextView
+            android:id="@+id/phoneNumberText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/phone_text"
+            android:textSize="17sp"/>
+
+        <TextView
+            android:id="@+id/phoneNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/phoneNumberText"
+            android:text="@string/phone_number"
+            android:layout_marginTop="12dp"/>
+
+
+        <TextView
+            android:id="@+id/change_ph_no"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/change"
+            android:textColor="@color/colorPrimary"
+            android:layout_alignParentEnd="true"/>
+    </RelativeLayout>
+
+
     <TextView
         android:id="@+id/language"
         android:layout_width="match_parent"
         android:layout_height="?android:attr/actionBarSize"
+        android:layout_below="@id/phoneNumberLayout"
         android:gravity="center_vertical"
         android:paddingStart="21dp"
         android:text="@string/language"

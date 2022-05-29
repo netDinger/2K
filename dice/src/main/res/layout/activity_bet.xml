@@ -73,7 +73,7 @@
 
     </RelativeLayout>
 
-    <com.dingar.twok.dice.presentation.GridRecyclerView
+    <com.dingar.twok.core.ui.GridRecyclerView
         android:id="@+id/betSlips"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

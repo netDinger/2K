@@ -8,11 +8,11 @@ import dagger.Subcomponent;
 
 @FeatureScope
 @Subcomponent(modules = WinLotteryModule.class)
-public interface WinLotteryComponent {
+public interface DiceWinLotteryComponent {
 
     @Subcomponent.Builder
     interface Builder{
-        WinLotteryComponent build();
+        DiceWinLotteryComponent build();
     }
 
     void inject(Activity_Win_Lotteries activity_win_lotteries);

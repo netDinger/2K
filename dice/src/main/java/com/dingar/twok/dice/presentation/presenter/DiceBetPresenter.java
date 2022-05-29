@@ -106,9 +106,6 @@ public class DiceBetPresenter implements DiceBetContract.Presenter {
         });
     }
 
-    //TODO: this is not ended yet
-    //(1) call this method from Activity
-    //(2) create number picker dialog and show this dates
     @Override
     public void loadBetableTime() {
         betableTimeUseCase.execute().subscribe(new Observer<String>() {

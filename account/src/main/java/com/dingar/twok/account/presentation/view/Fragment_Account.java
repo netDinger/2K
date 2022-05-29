@@ -58,7 +58,9 @@ public class Fragment_Account extends Fragment implements AccountContract.View {
         balance = layout.findViewById(R.id.balance);
         points = layout.findViewById(R.id.points);
         TextView logout = view.findViewById(R.id.logout);
-        logout.setOnClickListener(view1 -> presenter.logout());
+        logout.setOnClickListener(view1 -> {
+            Toast.makeText(requireContext(),"Logout Successfully",Toast.LENGTH_SHORT).show();
+            presenter.logout();});
 
         id.setOnClickListener(v->{ //on user id textview is clicked
             //copy id to clipboard

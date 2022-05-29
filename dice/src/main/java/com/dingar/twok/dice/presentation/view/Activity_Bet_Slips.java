@@ -15,7 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.dingar.twok.dice.R;
-import com.dingar.twok.dice.di.component.BetSlipComponent;
+import com.dingar.twok.dice.di.component.DiceBetSlipComponent;
 import com.dingar.twok.dice.di.component.ComponentProviderDice;
 import com.dingar.twok.dice.domain.model.LotteryModel;
 import com.dingar.twok.dice.presentation.contract.BetListContract;
@@ -54,7 +54,7 @@ public class Activity_Bet_Slips extends AppCompatActivity implements BetListCont
     @Inject
     public BetListContract.Presenter presenter;
 
-    BetSlipComponent betSlipComponent;
+    DiceBetSlipComponent diceBetSlipComponent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,8 +62,8 @@ public class Activity_Bet_Slips extends AppCompatActivity implements BetListCont
         setContentView(R.layout.activity_bet_slips);
 
         //initiate the component
-        betSlipComponent = ((ComponentProviderDice) getApplicationContext()).provideBetSlipComponent();
-        betSlipComponent.inject(this);
+        diceBetSlipComponent = ((ComponentProviderDice) getApplicationContext()).provideBetSlipComponent();
+        diceBetSlipComponent.inject(this);
 
         widget();
         initiate();
@@ -139,7 +139,7 @@ public class Activity_Bet_Slips extends AppCompatActivity implements BetListCont
         betListRecyclerviewAdapter = new BetListRecyclerviewAdapter(betList);
         betsList.setAdapter(betListRecyclerviewAdapter);
         //inject RecyclerView Adapter
-        betSlipComponent.inject(betListRecyclerviewAdapter);
+        diceBetSlipComponent.inject(betListRecyclerviewAdapter);
 
         this.setData();
         presenter.onLoadBalance();

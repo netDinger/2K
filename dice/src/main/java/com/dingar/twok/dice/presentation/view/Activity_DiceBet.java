@@ -18,7 +18,7 @@ import com.dingar.twok.dice.R;
 import com.dingar.twok.dice.di.component.ComponentProviderDice;
 import com.dingar.twok.dice.di.component.DiceBetComponent;
 import com.dingar.twok.dice.domain.model.LotteryModel;
-import com.dingar.twok.dice.presentation.GridRecyclerView;
+import com.dingar.twok.core.ui.GridRecyclerView;
 import com.dingar.twok.dice.presentation.contract.DiceBetContract;
 
 import java.util.ArrayList;
@@ -98,7 +98,6 @@ public class Activity_DiceBet extends AppCompatActivity implements DiceBetContra
 
     @Override
     public void onBetAbleTimeLoaded(ArrayList<String> dates) {
-        //TODO: on bet able date was loaded
         winDatePicker(dates);
     }
 

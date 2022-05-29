@@ -12,21 +12,25 @@ import com.dingar.twok.auth.di.component.VerifyCodeComponent;
 import com.dingar.twok.auth.di.component.VerifyCodeComponentProvider;
 import com.dingar.twok.di.component.AppComponent;
 import com.dingar.twok.di.component.DaggerAppComponent;
-import com.dingar.twok.dice.di.component.BetSlipComponent;
+import com.dingar.twok.dice.di.component.DiceBetSlipComponent;
 import com.dingar.twok.dice.di.component.ComponentProviderDice;
 import com.dingar.twok.dice.di.component.DiceBetComponent;
-import com.dingar.twok.dice.di.component.WinLotteryComponent;
+import com.dingar.twok.dice.di.component.DiceWinLotteryComponent;
 import com.dingar.twok.firebaseadapter.FirebaseOffline;
 import com.dingar.twok.history.di.component.ComponentProviderHistory;
 import com.dingar.twok.history.di.component.HistoryComponent;
-
+import com.dingar.twok.twoD.di.component.ComponentProviderTwoD;
+import com.dingar.twok.twoD.di.component.TwoDBetComponent;
+import com.dingar.twok.twoD.di.component.TwoDBetSlipComponent;
+import com.dingar.twok.twoD.di.component.TwoDWinLotteryComponent;
 
 public class BaseApplication extends Application implements LoginComponentProvider,
-        SignupComponentProvider,
+        SignupComponentProvider,       //TODO: replace with new component provider for whole module
         VerifyCodeComponentProvider,
-        ComponentProviderDice,
-        ComponentProviderAccount,
-        ComponentProviderHistory
+        ComponentProviderDice,//for dice module
+        ComponentProviderAccount,   //for account module
+        ComponentProviderHistory,    //for history module
+        ComponentProviderTwoD
 
 {
     AppComponent appComponent;
@@ -66,20 +70,6 @@ public class BaseApplication extends Application implements LoginComponentProvid
         return getAppComponent().verifyCodeComponentFactory().create();
     }
 
-    @Override
-    public DiceBetComponent provideDiceBetComponent() {
-        return getAppComponent().diceComponentBuilder().build();
-    }
-
-    @Override
-    public BetSlipComponent provideBetSlipComponent() {
-        return getAppComponent().betSlipComponentBuilder().build();
-    }
-
-    @Override
-    public WinLotteryComponent provideWinLotteryComponent() {
-        return getAppComponent().winLotteryComponentBuilder().build();
-    }
 
     @Override
     public AccountComponent provideAccountComponent() {
@@ -90,4 +80,36 @@ public class BaseApplication extends Application implements LoginComponentProvid
     public HistoryComponent provideHistoryComponent() {
         return getAppComponent().historyComponentBuilder().build();
     }
+
+    @Override
+    public DiceBetSlipComponent provideBetSlipComponent() {
+        return getAppComponent().diceBetSlipComponentBuilder().build();
+    }
+
+    @Override
+    public DiceWinLotteryComponent provideWinLotteryComponent() {
+        return getAppComponent().diceWinLotteryComponentBuilder().build();
+    }
+
+    @Override
+    public DiceBetComponent provideDiceBetComponent() {
+        return getAppComponent().diceComponentBuilder().build();
+    }
+
+    @Override
+    public TwoDBetSlipComponent provideTwoDBetSlipComponent() {
+        return getAppComponent().twoDBetSlipComponentBuilder().build();
+    }
+
+    @Override
+    public TwoDWinLotteryComponent provideTwoDWinLotteryComponent() {
+        return getAppComponent().twoDWinLotteryComponentBuilder().build();
+    }
+
+    @Override
+    public TwoDBetComponent provideTwoDBetComponent() {
+        return getAppComponent().twoDComponentBuilder().build();
+    }
+
+
 }

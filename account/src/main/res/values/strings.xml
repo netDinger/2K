@@ -16,6 +16,9 @@
     <string name="about">About</string>
     <string name="share">Share</string>
     <string name="language">Language</string>
+    <string name="phone_number">09 12345678</string>
+    <string name="phone_text">Phone Number</string>
+    <string name="change">Change</string>
 
     <string name="logout">Logout</string>
 

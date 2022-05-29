@@ -1,4 +1,4 @@
-package com.dingar.twok.dice.presentation;
+package com.dingar.twok.core.ui;
 
 import android.content.Context;
 import android.content.res.TypedArray;

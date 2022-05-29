@@ -6,15 +6,11 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.dingar.twok.lottery.R;
-
-import java.util.Objects;
-
 
 public class Fragment_Lottery extends Fragment {
 
@@ -49,6 +45,9 @@ public class Fragment_Lottery extends Fragment {
     private void onClicks(){
         item_dice.setOnClickListener(view ->
                 toNextActivity("com.dingar.twok.dice.presentation.view.Activity_DiceBet"));
+
+        item_2d.setOnClickListener(view ->
+                toNextActivity("com.dingar.twok.twoD.presentation.view.Activity_DiceBet"));
     }
 
     private void toNextActivity(@NonNull String url){

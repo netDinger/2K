@@ -9,11 +9,11 @@ import dagger.Subcomponent;
 
 @FeatureScope
 @Subcomponent(modules = BetSlipModule.class)
-public interface BetSlipComponent {
+public interface DiceBetSlipComponent {
 
     @Subcomponent.Builder
     interface Builder{
-        BetSlipComponent build();
+        DiceBetSlipComponent build();
     }
 
     void inject(Activity_Bet_Slips activity_bet_slips);
