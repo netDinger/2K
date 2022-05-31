@@ -6,10 +6,16 @@
     <application android:theme="@style/Theme.2K">
         <activity
             android:name=".presentation.view.Activity_Help"
-            android:exported="false" />
+            android:configChanges="orientation|screenSize"
+            android:exported="false"
+            android:screenOrientation="fullUser"
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".presentation.view.Activity_Win_Lotteries"
-            android:exported="false" />
+            android:configChanges="orientation|screenSize"
+            android:exported="false"
+            android:screenOrientation="fullUser"
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".presentation.view.Activity_Bet_Slips"
             android:configChanges="orientation|screenSize"

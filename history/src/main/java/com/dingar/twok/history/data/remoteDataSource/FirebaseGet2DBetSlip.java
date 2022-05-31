@@ -41,6 +41,7 @@ public class FirebaseGet2DBetSlip {
                             BetSlipModel betSlipModel = snapshot.getValue(BetSlipModel.class);
                             assert betSlipModel != null;
                             betSlipModel.setBetSlipId(snapshot.getKey());
+                            Log.e("is win","aaa"+ betSlipModel.isWin());
                             emitter.onNext(betSlipModel);
                         }catch (Exception e){
                             Log.e(TAG,e.getMessage());
@@ -50,22 +51,18 @@ public class FirebaseGet2DBetSlip {
 
                 @Override
                 public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
                 }
 
                 @Override
                 public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-
                 }
 
                 @Override
                 public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
                 }
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
-
                 }
             });
         });

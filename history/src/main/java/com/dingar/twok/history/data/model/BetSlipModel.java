@@ -19,6 +19,8 @@ public class BetSlipModel {
     String winDate;
 
     String betSlipId;
+
+    @PropertyName("isWin")
     boolean isWin;
 
     public BetSlipModel(){}

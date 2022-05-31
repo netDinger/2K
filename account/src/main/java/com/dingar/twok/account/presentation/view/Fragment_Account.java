@@ -3,6 +3,7 @@ package com.dingar.twok.account.presentation.view;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -70,6 +71,9 @@ public class Fragment_Account extends Fragment implements AccountContract.View {
 
             Toast.makeText(requireContext(),"Copied to ClipBoard",Toast.LENGTH_SHORT).show();
         });
+
+        balance.setOnClickListener(view1 -> startActivity(new Intent(requireContext(),Activity_Balance.class)));
+
     }
 
     private void initiate() {

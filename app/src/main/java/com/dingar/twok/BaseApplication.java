@@ -19,6 +19,10 @@ import com.dingar.twok.dice.di.component.DiceWinLotteryComponent;
 import com.dingar.twok.firebaseadapter.FirebaseOffline;
 import com.dingar.twok.history.di.component.ComponentProviderHistory;
 import com.dingar.twok.history.di.component.HistoryComponent;
+import com.dingar.twok.threeD.di.component.ComponentProviderThreeD;
+import com.dingar.twok.threeD.di.component.ThreeDBetComponent;
+import com.dingar.twok.threeD.di.component.ThreeDBetSlipComponent;
+import com.dingar.twok.threeD.di.component.ThreeDWinLotteryComponent;
 import com.dingar.twok.twoD.di.component.ComponentProviderTwoD;
 import com.dingar.twok.twoD.di.component.TwoDBetComponent;
 import com.dingar.twok.twoD.di.component.TwoDBetSlipComponent;
@@ -30,7 +34,8 @@ public class BaseApplication extends Application implements LoginComponentProvid
         ComponentProviderDice,//for dice module
         ComponentProviderAccount,   //for account module
         ComponentProviderHistory,    //for history module
-        ComponentProviderTwoD
+        ComponentProviderTwoD,      //for twoD module
+        ComponentProviderThreeD     //for threeD module
 
 {
     AppComponent appComponent;
@@ -112,4 +117,18 @@ public class BaseApplication extends Application implements LoginComponentProvid
     }
 
 
+    @Override
+    public ThreeDBetSlipComponent provideThreeDBetSlipComponent() {
+        return getAppComponent().threeDBetSlipComponentBuilder().build();
+    }
+
+    @Override
+    public ThreeDWinLotteryComponent provideThreeDWinLotteryComponent() {
+        return getAppComponent().threeDWinLotteryComponentBuilder().build();
+    }
+
+    @Override
+    public ThreeDBetComponent provideThreeDBetComponent() {
+        return getAppComponent().threeDComponentBuilder().build();
+    }
 }

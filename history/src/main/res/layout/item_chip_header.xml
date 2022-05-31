@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/headers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:singleSelection="true"
+        app:singleLine="true">
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/load2D"
+            android:text="@string/load2D"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.Chip.Action"/>
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/load3D"
+            android:text="@string/load3D"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.Chip.Action"/>
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/load2K"
+            android:text="@string/load2K"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.Chip.Action"/>
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/loadDice"
+            android:text="@string/loadDice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.Chip.Action"/>
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/loadPhae"
+            android:text="@string/loadPhae"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.Chip.Action"/>
+
+    </com.google.android.material.chip.ChipGroup>
+
+</HorizontalScrollView>

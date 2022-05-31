@@ -3,11 +3,11 @@
 
     <item android:id="@+id/history_tab"
         android:title="@string/betSlips"
-        android:icon="@mipmap/ic_about_fill_green"/>
+        android:icon="@drawable/receipt"/>
 
     <item android:id="@+id/lottery_tab"
         android:title="@string/lottery"
-        android:icon="@mipmap/ic_about_fill_green"/>
+        android:icon="@drawable/home"/>
 
     <item android:id="@+id/account_tab"
         android:title="@string/account"

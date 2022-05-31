@@ -2,6 +2,7 @@ package com.dingar.twok.dice.presentation.view;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -22,6 +23,7 @@ import com.dingar.twok.core.ui.GridRecyclerView;
 import com.dingar.twok.dice.presentation.contract.DiceBetContract;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 import javax.inject.Inject;
 
@@ -109,6 +111,7 @@ public class Activity_DiceBet extends AppCompatActivity implements DiceBetContra
     }
 
     private void widgets(){
+        addToolbar();
         lotteryModels = new ArrayList<>();
         Button bet = findViewById(R.id.bet);
         Button history = findViewById(R.id.history);
@@ -170,4 +173,13 @@ public class Activity_DiceBet extends AppCompatActivity implements DiceBetContra
             Log.e(TAG,e.getMessage());
         }
     }
+
+
+    private void addToolbar() {
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled(true);
+        toolbar.setNavigationOnClickListener(v -> onBackPressed()); }
 }

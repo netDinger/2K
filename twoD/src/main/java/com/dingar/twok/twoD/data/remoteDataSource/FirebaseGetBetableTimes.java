@@ -29,6 +29,7 @@ public class FirebaseGetBetableTimes {
 
         return Observable.create(emitter ->
             FirebaseDatabase.getInstance().getReference(Static_Config.BETABLE_DATE)
+                    .child(Static_Config.TWOD)
                     .addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {

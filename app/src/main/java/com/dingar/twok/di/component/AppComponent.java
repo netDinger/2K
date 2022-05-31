@@ -12,6 +12,9 @@ import com.dingar.twok.dice.di.component.DiceBetSlipComponent;
 import com.dingar.twok.dice.di.component.DiceBetComponent;
 import com.dingar.twok.dice.di.component.DiceWinLotteryComponent;
 import com.dingar.twok.history.di.component.HistoryComponent;
+import com.dingar.twok.threeD.di.component.ThreeDBetComponent;
+import com.dingar.twok.threeD.di.component.ThreeDBetSlipComponent;
+import com.dingar.twok.threeD.di.component.ThreeDWinLotteryComponent;
 import com.dingar.twok.twoD.di.component.TwoDBetComponent;
 import com.dingar.twok.twoD.di.component.TwoDBetSlipComponent;
 import com.dingar.twok.twoD.di.component.TwoDWinLotteryComponent;
@@ -37,6 +40,11 @@ public interface AppComponent {
     TwoDBetComponent.Builder twoDComponentBuilder();
     TwoDBetSlipComponent.Builder twoDBetSlipComponentBuilder();
     TwoDWinLotteryComponent.Builder twoDWinLotteryComponentBuilder();
+
+    //for threeD module
+    ThreeDBetComponent.Builder threeDComponentBuilder();
+    ThreeDBetSlipComponent.Builder threeDBetSlipComponentBuilder();
+    ThreeDWinLotteryComponent.Builder threeDWinLotteryComponentBuilder();
 
     AccountComponent.Builder accountComponentBuilder();
     HistoryComponent.Builder historyComponentBuilder();

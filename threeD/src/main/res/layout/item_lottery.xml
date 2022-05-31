@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="11dp"
+    android:layout_margin="11dp"
+    app:cardElevation="10dp">
+
+    <TextView
+        android:id="@+id/lottery_number"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:background="@color/colorSecondary"
+        android:text="200"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"/>
+
+</androidx.cardview.widget.CardView>

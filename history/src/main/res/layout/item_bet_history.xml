@@ -4,54 +4,121 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardCornerRadius="7dp"
     app:cardElevation="10dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/date"
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:id="@+id/historyLayout"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_centerVertical="true"
-            android:layout_toStartOf="@id/lottery_number"
-            android:text="@string/date"
-            android:textSize="16sp" />
+            android:padding="14dp">
 
-        <TextView
-            android:id="@+id/lottery_number"
-            android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_toStartOf="@id/lottery_number"
+                android:clickable="false"
+                android:text="@string/date"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/lottery_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:gravity="center"
+                android:text="@string/lottery_number"
+                android:textColor="@color/colorPrimary"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:clickable="false"/>
+
+            <ImageView
+                android:id="@+id/seeMore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/lottery_number"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="7dp"
+                android:layout_marginEnd="10dp"
+                android:src="@drawable/arrow_downward"
+                android:clickable="false"/>
+
+        </RelativeLayout>
+
+        <!-- invisible layout-->
+        <RelativeLayout
+            android:id="@+id/moreLayout"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:layout_marginEnd="35dp"
-            android:gravity="center"
-            android:text="@string/lottery_number"
-            android:textSize="34sp"
-            android:textStyle="bold" />
+            android:layout_below="@id/historyLayout"
+            android:padding="14dp">
 
-        <TextView
-            android:id="@+id/betSlipId"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/lottery_number"
-            android:text="@string/amount"
-            android:textSize="16sp"
-            android:layout_marginStart="16dp"/>
+            <TextView
+                android:id="@+id/id_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:text="@string/id_text"
+                android:textSize="14sp" />
 
-        <TextView
-            android:id="@+id/amount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/lottery_number"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="35dp"
-            android:text="@string/amount"
-            android:textSize="21sp" />
+            <TextView
+                android:id="@+id/betSlipId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:text="@string/id"
+                android:textSize="14sp" />
 
+
+            <TextView
+                android:id="@+id/amount_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/id_text"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="7dp"
+                android:text="@string/amount_text"
+                android:textSize="14sp" />
+
+
+            <TextView
+                android:id="@+id/amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/betSlipId"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="7dp"
+                android:text="@string/amount"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/isWin_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/amount_text"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="7dp"
+                android:text="@string/isWin_text"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/isWin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/amount"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="7dp"
+                android:text="@string/isWin"
+                android:textSize="14sp" />
+
+        </RelativeLayout>
 
     </RelativeLayout>
 

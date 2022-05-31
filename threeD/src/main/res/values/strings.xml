@@ -1,0 +1,20 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="bet">ထိုးမယ်</string>
+    <string name="amount">ထိုးကြေး</string>
+    <string name="total">စုစုပေါင်းထိုးကြေး</string>
+    <string name="kyat" translatable="false">0K</string>
+    <string name="lottery">ထိုးသီး</string>
+    <string name="default_amount" translatable="false">100</string>
+    <string name="time_remaining">00:00:00</string>
+
+
+    <string name="amount_warning">ကျေးဇူးပြု၍ လောင်းကြေးထည့်ပါ</string>
+    <string name="default_lottery" translatable="false">12</string>
+    <string name="date" translatable="false">date</string>
+
+    <string name="select_win_date">ထီထွက်ချိန်ရွေးပါ</string>
+    <string name="wait"> ကျေးဇူးပြု၍ ခဏစောင့်ပါ</string>
+
+    <string name="help_game">About this game \n ငါလဲမဆော့တတ်ဘူး… </string>
+
+</resources>

@@ -3,6 +3,7 @@ package com.dingar.twok.history.presentation.view;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -31,7 +32,7 @@ public class Fragment_History extends Fragment implements HistoryContract.View {
     private HistoryComponent historyComponent;
     private Adapter_HistoryRecyclerView recyclerViewAdapter;
     private ArrayList<BetSlipModel> betSlipModelArrayList;
-    private RecyclerView betHistoryRecycler;
+    private RecyclerView betHistoryRecyclerView;
 
     public Fragment_History() {}
 
@@ -63,7 +64,7 @@ public class Fragment_History extends Fragment implements HistoryContract.View {
     }
 
     private void widgets(View view){
-        betHistoryRecycler = view.findViewById(R.id.betHistory);
+        betHistoryRecyclerView = view.findViewById(R.id.betHistory);
         presenter.setView(this);
     }
 
@@ -71,8 +72,10 @@ public class Fragment_History extends Fragment implements HistoryContract.View {
         betSlipModelArrayList = new ArrayList<>();
         recyclerViewAdapter = new Adapter_HistoryRecyclerView(betSlipModelArrayList);
         LinearLayoutManager layoutManager = new LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL,false);
-        betHistoryRecycler.setLayoutManager(layoutManager);
-        betHistoryRecycler.setAdapter(recyclerViewAdapter);
+        betHistoryRecyclerView.setLayoutManager(layoutManager);
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(requireContext(),DividerItemDecoration.VERTICAL);
+        betHistoryRecyclerView.addItemDecoration(dividerItemDecoration);
+        betHistoryRecyclerView.setAdapter(recyclerViewAdapter);
         presenter.loadHistory();
     }
 }

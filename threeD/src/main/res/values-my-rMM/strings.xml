@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="lottery">ထီ</string>
+    <string name="amount">ထိုးကြေး</string>
+    <string name="amount_warning">ကျေးဇူးပြု၍ ထိုးကြေးထည့်ပါ</string>
+    <string name="select_win_date">Select Win Date</string>
+
+    <string name="help">ဂိမ်းအကြောင်း</string>
+</resources>

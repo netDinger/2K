@@ -48,7 +48,11 @@ public class Fragment_Lottery extends Fragment {
 
         item_2d.setOnClickListener(view ->
                 toNextActivity("com.dingar.twok.twoD.presentation.view.Activity_DiceBet"));
+
+        item_3d.setOnClickListener(view ->
+                toNextActivity("com.dingar.twok.threeD.presentation.view.Activity_DiceBet"));
     }
+
 
     private void toNextActivity(@NonNull String url){
         Intent intent = new Intent();

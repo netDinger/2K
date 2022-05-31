@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="headers">
+        <item>Dice</item>
+        <item>2D</item>
+        <item>3D</item>
+        <item>Phae</item>
+        <item>2K</item>
+    </string-array>
+</resources>
