@@ -35,7 +35,7 @@
                 android:layout_margin="11dp" />
 
             <include
-                android:id="@+id/daily3dLottery"
+                android:id="@+id/phae"
                 layout="@layout/item_lottery_htee"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -69,7 +69,7 @@
                 android:layout_margin="11dp" />
 
             <include
-                android:id="@+id/maung"
+                android:id="@+id/twoK"
                 layout="@layout/item_lottery_maung"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -80,7 +80,7 @@
                 android:layout_margin="11dp" />
 
             <include
-                android:id="@+id/body"
+                android:id="@+id/more"
                 layout="@layout/item_lottery_body"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

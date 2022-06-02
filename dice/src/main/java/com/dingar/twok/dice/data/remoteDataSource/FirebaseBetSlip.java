@@ -12,9 +12,7 @@ import com.google.firebase.database.ServerValue;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import io.grpc.Server;
 import io.reactivex.Single;
-
 
 /**
  * send the user selected betSlips to server
@@ -42,7 +40,7 @@ public class FirebaseBetSlip {
 
                 FirebaseDatabase.getInstance().getReference()
                         .child(Static_Config.BETSLIP)// BetSlip
-                        .child(Static_Config.TWOD)//TwoD
+                        .child(Static_Config.DICE)//dice
                         .child(Get_Current_User.getCurrentUserID()) //$uid
                         .push()
                         .updateChildren(betMap)

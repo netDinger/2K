@@ -19,8 +19,10 @@
             <option value="$PROJECT_DIR$/firebaseAdapter" />
             <option value="$PROJECT_DIR$/history" />
             <option value="$PROJECT_DIR$/lottery" />
+            <option value="$PROJECT_DIR$/phae" />
             <option value="$PROJECT_DIR$/threeD" />
             <option value="$PROJECT_DIR$/twoD" />
+            <option value="$PROJECT_DIR$/twoK" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

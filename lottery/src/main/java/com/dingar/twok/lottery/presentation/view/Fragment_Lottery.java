@@ -14,7 +14,7 @@ import com.dingar.twok.lottery.R;
 
 public class Fragment_Lottery extends Fragment {
 
-    View item_dice,item_htee,item_2d,item_3d,item_maung,item_body;
+    View item_dice,item_phae,item_2d,item_3d,item_2k,item_body;
 
     public Fragment_Lottery() {
         // Required empty public constructor
@@ -32,11 +32,11 @@ public class Fragment_Lottery extends Fragment {
         View view = inflater.inflate(R.layout.fragment__lottery,container,false);
         // Inflate the layout for this fragment
         item_dice = view.findViewById(R.id.diceLottery);
-        item_htee = view.findViewById(R.id.daily3dLottery);
+        item_phae = view.findViewById(R.id.phae);
         item_2d = view.findViewById(R.id.twoDLottery);
         item_3d = view.findViewById(R.id.threeDLottery);
-        item_maung = view.findViewById(R.id.maung);
-        item_body = view.findViewById(R.id.body);
+        item_2k = view.findViewById(R.id.twoK);
+        item_body = view.findViewById(R.id.more);
         onClicks();
     return view;
     }
@@ -51,6 +51,15 @@ public class Fragment_Lottery extends Fragment {
 
         item_3d.setOnClickListener(view ->
                 toNextActivity("com.dingar.twok.threeD.presentation.view.Activity_DiceBet"));
+
+
+        item_phae.setOnClickListener(view ->
+                toNextActivity("com.dingar.twok.phae.presentation.view.Activity_DiceBet"));
+
+
+        item_2k.setOnClickListener(view ->
+                toNextActivity("com.dingar.twok.twoK.presentation.view.Activity_DiceBet"));
+
     }
 
 

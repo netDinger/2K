@@ -34,6 +34,8 @@ dependencies {
     implementation project(path: ':dice')
     implementation project(path: ':twoD')
     implementation project(path: ':threeD')
+    implementation project(path: ':phae')
+    implementation project(path: ':twoK')
 
     implementation project(path: ':account')
     implementation project(path: ':history')

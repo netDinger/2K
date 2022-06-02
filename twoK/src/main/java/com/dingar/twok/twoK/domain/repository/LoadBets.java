@@ -1,0 +1,7 @@
+package com.dingar.twok.twoK.domain.repository;
+
+import io.reactivex.Observable;
+
+public interface LoadBets {
+    Observable<String> loadBets();
+}

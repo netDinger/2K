@@ -130,18 +130,11 @@ public class DiceBetPresenter implements DiceBetContract.Presenter {
     }
 
     /**invoked after {@link #loadLotteries()} get all excluded lotteries
-     * for 2d lotteries list 00 to 99, excluding numbers blocked by admin*/
+     * for dice lotteries list 11 to 66, excluding numbers blocked by admin*/
     private void initiateLotteryList(){
-        String s;
-        for (int i=0; i<=99;i++){
-            if (excludedLotteriesList.contains(i))
-                //if number is in excluded list
-                continue;
-            if (i<10)//add prefix if number less than 10 (to get the formation of 00,01,...)
-                s = "0"+i;
-            else
-                s = String.valueOf(i);
-            lotteriesList.add(new LotteryModel(s,false));
+        for (int i=1; i<=6;i++){
+            for (int b=1;b<=6;b++)
+                lotteriesList.add(new LotteryModel(i +String.valueOf(b),false));
         }
         //tell the view to load the lotteries
         view.onLotteriesLoad(lotteriesList);
@@ -155,6 +148,7 @@ public class DiceBetPresenter implements DiceBetContract.Presenter {
     @Override
     public void dropView() {
         view = null;
+        if(timer != null)
         timer.cancel(); // remove timer
     }
 

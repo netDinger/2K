@@ -23,6 +23,8 @@ public class BetSlipModel {
     @PropertyName("isWin")
     boolean isWin;
 
+    boolean visible;
+
     public BetSlipModel(){}
 
     public BetSlipModel(long date, String luckyNumber, String amount, String betSlipId, boolean isWin) {
@@ -31,7 +33,9 @@ public class BetSlipModel {
         this.amount = amount;
         this.betSlipId = betSlipId;
         this.isWin = isWin;
+        this.visible = false;
     }
+
 
     @PropertyName("betDate")
     public long getDate() {
@@ -87,5 +91,13 @@ public class BetSlipModel {
 
     public void setWin(boolean win) {
         isWin = win;
+    }
+
+    public boolean isVisible() {
+        return visible;
+    }
+
+    public void setVisible(boolean visible) {
+        this.visible = visible;
     }
 }

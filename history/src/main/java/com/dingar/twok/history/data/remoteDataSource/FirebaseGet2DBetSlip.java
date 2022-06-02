@@ -15,6 +15,9 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import io.reactivex.Observable;
 
+/**
+ * to get all user bet slips for 2D
+ */
 public class FirebaseGet2DBetSlip {
     private final String TAG = "FirebaseGet2DBetSlip";
 
@@ -41,7 +44,6 @@ public class FirebaseGet2DBetSlip {
                             BetSlipModel betSlipModel = snapshot.getValue(BetSlipModel.class);
                             assert betSlipModel != null;
                             betSlipModel.setBetSlipId(snapshot.getKey());
-                            Log.e("is win","aaa"+ betSlipModel.isWin());
                             emitter.onNext(betSlipModel);
                         }catch (Exception e){
                             Log.e(TAG,e.getMessage());

@@ -6,7 +6,7 @@
     tools:context=".presentation.view.Fragment_History">
 
    <include
-       android:id="@+id/header"
+       android:id="@+id/headers"
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
        layout="@layout/item_chip_header"/>
@@ -15,7 +15,7 @@
        android:id="@+id/betHistory"
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
-       android:layout_below="@id/header"
+       android:layout_below="@id/headers"
        tools:listitem="@layout/item_bet_history"/>
 
 </RelativeLayout>

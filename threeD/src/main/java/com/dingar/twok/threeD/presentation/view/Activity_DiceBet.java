@@ -50,8 +50,7 @@ public class Activity_DiceBet extends AppCompatActivity implements DiceBetContra
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dice_bet);
-        time_remaining = findViewById(R.id.time_remaining);
+        setContentView(R.layout.activity_threed_bet);
 
         //initiate the login component and inject the view
         threeDBetComponent = ((ComponentProviderThreeD)getApplicationContext())
@@ -111,13 +110,14 @@ public class Activity_DiceBet extends AppCompatActivity implements DiceBetContra
     }
 
     private void widgets(){
-       // addToolbar();
+        addToolbar();
         lotteryModels = new ArrayList<>();
         Button bet = findViewById(R.id.bet);
         Button history = findViewById(R.id.history);
         EditText amount = findViewById(R.id.amount);
         win_date = findViewById(R.id.win_date);
-        help = findViewById(R.id.help);
+        time_remaining = findViewById(R.id.time_remaining);
+        //help = findViewById(R.id.help);
         bet.setOnClickListener(v-> {
             if (presenter.isStringValid(amount.getText().toString())&&!lotteryModels.isEmpty()){
                 //if amount is not empty and at least one lottery is selected
@@ -142,7 +142,7 @@ public class Activity_DiceBet extends AppCompatActivity implements DiceBetContra
                 alertDialog.show();
         });
 
-        help.setOnClickListener(view -> startActivity(new Intent(this,Activity_Help.class)));
+        //help.setOnClickListener(view -> startActivity(new Intent(this,Activity_Help.class)));
     }//widgets
 
     /**

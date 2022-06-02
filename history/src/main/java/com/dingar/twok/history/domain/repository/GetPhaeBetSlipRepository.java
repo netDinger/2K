@@ -1,6 +1,9 @@
 package com.dingar.twok.history.domain.repository;
 
-import javax.inject.Inject;
+import com.dingar.twok.history.data.model.BetSlipModel;
+
+import io.reactivex.Observable;
 
 public interface GetPhaeBetSlipRepository {
+    Observable<BetSlipModel> getPhaeBetSlips();
 }

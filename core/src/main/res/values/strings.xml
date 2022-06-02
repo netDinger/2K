@@ -3,7 +3,7 @@
 
     <string name="bet">ထိုးမယ်</string>
     <string name="amount">ထိုးကြေး</string>
-    <string name="total">စုစုပေါင်းထိုးကြေး</string>
+    <string name="total">စုစုပေါင်း</string>
     <string name="kyat" translatable="false">0K</string>
     <string name="lottery">ထီဂဏန်း</string>
     <string name="default_amount" translatable="false">100</string>

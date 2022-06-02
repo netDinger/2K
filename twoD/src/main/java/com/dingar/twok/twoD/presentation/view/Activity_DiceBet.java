@@ -50,7 +50,7 @@ public class Activity_DiceBet extends AppCompatActivity implements DiceBetContra
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dice_bet);
+        setContentView(R.layout.activity_twod_bet);
         time_remaining = findViewById(R.id.time_remaining);
 
         //initiate the login component and inject the view

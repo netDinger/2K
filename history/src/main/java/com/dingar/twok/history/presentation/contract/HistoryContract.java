@@ -9,6 +9,29 @@ public interface HistoryContract {
     }
 
     interface Presenter extends BasePresenter<View>{
-        void loadHistory();
+        /**
+         * load 2d bet slip history
+         */
+        void load2DHistory();
+
+        /**
+         * load 2K bet slip history
+         */
+        void load2KHistory();
+
+        /**
+         * load 3D bet slip history
+         */
+        void load3DHistory();
+
+        /**
+         * load Phae bet slip history
+         */
+        void loadPhaeHistory();
+
+        /**
+         * load Dice bet slip history
+         */
+        void loadDiceHistory();
     }
 }

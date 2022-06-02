@@ -38,7 +38,7 @@ public class Activity_Win_Lotteries extends AppCompatActivity implements WinLott
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_win_lotteries);
+        setContentView(R.layout.activity_2d_win_lotteries);
 
         //initiate component and inject the view
         component = ((ComponentProviderTwoD)getApplicationContext()).provideTwoDWinLotteryComponent();
