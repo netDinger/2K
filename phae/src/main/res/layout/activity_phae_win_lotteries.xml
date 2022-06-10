@@ -14,7 +14,8 @@
         android:id="@+id/lottery_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/appbar_layout">
+        android:layout_below="@id/appbar_layout"
+        android:visibility="gone">
 
         <TextView
             android:id="@+id/updated_date"

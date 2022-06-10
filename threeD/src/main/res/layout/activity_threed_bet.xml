@@ -18,7 +18,7 @@
             android:layout_height="?android:attr/actionBarSize"
             android:background="@color/colorPrimary"
             app:popupTheme="@style/Theme.2K.PopupOverlay"
-            app:title="3D"
+            app:title="@string/module_name_3D"
             app:titleTextColor="@color/white"
             app:titleMarginStart="12dp">
 
@@ -28,9 +28,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
+                android:layout_marginEnd="7dp"
                 android:layout_centerVertical="true"
                 android:text="@string/time_remaining"
-                android:textSize="21sp"
+                android:textSize="14sp"
                 android:textColor="@color/white"
                 android:layout_gravity="right"
                 tools:ignore="RtlHardcoded" />
@@ -46,23 +47,14 @@
         android:layout_height="?attr/actionBarSize"
         android:layout_below="@id/appbar">
 
-        <Button
+        <ImageView
             android:id="@+id/history"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/history" />
-
-
-
-        <ImageView
-            android:id="@+id/help"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_marginStart="25dp"
-            android:layout_toEndOf="@id/history"
-            android:padding="7dp"
-            android:src="@drawable/ic_help" />
+            android:layout_marginStart="7dp"
+            android:padding="8dp"
+            android:src="@drawable/history" />
 
 
         <TextView
@@ -113,6 +105,16 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
+
+        <ImageView
+            android:id="@+id/help"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@id/bet"
+            android:layout_marginEnd="14dp"
+            android:padding="7dp"
+            android:src="@drawable/ic_help" />
 
         <Button
             android:id="@+id/bet"

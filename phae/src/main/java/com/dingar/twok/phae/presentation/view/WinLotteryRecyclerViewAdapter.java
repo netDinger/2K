@@ -1,5 +1,6 @@
 package com.dingar.twok.phae.presentation.view;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,7 +38,11 @@ public class WinLotteryRecyclerViewAdapter extends RecyclerView.Adapter<WinLotte
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         WinLotteryModel winLotteryModel = winLotteryArrayList.get(position);
+        try{
         holder.date.setText(DateUtil.timeStampToDate(winLotteryModel.getDate()));
+        }catch (Exception e){
+            Log.e("error",e.getMessage());
+        }
         holder.lucky_number.setText(winLotteryModel.getLucky_number());
     }
 

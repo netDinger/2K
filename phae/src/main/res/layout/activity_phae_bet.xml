@@ -18,9 +18,8 @@
             android:layout_height="?android:attr/actionBarSize"
             android:background="@color/colorPrimary"
             app:popupTheme="@style/Theme.2K.PopupOverlay"
-            app:title="Phae"
-            app:titleTextColor="@color/white"
-            app:titleMarginStart="12dp">
+            app:title="@string/module_name_phae"
+            app:titleTextColor="@color/white">
 
 
             <TextView
@@ -29,8 +28,9 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
+                android:layout_marginEnd="7dp"
                 android:text="@string/time_remaining"
-                android:textSize="21sp"
+                android:textSize="14sp"
                 android:textColor="@color/white"
                 android:layout_gravity="right"
                 tools:ignore="RtlHardcoded" />
@@ -46,35 +46,14 @@
         android:layout_height="?android:attr/actionBarSize"
         android:layout_below="@id/appbar">
 
-        <Button
+        <ImageView
             android:id="@+id/history"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/history" />
+            android:src="@drawable/history"
+            android:padding="8dp"
+            android:layout_centerVertical="true"/>
 
-
-
-        <ImageView
-            android:id="@+id/help"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="25dp"
-            android:layout_toEndOf="@id/history"
-            android:padding="7dp"
-            android:src="@drawable/ic_help" />
-
-
-        <TextView
-            android:id="@+id/win_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_centerInParent="true"
-            android:padding="7dp"
-            android:text="@string/select_win_date"
-            android:textSize="16sp"
-            android:textStyle="bold" />
 
     </RelativeLayout>
 
@@ -121,9 +100,20 @@
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:padding="7dp"
+            android:layout_marginEnd="7dp"
             android:paddingStart="7dp"
             android:paddingBottom="3dp"
             android:text="@string/bet" />
+
+        <ImageView
+            android:id="@+id/help"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@id/bet"
+            android:layout_marginEnd="14dp"
+            android:padding="7dp"
+            android:src="@drawable/ic_help" />
 
 
     </RelativeLayout>

@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:drawableStart="@drawable/wallet"
-        android:drawableEnd="@drawable/ic_add"
+        android:drawableEnd="@drawable/arrow_left"
         android:drawablePadding="20dp"
         android:padding="7dp"
         android:text="@string/balance"
@@ -28,7 +28,7 @@
         android:layout_below="@id/balance"
         android:drawableStart="@drawable/wallet"
         android:drawablePadding="20dp"
-        android:padding="7dp"
+        android:padding="5dp"
         android:text="@string/points"
         android:textSize="17sp"
         android:textStyle="bold" />

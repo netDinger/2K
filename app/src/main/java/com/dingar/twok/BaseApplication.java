@@ -3,6 +3,7 @@ package com.dingar.twok;
 import android.app.Application;
 
 import com.dingar.twok.account.di.component.AccountComponent;
+import com.dingar.twok.account.di.component.BalanceComponent;
 import com.dingar.twok.account.di.component.ComponentProviderAccount;
 import com.dingar.twok.auth.di.component.LoginComponent;
 import com.dingar.twok.auth.di.component.LoginComponentProvider;
@@ -91,6 +92,11 @@ public class BaseApplication extends Application implements LoginComponentProvid
     @Override
     public AccountComponent provideAccountComponent() {
         return getAppComponent().accountComponentBuilder().build();
+    }
+
+    @Override
+    public BalanceComponent provideBalanceComponent() {
+        return getAppComponent().balanceComponentBuilder().build();
     }
 
     @Override

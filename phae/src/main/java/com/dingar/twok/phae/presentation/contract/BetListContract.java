@@ -1,25 +1,32 @@
 package com.dingar.twok.phae.presentation.contract;
 
 import com.dingar.twok.core.BasePresenter;
+import com.dingar.twok.core.BaseView;
 import com.dingar.twok.phae.data.model.LotteryModel;
 import com.dingar.twok.phae.presentation.view.BetListRecyclerviewAdapter;
 
 import java.util.ArrayList;
 
 public interface BetListContract {
-    interface View{
+    interface View extends BaseView {
         void onBettingSuccess();
 
-        void onTotalAmountCalculated(int totalAmount);
+        void onTotalAmountCalculated(double totalAmount);
 
         void onBalanceLoaded(String balance);
+
+        void onPointLoaded(String point);
     }
 
     interface Presenter extends BasePresenter<View> {
-        void onBetClick();
+        void onBetWithBalance();
+        void onBetWithPoint();
 
         /**to get the user balance*/
         void onLoadBalance();
+
+        /**to get the user's point*/
+        void loadPoint();
 
         /**invoked by {@link com.dingar.twok.phae.presentation.view.BetListRecyclerviewAdapter#onBindViewHolder(BetListRecyclerviewAdapter.ViewHolder, int)}
          * whenever bet amount is changed or lottery is removed

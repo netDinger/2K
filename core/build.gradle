@@ -56,6 +56,14 @@ dependencies {
     api 'com.google.firebase:firebase-auth'
     api 'com.google.firebase:firebase-firestore'
 
+    //firebase crashlytics
+    api 'com.google.firebase:firebase-crashlytics'
+    api 'com.google.firebase:firebase-analytics'
+    //firebase in app messaging
+    api 'com.google.firebase:firebase-inappmessaging-display'
+    //firebase remote config
+    api 'com.google.firebase:firebase-config'
+
     //jsoup HTML parser
     api 'org.jsoup:jsoup:1.14.3'
 

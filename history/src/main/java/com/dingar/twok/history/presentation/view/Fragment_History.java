@@ -98,7 +98,6 @@ public class Fragment_History extends Fragment implements HistoryContract.View {
             recyclerViewAdapter.refreshData();
             presenter.loadPhaeHistory();
         });
-
     }
 
     private void initiate(){
@@ -108,6 +107,7 @@ public class Fragment_History extends Fragment implements HistoryContract.View {
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(requireContext(),DividerItemDecoration.VERTICAL);
         betHistoryRecyclerView.addItemDecoration(dividerItemDecoration);
         betHistoryRecyclerView.setAdapter(recyclerViewAdapter);
+        recyclerViewAdapter.setContext(requireContext());
         presenter.load2DHistory();
     }
 }

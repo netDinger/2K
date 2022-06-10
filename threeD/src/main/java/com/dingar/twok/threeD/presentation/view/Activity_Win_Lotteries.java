@@ -1,10 +1,12 @@
 package com.dingar.twok.threeD.presentation.view;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 
 import com.dingar.twok.core.util.DateUtil;
@@ -15,6 +17,7 @@ import com.dingar.twok.threeD.di.component.ThreeDWinLotteryComponent;
 import com.dingar.twok.threeD.presentation.contract.WinLotteryContract;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 import javax.inject.Inject;
 
@@ -38,7 +41,7 @@ public class Activity_Win_Lotteries extends AppCompatActivity implements WinLott
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_win_lotteries);
+        setContentView(R.layout.activity_threed_win_lotteries);
 
         //initiate component and inject the view
         component = ((ComponentProviderThreeD)getApplicationContext()).provideThreeDWinLotteryComponent();
@@ -58,10 +61,15 @@ public class Activity_Win_Lotteries extends AppCompatActivity implements WinLott
     @Override
     public void onCurrentTwoDLoaded(String twoD) {
         luckyNumber.setText(twoD);
-        updated_date.setText(DateUtil.timeStampToDate(String.valueOf(System.currentTimeMillis())));
+        try {
+            updated_date.setText(DateUtil.timeStampToDate(String.valueOf(System.currentTimeMillis())));
+        }catch (Exception e){
+            Log.e("error",e.getMessage());
+        }
     }
 
     private void widgets(){
+        addToolbar();
         winHistoryRecyclerview = findViewById(R.id.winHistory);
         //current TwoD result
         luckyNumber = findViewById(R.id.lottery_number);
@@ -80,5 +88,13 @@ public class Activity_Win_Lotteries extends AppCompatActivity implements WinLott
         //Tell presenter to load all lucky number within a month
         presenter.loadLuckyHistory();
     }
+
+    private void addToolbar() {
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled(true);
+        toolbar.setNavigationOnClickListener(v -> onBackPressed()); }
 
 }

@@ -1,4 +1,5 @@
 <resources>
+
     <string name="app_name">2K</string>
 
     <string name="bet">ထိုးမယ်</string>
@@ -6,17 +7,100 @@
     <string name="total">စုစုပေါင်း</string>
     <string name="kyat" translatable="false">0K</string>
     <string name="lottery">ထီဂဏန်း</string>
+    <string name="add_bet">ထီလက်မှတ်အသစ်</string>
     <string name="default_amount" translatable="false">100</string>
     <string name="time_remaining">00:00:00</string>
     <string name="history">မှတ်တမ်း</string>
 
     <string name="amount_warning">ကျေးဇူးပြု၍ လောင်းကြေးထည့်ပါ</string>
+    <string name="lottery_warning">ကျေးဇူးပြု၍ ထီရွေးပါ</string>
     <string name="default_lottery" translatable="false">12</string>
     <string name="date" translatable="false">date</string>
 
     <string name="select_win_date">ထီထွက်ချိန်ရွေးပါ</string>
-    <string name="wait"> ကျေးဇူးပြု၍ ခဏစောင့်ပါ</string>
-
+    <string name="select">ရွေးမယ်</string>
+    <string name="ok">ရပြီ</string>
+    <string name="wait">ထီထိုးရန်အချိန်ရယူနေပါသည်။ ကျေးဇူးပြု၍ ခဏစောင့်ပါ</string>
+    <string name="id">ထီအမှတ်စဥ်</string>
+    <string name="win">နိုင်</string>
+    <string name="lose">-</string>
     <string name="help_game">About this game \n ငါလဲမဆော့တတ်ဘူး… </string>
+
+    <!-- item profile-->
+    <string name="username">2K user</string>
+    <string name="uid">ID: </string>
+
+    <!-- item_balance-->
+    <string name="balance">လက်ကျန်ငွေ</string>
+    <string name="points">Points:</string>
+    <string name="coupons">Coupons</string>
+
+    <!--item_additionals-->
+    <string name="help">Help and Feedback</string>
+    <string name="privacy">Privacy Policy</string>
+    <string name="about">About</string>
+    <string name="share">Share</string>
+    <string name="language">Language</string>
+    <string name="phone_number">09 12345678</string>
+    <string name="phone_text">Phone Number</string>
+    <string name="change">Change</string>
+
+    <string name="logout">Logout</string>
+
+
+
+    <string name="lottery_number">111</string>
+
+    <string name="date_text">ရက်စွဲ</string>
+
+
+    <string name="amount_text">ပမာဏ</string>
+
+    <string name="id_text">ထီအမှတ်စဥ်</string>
+
+    <string name="byPoint">ပွိုင့်နဲ့ထိုးမယ်</string>
+    <string name="byBalance">ငွေနဲ့ထိုးမယ်</string>
+
+    <string name="isWin_text">ရလာဒ်</string>
+    <string name="isWin">နိုင်</string>
+
+    <!--for header chip-->
+    <string name="load2D">2D</string>
+    <string name="load3D">3D</string>
+    <string name="load2K">2K</string>
+    <string name="loadPhae">Phae</string>
+    <string name="loadDice">Dice</string>
+
+
+    <!-- bottom nav menu-->
+    <string name="account">အကောင့်</string>
+    <string name="betSlips">မှတ်တမ်း</string>
+
+    <!-- card items -->
+    <string name="my_bets">My Bets</string>
+    <string name="twoD">2D</string>
+    <string name="threeD">3D</string>
+    <string name="dice">Dice</string>
+    <string name="phae">Phae</string>
+    <string name="twoK">2K</string>
+    <string name="more">More</string>
+
+    <string name="deposit">ငွေသွင်း</string>
+    <string name="withdraw">ငွေထုတ်</string>
+    <string name="depositHelp">ငွေသွင်းနည်း</string>
+    <string name="withdrawHelp">ငွေထုတ်နည်း</string>
+
+    <string name="maung">Maung</string>
+    <string name="body">Body</string>
+
+    <string name="about_app">Version 1.0 (Beta) \n 2K is an online gambling app.
+        The main difference from other apps is that up to 90% profit of 2K will be donated. \n
+    2K ဆိုတာ အွန်လိုင်း လောင်းကစားဂိမ်းတစ်ခုဖြစ်ပါသည်။
+ဤဂိမ်း၏ထူးခြားချက်မှာ ဂိမ်းမှအမြတ်ငွေ၏ ၉၀% ထိကို  လိုအပ်သော နေရာများတွင် လှူဒါန်းသွားမည်ဖြစ်ပါသည်။
+</string>
+
+    <string name="contact_phone">Phone: 09 458 871 680</string>
+    <string name="contact_viber">Viber: </string>
+    <string name="contact_facebook">Facebook:</string>
 
 </resources>

@@ -1,5 +1,7 @@
 package com.dingar.twok.twoD.data.remoteDataSource;
 
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 
 import com.dingar.twok.firebaseadapter.Static_Config;
@@ -33,8 +35,9 @@ public class FirebaseGetBetableTimes {
                     .addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            for (DataSnapshot dataSnapshot : snapshot.getChildren())
+                            for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                                 emitter.onNext(String.valueOf(dataSnapshot.getKey()));
+                            }
 
                             emitter.onComplete();
                         }

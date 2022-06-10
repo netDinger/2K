@@ -2,7 +2,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.dingar.twok.account">
 
-    <application>
+    <application android:theme="@style/Theme.2K">
+        <activity
+            android:name=".presentation.view.Activity_Balance_Help"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.view.Activity_About"
+            android:exported="false" />
         <activity
             android:name=".presentation.view.Activity_Balance"
             android:exported="false" />

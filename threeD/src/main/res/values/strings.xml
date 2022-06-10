@@ -1,4 +1,4 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <string name="help_game">About this game \n ငါလဲမဆော့တတ်ဘူး… </string>
-
+    <string name="module_name_3D">3D</string>
 </resources>

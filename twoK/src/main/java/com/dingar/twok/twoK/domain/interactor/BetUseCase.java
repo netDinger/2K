@@ -22,7 +22,17 @@ public class BetUseCase {
     @Inject
     public BetUseCase(){}
 
-    public Single<Result> execute(ArrayList<LotteryModel> lotteryModels){
-        return betRepository.bet(lotteryModels);
+    /**
+     *
+     * @param lotteryModels list of bet slips to bet
+     * @param balance user's balance to calculate the new balance(only on client side)
+     * @return observer for uploading the bet slip and observe the success result
+     */
+    public Single<Result> execute(ArrayList<LotteryModel> lotteryModels,double balance){
+        return betRepository.bet(lotteryModels,balance);
+    }
+
+    public Single<Result> betByPoint(ArrayList<LotteryModel> lotteryModels,double point){
+        return betRepository.betByPoint(lotteryModels,point);
     }
 }

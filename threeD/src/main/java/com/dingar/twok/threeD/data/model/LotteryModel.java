@@ -14,6 +14,9 @@ public class LotteryModel  implements Serializable {
      */
     private boolean selected;
     private int amount;
+    private String winDate;
+
+    public LotteryModel(){}
 
     public LotteryModel(String lotteryNumber, boolean selected) {
         this.lotteryNumber = lotteryNumber;
@@ -48,5 +51,13 @@ public class LotteryModel  implements Serializable {
 
     public void setAmount(int amount) {
         this.amount = amount;
+    }
+
+    public String getWinDate() {
+        return winDate;
+    }
+
+    public void setWinDate(String winDate) {
+        this.winDate = winDate;
     }
 }

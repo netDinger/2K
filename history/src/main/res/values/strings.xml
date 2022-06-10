@@ -1,27 +1,3 @@
 <resources>
 
-    <string name="lottery">ထီဂဏန်း</string>
-    <string name="lottery_number">111</string>
-
-    <string name="date_text">ရက်စွဲ</string>
-    <string name="date">11-11-1111 11:11</string>
-
-    <string name="amount_text">ပမာဏ</string>
-    <string name="amount">1000</string>
-
-    <string name="id_text">ထီအမှတ်စဥ်</string>
-    <string name="id">1234567abcd</string>
-
-    <string name="isWin_text">ရလာဒ်</string>
-    <string name="isWin">နိုင်</string>
-
-    <!--for header chip-->
-    <string name="load2D">2D</string>
-    <string name="load3D">3D</string>
-    <string name="load2K">2K</string>
-    <string name="loadPhae">Phae</string>
-    <string name="loadDice">Dice</string>
-
-
-
 </resources>

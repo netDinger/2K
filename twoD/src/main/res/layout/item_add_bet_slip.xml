@@ -4,7 +4,7 @@
     android:id="@+id/addBetSlip"
     android:layout_width="match_parent"
     android:layout_height="?attr/actionBarSize"
-    android:weightSum="6">
+    android:weightSum="5">
 
     <EditText
         android:id="@+id/lottery_number"
@@ -31,14 +31,6 @@
         android:inputType="number"
         android:gravity="center"/>
 
-    <ImageView
-        android:id="@+id/add"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:scaleType="center"
-        android:src="@drawable/ic_add"
-        />
 
 
 </LinearLayout>

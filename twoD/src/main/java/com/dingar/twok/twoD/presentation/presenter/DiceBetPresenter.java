@@ -26,7 +26,7 @@ import io.reactivex.disposables.Disposable;
  * @see DiceBetContract.Presenter
  */
 public class DiceBetPresenter implements DiceBetContract.Presenter {
-    private final String TAG = "DiceBetPresenter";
+    private final String TAG = "DiceBetPresenterTWOD";
     private DiceBetContract.View view;
 
     private CountDownTimer timer;
@@ -112,7 +112,11 @@ public class DiceBetPresenter implements DiceBetContract.Presenter {
 
             @Override
             public void onNext(@NonNull String s) {
-                winDates.add(DateUtil.timeStampToDate(s));
+                try {
+                    winDates.add(DateUtil.timeStampToDate(s));
+                }catch (Exception e){
+                    Log.e(TAG,"chang e"+e.getMessage());
+                }
             }
 
             @Override
@@ -152,8 +156,9 @@ public class DiceBetPresenter implements DiceBetContract.Presenter {
 
     @Override
     public void dropView() {
+        if (timer != null)
+            timer.cancel(); // remove timer
         view = null;
-        timer.cancel(); // remove timer
     }
 
     //calculate the time remaining to open the next lottery
@@ -185,6 +190,7 @@ public class DiceBetPresenter implements DiceBetContract.Presenter {
      * @param current current server timestamp
      */
     private void timerTask(long future,long current){
+        try{
         Long diff = future - current;
 
         timer = new CountDownTimer(diff,1000){
@@ -203,6 +209,9 @@ public class DiceBetPresenter implements DiceBetContract.Presenter {
             public void onFinish() {}
         };
         timer.start();
+        }catch (Exception exception){
+            Log.e(TAG,exception.getMessage());
+        }
     }
 
 }

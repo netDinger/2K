@@ -20,34 +20,47 @@
             app:titleMarginStart="12dp"
             app:title="2D"
             app:titleTextColor="@color/white">
-            <TextView
-                android:id="@+id/balance"
+
+            <ImageView
+                android:id="@+id/add"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_marginEnd="21dp"
-                android:text="@string/kyat"
-                android:textColor="@color/white"
-                android:textSize="20sp"
-                android:textStyle="bold"
+                android:padding="8dp"
+                android:layout_marginEnd="7dp"
+                android:scaleType="center"
+                android:src="@drawable/ic_add"
                 android:layout_gravity="right"/>
         </androidx.appcompat.widget.Toolbar>
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <include
-        android:id="@+id/addBetSlip"
-        layout="@layout/item_add_bet_slip"
+
+    <RelativeLayout
+        android:id="@+id/balance_holder"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:layout_below="@id/appbar" />
+        android:layout_height="wrap_content"
+        android:padding="7dp"
+        android:layout_below="@id/appbar">
+
+        <TextView
+            android:id="@+id/balance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="21dp"
+            android:text="@string/kyat"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/betSlips"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/betHolder"
-        android:layout_below="@id/addBetSlip"
+        android:layout_below="@id/balance_holder"
         android:layout_alignParentStart="true"
         tools:listitem="@layout/item_bet_slip" />
 
@@ -62,7 +75,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_marginStart="21dp"
+            android:layout_marginStart="14dp"
             android:padding="7dp"
             android:text="@string/total"
             android:textSize="16sp"

@@ -2,7 +2,7 @@ package com.dingar.twok.twoK.data;
 
 import com.dingar.twok.twoK.data.model.WinLotteryModel;
 import com.dingar.twok.twoK.data.remoteDataSource.FirebaseGetWinHistory;
-import com.dingar.twok.twoK.data.remoteDataSource.Get_Current_TwoD;
+import com.dingar.twok.twoK.data.remoteDataSource.Get_Current_TwoK_Formula;
 import com.dingar.twok.twoK.domain.repository.WinHistoryRepository;
 
 import javax.inject.Inject;
@@ -22,7 +22,7 @@ public class WinHistoryRepositoryImpl implements WinHistoryRepository {
 
     @Override
     public Single<String> currentTwoD() {
-        return Get_Current_TwoD.getInstance().getResult();
+        return Get_Current_TwoK_Formula.getInstance().getResult();
     }
 
 

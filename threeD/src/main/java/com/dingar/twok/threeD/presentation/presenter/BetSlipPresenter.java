@@ -21,7 +21,9 @@ public class BetSlipPresenter implements BetListContract.Presenter {
     BetUseCase betUseCase;
     GetBalanceUseCase getBalanceUseCase;
     private ArrayList<LotteryModel> lotteryModelArrayList;
-    private int totalAmount;
+    private double totalAmount;
+    private double balance;
+
 
     public BetSlipPresenter(BetUseCase betUseCase,GetBalanceUseCase getBalanceUseCase){
         this.betUseCase = betUseCase;
@@ -31,22 +33,27 @@ public class BetSlipPresenter implements BetListContract.Presenter {
 
     @Override
     public void onBetClick() {
-        if(lotteryModelArrayList != null)
-        betUseCase.execute(lotteryModelArrayList).subscribe(new SingleObserver<Result>() {
-            @Override
-            public void onSubscribe(@NonNull Disposable d) {}
-            @Override
-            public void onSuccess(@NonNull Result result) {
-                if(result.isSuccess())
-                view.onBettingSuccess();
-            }
+        if(lotteryModelArrayList != null) {
+            if (balance >= totalAmount) {
+            betUseCase.execute(lotteryModelArrayList,balance).subscribe(new SingleObserver<Result>() {
+                @Override
+                public void onSubscribe(@NonNull Disposable d) {
+                }
 
-            @Override
-            public void onError(@NonNull Throwable e) {
-            }
-        });
-        else
-            Log.e("BetSlipPresenter","list is null");
+                @Override
+                public void onSuccess(@NonNull Result result) {
+                    if (result.isSuccess())
+                        view.onBettingSuccess();
+                }
+
+                @Override
+                public void onError(@NonNull Throwable e) {
+                }
+            });
+        } else
+            view.showToast("No enough balance!!!");
+        } else
+            view.showToast("No Lottery to bet!!!");
     }
 
     @Override
@@ -59,6 +66,7 @@ public class BetSlipPresenter implements BetListContract.Presenter {
             @Override
             public void onSuccess(@NonNull Double aDouble) {
                 view.onBalanceLoaded(aDouble+"Kyats");
+                balance = aDouble;
             }
 
             @Override

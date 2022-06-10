@@ -3,6 +3,7 @@ package com.dingar.twok.di.component;
 
 import com.dingar.twok.MainActivity;
 import com.dingar.twok.account.di.component.AccountComponent;
+import com.dingar.twok.account.di.component.BalanceComponent;
 import com.dingar.twok.auth.di.component.LoginComponent;
 import com.dingar.twok.auth.di.component.SignupComponent;
 import com.dingar.twok.auth.di.component.VerifyCodeComponent;
@@ -62,9 +63,11 @@ public interface AppComponent {
     TwoKBetSlipComponent.Builder twoKBetSlipComponentBuilder();
     TwoKWinLotteryComponent.Builder twoKWinLotteryComponentBuilder();
 
+    //for account module
     AccountComponent.Builder accountComponentBuilder();
-    HistoryComponent.Builder historyComponentBuilder();
+    BalanceComponent.Builder balanceComponentBuilder();
 
+    HistoryComponent.Builder historyComponentBuilder();
 
 
     void inject(MainActivity mainActivity);

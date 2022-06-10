@@ -1,6 +1,4 @@
 <resources>
-    <string name="app_name">auth</string>
-
     //login
     <string name="welcome_login">Login to Win</string>
     <string name="login">Login</string>

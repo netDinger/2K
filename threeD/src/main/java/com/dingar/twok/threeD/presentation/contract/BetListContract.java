@@ -1,16 +1,17 @@
 package com.dingar.twok.threeD.presentation.contract;
 
 import com.dingar.twok.core.BasePresenter;
+import com.dingar.twok.core.BaseView;
 import com.dingar.twok.threeD.data.model.LotteryModel;
 import com.dingar.twok.threeD.presentation.view.BetListRecyclerviewAdapter;
 
 import java.util.ArrayList;
 
 public interface BetListContract {
-    interface View{
+    interface View extends BaseView {
         void onBettingSuccess();
 
-        void onTotalAmountCalculated(int totalAmount);
+        void onTotalAmountCalculated(double totalAmount);
 
         void onBalanceLoaded(String balance);
     }

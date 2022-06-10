@@ -42,9 +42,9 @@ public class Activity_Bet_Slips extends AppCompatActivity implements BetListCont
      * list of lotteries with amount
      */
     ArrayList<LotteryModel> betList;
-    String amount;
+    String amount,winDate;
 
-    private TextView balance,totalBet;
+    private TextView balance,point,totalBet;
     private ImageView addNewBet;
     private EditText lotteryNumber,Amount;
 
@@ -76,13 +76,18 @@ public class Activity_Bet_Slips extends AppCompatActivity implements BetListCont
     }
 
     @Override
-    public void onTotalAmountCalculated(int totalAmount) {
+    public void onTotalAmountCalculated(double totalAmount) {
         totalBet.setText(String.valueOf(totalAmount));
     }
 
     @Override
     public void onBalanceLoaded(String balance) {
-        this.balance.setText(balance);
+        this.balance.setText(getString(R.string.balance)+balance);
+    }
+
+    @Override
+    public void onPointLoaded(String point) {
+        this.point.setText(point);
     }
 
     /**
@@ -93,6 +98,7 @@ public class Activity_Bet_Slips extends AppCompatActivity implements BetListCont
         for (LotteryModel lotteryModel : lotteryModels) {
             try {
                 lotteryModel.setAmount(Integer.parseInt(amount));
+                lotteryModel.setWinDate(winDate);
                 betList.add(lotteryModel);
             } catch (ParseException|NumberFormatException e) {
                 e.printStackTrace();
@@ -108,13 +114,14 @@ public class Activity_Bet_Slips extends AppCompatActivity implements BetListCont
         addToolbar();
         betsList = findViewById(R.id.betSlips);
         balance = findViewById(R.id.balance);
+        point = findViewById(R.id.point);
         totalBet = findViewById(R.id.total);
         LinearLayout v = findViewById(R.id.addBetSlip);
         addNewBet = v.findViewById(R.id.add);
         lotteryNumber = v.findViewById(R.id.lottery_number);
         Amount = v.findViewById(R.id.amount);
 
-        findViewById(R.id.bet).setOnClickListener(view -> presenter.onBetClick());
+        findViewById(R.id.bet).setOnClickListener(view -> presenter.onBetWithBalance());
         betsList.setHasFixedSize(true);
         presenter.setView(this);
 
@@ -132,6 +139,7 @@ public class Activity_Bet_Slips extends AppCompatActivity implements BetListCont
         lotteryModels = new ArrayList<>();
         lotteryModels = (ArrayList<LotteryModel>) getIntent().getSerializableExtra("betSlips");
         amount = getIntent().getStringExtra("amount");
+        winDate = getIntent().getStringExtra("winDate");
         betList = new ArrayList<>();
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
@@ -143,6 +151,7 @@ public class Activity_Bet_Slips extends AppCompatActivity implements BetListCont
 
         this.setData();
         presenter.onLoadBalance();
+        presenter.loadPoint();
     }
 
     private void addToolbar() {
@@ -152,4 +161,9 @@ public class Activity_Bet_Slips extends AppCompatActivity implements BetListCont
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(true);
         toolbar.setNavigationOnClickListener(v -> onBackPressed()); }
+
+    @Override
+    public void showToast(String message) {
+        Toast.makeText(this,message,Toast.LENGTH_SHORT).show();
+    }
 }

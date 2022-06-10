@@ -7,10 +7,12 @@
         <entry key="..\:/2K/account/src/main/res/drawable/gradient_color.xml" value="0.2175925925925926" />
         <entry key="..\:/2K/account/src/main/res/drawable/gradient_color_round.xml" value="0.28125" />
         <entry key="..\:/2K/account/src/main/res/drawable/round_corner_red.xml" value="0.21481481481481482" />
-        <entry key="..\:/2K/account/src/main/res/layout/activity_balance.xml" value="0.13223684210526315" />
+        <entry key="..\:/2K/account/src/main/res/layout/activity_about.xml" value="0.22" />
+        <entry key="..\:/2K/account/src/main/res/layout/activity_balance.xml" value="0.12" />
+        <entry key="..\:/2K/account/src/main/res/layout/activity_balance_help.xml" value="0.1" />
         <entry key="..\:/2K/account/src/main/res/layout/fragment_account.xml" value="0.16" />
         <entry key="..\:/2K/account/src/main/res/layout/item_additionals.xml" value="0.22" />
-        <entry key="..\:/2K/account/src/main/res/layout/item_balance.xml" value="0.16" />
+        <entry key="..\:/2K/account/src/main/res/layout/item_balance.xml" value="0.30161054172767204" />
         <entry key="..\:/2K/account/src/main/res/layout/item_profile.xml" value="0.209375" />
         <entry key="..\:/2K/account/src/main/res/layout/test.xml" value="0.19610507246376813" />
         <entry key="..\:/2K/account/src/main/res/xml/setting.xml" value="0.13223684210526315" />
@@ -19,14 +21,19 @@
         <entry key="..\:/2K/auth/src/main/res/layout/activity_login.xml" value="0.22" />
         <entry key="..\:/2K/auth/src/main/res/layout/activity_signup.xml" value="0.2" />
         <entry key="..\:/2K/auth/src/main/res/layout/layout_verification_code.xml" value="0.2" />
+        <entry key="..\:/2K/core/src/main/res/drawable-anydpi/expend_down.xml" value="0.14104234527687295" />
+        <entry key="..\:/2K/core/src/main/res/drawable-anydpi/history.xml" value="0.14104234527687295" />
         <entry key="..\:/2K/core/src/main/res/drawable-anydpi/home.xml" value="0.12569444444444444" />
+        <entry key="..\:/2K/core/src/main/res/drawable-anydpi/ic_add.xml" value="0.1361111111111111" />
         <entry key="..\:/2K/core/src/main/res/drawable-anydpi/receipt.xml" value="0.12569444444444444" />
         <entry key="..\:/2K/core/src/main/res/drawable-xxhdpi/gradient_color.xml" value="0.14104234527687295" />
         <entry key="..\:/2K/core/src/main/res/drawable-xxhdpi/gradient_color_round.xml" value="0.14104234527687295" />
         <entry key="..\:/2K/core/src/main/res/drawable/round_corner.xml" value="0.2175925925925926" />
+        <entry key="..\:/2K/core/src/main/res/menu/betmenu.xml" value="0.33" />
+        <entry key="..\:/2K/dice/src/main/res/layout/acitivity_dice_help.xml" value="0.13223684210526315" />
         <entry key="..\:/2K/dice/src/main/res/layout/acitivity_help.xml" value="0.1" />
         <entry key="..\:/2K/dice/src/main/res/layout/activity_acitivity_help.xml" value="0.18342391304347827" />
-        <entry key="..\:/2K/dice/src/main/res/layout/activity_bet.xml" value="0.16" />
+        <entry key="..\:/2K/dice/src/main/res/layout/activity_bet.xml" value="0.12" />
         <entry key="..\:/2K/dice/src/main/res/layout/activity_bet_slips.xml" value="0.16" />
         <entry key="..\:/2K/dice/src/main/res/layout/activity_win_lotteries.xml" value="0.1" />
         <entry key="..\:/2K/dice/src/main/res/layout/item_add_bet_slip.xml" value="0.209375" />
@@ -48,12 +55,13 @@
         <entry key="..\:/2K/lottery/src/main/res/layout/fragment_account.xml" value="0.20380434782608695" />
         <entry key="..\:/2K/lottery/src/main/res/layout/item_appbar_lottery.xml" value="0.1" />
         <entry key="..\:/2K/lottery/src/main/res/layout/item_lottery_2d.xml" value="0.20742753623188406" />
-        <entry key="..\:/2K/lottery/src/main/res/layout/item_lottery_3d.xml" value="0.75" />
+        <entry key="..\:/2K/lottery/src/main/res/layout/item_lottery_3d.xml" value="0.25" />
         <entry key="..\:/2K/lottery/src/main/res/layout/item_lottery_body.xml" value="0.20742753623188406" />
         <entry key="..\:/2K/lottery/src/main/res/layout/item_lottery_dice.xml" value="0.18" />
         <entry key="..\:/2K/lottery/src/main/res/layout/item_lottery_htee.xml" value="0.20742753623188406" />
         <entry key="..\:/2K/lottery/src/main/res/layout/item_lottery_maung.xml" value="0.20742753623188406" />
         <entry key="..\:/2K/lottery/src/main/res/layout/item_lottery_title.xml" value="0.18568840579710144" />
+        <entry key="..\:/2K/lottery/src/main/res/layout/item_more.xml" value="0.1" />
         <entry key="..\:/2K/lottery/src/main/res/menu/lottery_bottom_nav_menu.xml" value="0.209375" />
         <entry key="..\:/2K/lottery/src/main/res/mipmap-anydpi-v26/ic_account_fill_black.xml" value="0.11614583333333334" />
         <entry key="..\:/2K/lottery/src/main/res/mipmap-anydpi-v26/ic_account_fill_black_round.xml" value="0.11614583333333334" />
@@ -61,18 +69,39 @@
         <entry key="..\:/2K/phae/src/main/res/layout/activity_help.xml" value="0.12295081967213115" />
         <entry key="..\:/2K/phae/src/main/res/layout/activity_phae_bet.xml" value="0.12295081967213115" />
         <entry key="..\:/2K/phae/src/main/res/layout/activity_phae_bet_slips.xml" value="0.12295081967213115" />
+        <entry key="..\:/2K/phae/src/main/res/layout/activity_phae_help.xml" value="0.12329234972677595" />
         <entry key="..\:/2K/phae/src/main/res/layout/activity_phae_win_lotteries.xml" value="0.12295081967213115" />
+        <entry key="..\:/2K/phae/src/main/res/layout/item_appbar.xml" value="0.1" />
+        <entry key="..\:/2K/phae/src/main/res/layout/item_point_loader.xml" value="0.13223684210526315" />
+        <entry key="..\:/2K/threeD/src/main/res/layout/activity_bet_slips.xml" value="0.13223684210526315" />
         <entry key="..\:/2K/threeD/src/main/res/layout/activity_dice_bet.xml" value="0.14" />
-        <entry key="..\:/2K/threeD/src/main/res/layout/activity_threed_bet.xml" value="0.13223684210526315" />
+        <entry key="..\:/2K/threeD/src/main/res/layout/activity_help.xml" value="0.12329234972677595" />
+        <entry key="..\:/2K/threeD/src/main/res/layout/activity_threed_bet.xml" value="0.18" />
+        <entry key="..\:/2K/threeD/src/main/res/layout/activity_threed_bet_slips.xml" value="0.13223684210526315" />
+        <entry key="..\:/2K/threeD/src/main/res/layout/item_appbar.xml" value="0.13223684210526315" />
         <entry key="..\:/2K/twoD/src/main/res/drawable-anydpi/ic_delete.xml" value="0.10694444444444444" />
+        <entry key="..\:/2K/twoD/src/main/res/layout/activity_2d_bet_slips.xml" value="0.12329234972677595" />
+        <entry key="..\:/2K/twoD/src/main/res/layout/activity_2d_help.xml" value="0.12329234972677595" />
+        <entry key="..\:/2K/twoD/src/main/res/layout/activity_2d_win_lotteries.xml" value="0.12329234972677595" />
         <entry key="..\:/2K/twoD/src/main/res/layout/activity_bet_slips.xml" value="0.11885245901639344" />
         <entry key="..\:/2K/twoD/src/main/res/layout/activity_dice_bet.xml" value="0.11885245901639344" />
         <entry key="..\:/2K/twoD/src/main/res/layout/activity_help.xml" value="0.11885245901639344" />
+        <entry key="..\:/2K/twoD/src/main/res/layout/activity_twod_bet.xml" value="0.11919398907103824" />
         <entry key="..\:/2K/twoD/src/main/res/layout/activity_win_lotteries.xml" value="0.11885245901639344" />
+        <entry key="..\:/2K/twoD/src/main/res/layout/item_add_bet_slip.xml" value="0.13223684210526315" />
         <entry key="..\:/2K/twoD/src/main/res/layout/item_appbar.xml" value="0.13223684210526315" />
         <entry key="..\:/2K/twoD/src/main/res/layout/item_bet_slip.xml" value="0.11885245901639344" />
         <entry key="..\:/2K/twoD/src/main/res/layout/item_betlist_header.xml" value="0.11885245901639344" />
+        <entry key="..\:/2K/twoD/src/main/res/layout/item_lottery.xml" value="0.11919398907103824" />
         <entry key="..\:/2K/twoK/src/main/res/layout/activity_twok_bet.xml" value="0.12295081967213115" />
+        <entry key="..\:/2K/twoK/src/main/res/layout/activity_twok_bet_slips.xml" value="0.13223684210526315" />
+        <entry key="..\:/2K/twoK/src/main/res/layout/activity_twok_help.xml" value="0.12329234972677595" />
+        <entry key="..\:/2K/twoK/src/main/res/layout/activity_twok_lotteries.xml" value="0.13223684210526315" />
+        <entry key="..\:/2K/twoK/src/main/res/layout/item_appbar.xml" value="0.12329234972677595" />
+        <entry key="..\:/2K/twoK/src/main/res/layout/item_bet_slip.xml" value="0.13223684210526315" />
+        <entry key="..\:/2K/twoK/src/main/res/layout/item_lottery.xml" value="0.13223684210526315" />
+        <entry key="..\:/2K/twoK/src/main/res/layout/item_lucky_lottery.xml" value="0.13223684210526315" />
+        <entry key="..\:/2K/twoK/src/main/res/menu/betmenu.xml" value="0.33" />
       </map>
     </option>
   </component>

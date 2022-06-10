@@ -21,7 +21,6 @@ import io.reactivex.Single;
 public class FirebaseBetSlip {
     //Singleton
     private static FirebaseBetSlip instance;
-    private int count = 0;
     private FirebaseBetSlip(){}
     public static FirebaseBetSlip getInstance(){
         if (instance == null)
@@ -29,34 +28,65 @@ public class FirebaseBetSlip {
         return instance;
     }
 
-    public Single<Result> bet(ArrayList<LotteryModel> lotteryModels){
+    private int count = 0;  // for counting array
+    //to store the successfully betted bet slip amount and calculate the new balance
+    private int totalAmount;
+
+
+    public Single<Result> bet(ArrayList<LotteryModel> lotteryModels,double balance){
         return Single.create(emitter -> {
             count = 0;
-            for (LotteryModel lotteryModel :lotteryModels){
-                HashMap<String,Object> betMap = new HashMap<>();
-                betMap.put(Static_Config.AMOUNT,String.valueOf(lotteryModel.getAmount()));
-                betMap.put(Static_Config.WINDATE,"not yet");
-                betMap.put(Static_Config.BETDATE,ServerValue.TIMESTAMP);
-                betMap.put(Static_Config.LUCKYNO,lotteryModel.getLotteryNumber());
+            for (LotteryModel lotteryModel :lotteryModels) {
+                try {
+                    HashMap<String, Object> betMap = new HashMap<>();
+                    betMap.put(Static_Config.AMOUNT, String.valueOf(lotteryModel.getAmount()));
+                    betMap.put(Static_Config.WINDATE, lotteryModel.getWinDate());
+                    betMap.put(Static_Config.BETDATE, ServerValue.TIMESTAMP);
+                    betMap.put(Static_Config.LUCKYNO, lotteryModel.getLotteryNumber());
 
-                FirebaseDatabase.getInstance().getReference()
-                        .child(Static_Config.BETSLIP)// BetSlip
-                        .child(Static_Config.THREED)//TwoD
-                        .child(Get_Current_User.getCurrentUserID()) //$uid
-                        .push()
-                        .updateChildren(betMap)
-                        .addOnSuccessListener(unused -> {
-                            count+=1;
-                            if (count == lotteryModels.size())
-                                emitter.onSuccess(new Result(true));
-                        })
-                .addOnFailureListener(e -> {
-                    count +=1;
-                    if (count == lotteryModels.size())
-                        emitter.onSuccess(new Result(true));
+                    FirebaseDatabase.getInstance().getReference()
+                            .child(Static_Config.BETSLIP)// BetSlip
+                            .child(Static_Config.THREED)//TwoD
+                            .child(Get_Current_User.getCurrentUserID()) //$uid
+                            .push()
+                            .updateChildren(betMap)
+                            .addOnSuccessListener(unused -> {
+                                count += 1;
+                                //add amount to totalAmount on successfully betted
+                                totalAmount += lotteryModel.getAmount();
+                                if (count == lotteryModels.size()) { //means all lotteries are uploaded
+                                    //calculate the new balance by subtracting totalAmount from balance
+                                    double newBalance = balance - totalAmount;
+                                    //and upload new balance to firebase (only on client side)
+                                    FirebaseDatabase.getInstance().getReference().child(Static_Config.BALANCE)
+                                            .child(Get_Current_User.getCurrentUserID())
+                                            .child(Static_Config.BALANCE)
+                                            .setValue(newBalance)
+                                            .addOnCompleteListener(task -> emitter.onSuccess(new Result(true)));
+
+                                }
+
+                            })
+                            .addOnFailureListener(e -> {
+                                count += 1;
+                                if (count == lotteryModels.size()) { //means all lotteries are uploaded
+                                    //calculate the new balance by subtracting totalAmount from balance
+                                    double newBalance = balance - totalAmount;
+                                    //and upload new balance to firebase (only on client side)
+                                    FirebaseDatabase.getInstance().getReference().child(Static_Config.BALANCE)
+                                            .child(Get_Current_User.getCurrentUserID())
+                                            .child(Static_Config.BALANCE)
+                                            .setValue(newBalance)
+                                            .addOnCompleteListener(task -> emitter.onSuccess(new Result(true)));
+                                }
+
+                                Log.e("bet error", e.getMessage());
+                            });
+                }catch (Exception e){
                     Log.e("bet error",e.getMessage());
-                });
+                }
             }
+
         });
     }
 }

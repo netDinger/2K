@@ -40,8 +40,8 @@ public class Activity_DiceBet extends AppCompatActivity implements DiceBetContra
     ThreeDBetComponent threeDBetComponent;
 
     private GridRecyclerviewAdapter gridRecyclerviewAdapter;
-    private TextView time_remaining,win_date;
-    private ImageView help;
+    private TextView time_remaining;
+    private EditText amount;
 
     private AlertDialog alertDialog; //to show the available win date
 
@@ -113,36 +113,28 @@ public class Activity_DiceBet extends AppCompatActivity implements DiceBetContra
         addToolbar();
         lotteryModels = new ArrayList<>();
         Button bet = findViewById(R.id.bet);
-        Button history = findViewById(R.id.history);
-        EditText amount = findViewById(R.id.amount);
-        win_date = findViewById(R.id.win_date);
+        ImageView history = findViewById(R.id.history);
+        amount = findViewById(R.id.amount);
         time_remaining = findViewById(R.id.time_remaining);
-        //help = findViewById(R.id.help);
+        ImageView help = findViewById(R.id.help);
+
         bet.setOnClickListener(v-> {
-            if (presenter.isStringValid(amount.getText().toString())&&!lotteryModels.isEmpty()){
-                //if amount is not empty and at least one lottery is selected
-            Intent intent = new Intent();
-            intent.putExtra("betSlips",lotteryModels);
-            intent.putExtra("amount",amount.getText().toString().trim());
-            intent.setClass(this,Activity_Bet_Slips.class);
-            startActivity(intent);
-            }
-            else
+            if (presenter.isStringValid(amount.getText().toString())){ //if amount is not empty
+                if (!lotteryModels.isEmpty()) {  // if at least one lottery is selected
+                    if (alertDialog != null) {
+                        alertDialog.show();
+                    } else
+                        Toast.makeText(this, R.string.wait, Toast.LENGTH_LONG).show();
+                }else
+                    Toast.makeText(this,R.string.lottery_warning,Toast.LENGTH_SHORT).show();
+            } else
                 Toast.makeText(this,R.string.amount_warning,Toast.LENGTH_SHORT).show();
         });
 
         //navigate to lucky number history
         history.setOnClickListener(view -> startActivity(new Intent(this,Activity_Win_Lotteries.class)));
-        win_date.setOnClickListener(view ->{
-            if (alertDialog == null){
-                //if winDates are still retrieving
-                Toast.makeText(this,R.string.wait,Toast.LENGTH_SHORT).show();
-            }
-            else
-                alertDialog.show();
-        });
 
-        //help.setOnClickListener(view -> startActivity(new Intent(this,Activity_Help.class)));
+        help.setOnClickListener(view -> startActivity(new Intent(this,Activity_Help.class)));
     }//widgets
 
     /**
@@ -157,15 +149,21 @@ public class Activity_DiceBet extends AppCompatActivity implements DiceBetContra
             picker.setMinValue(0);
             picker.setMaxValue(dates.size() - 1);
             picker.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
-            picker.setDisplayedValues((String[]) dates.toArray());
+            picker.setDisplayedValues(dates.toArray(new String[0]));
 
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setTitle(R.string.select_win_date);
             builder.setView(picker);
             builder.setCancelable(true);
             builder.setPositiveButton("Select", (dialogInterface, i) -> {
-                win_date.setText(dates.get(picker.getValue()));
                 alertDialog.dismiss();
+                Intent intent = new Intent();
+                intent.putExtra("betSlips",lotteryModels);
+                intent.putExtra("amount",amount.getText().toString().trim());
+                intent.putExtra("winDate",dates.get(picker.getValue()));
+                intent.setClass(this,Activity_Bet_Slips.class);
+                alertDialog = null;     // set null to prevent memory leakage
+                startActivity(intent);
             });
             alertDialog = builder.create();
 
@@ -173,7 +171,6 @@ public class Activity_DiceBet extends AppCompatActivity implements DiceBetContra
             Log.e(TAG,e.getMessage());
         }
     }
-
 
     private void addToolbar() {
         Toolbar toolbar = findViewById(R.id.toolbar);

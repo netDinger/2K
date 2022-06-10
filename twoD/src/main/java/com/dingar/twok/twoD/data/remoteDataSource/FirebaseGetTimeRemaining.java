@@ -1,6 +1,8 @@
 package com.dingar.twok.twoD.data.remoteDataSource;
 
 
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 
 import com.dingar.twok.firebaseadapter.Static_Config;
@@ -39,10 +41,8 @@ public class FirebaseGetTimeRemaining {
                    public void onDataChange(@NonNull DataSnapshot snapshot) {
                        if (snapshot.exists())
                        emitter.onSuccess(Objects.requireNonNull(String.valueOf(snapshot.getValue())));
-
-                       //TODO: for test case remove this later
                        else
-                           emitter.onSuccess("1653750276007");
+                           emitter.onError(new Exception("No Data"));
                    }
 
                    @Override

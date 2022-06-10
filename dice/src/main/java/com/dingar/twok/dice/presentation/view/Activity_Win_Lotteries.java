@@ -1,10 +1,12 @@
 package com.dingar.twok.dice.presentation.view;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 
 import com.dingar.twok.core.util.DateUtil;
@@ -15,6 +17,7 @@ import com.dingar.twok.dice.di.component.DiceWinLotteryComponent;
 import com.dingar.twok.dice.presentation.contract.WinLotteryContract;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 import javax.inject.Inject;
 
@@ -23,6 +26,8 @@ import javax.inject.Inject;
  * @see WinLotteryContract for better understanding
  */
 public class Activity_Win_Lotteries extends AppCompatActivity implements WinLotteryContract.View {
+
+    private final String TAG = "Activity_Win_Lotteries";
 
     @Inject
     public WinLotteryContract.Presenter presenter;
@@ -58,10 +63,15 @@ public class Activity_Win_Lotteries extends AppCompatActivity implements WinLott
     @Override
     public void onCurrentTwoDLoaded(String twoD) {
         luckyNumber.setText(twoD);
-        updated_date.setText(DateUtil.timeStampToDate(String.valueOf(System.currentTimeMillis())));
-    }
+        try {
+            updated_date.setText(DateUtil.timeStampToDate(String.valueOf(System.currentTimeMillis())));
+        }catch (Exception e){
+            Log.e(TAG,e.getMessage());
+        }
+        }
 
     private void widgets(){
+        addToolbar();
         winHistoryRecyclerview = findViewById(R.id.winHistory);
         //current TwoD result
         luckyNumber = findViewById(R.id.lottery_number);
@@ -81,4 +91,11 @@ public class Activity_Win_Lotteries extends AppCompatActivity implements WinLott
         presenter.loadLuckyHistory();
     }
 
+    private void addToolbar() {
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled(true);
+        toolbar.setNavigationOnClickListener(v -> onBackPressed()); }
 }

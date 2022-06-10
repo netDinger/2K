@@ -24,7 +24,7 @@
                 android:layout_toStartOf="@id/lottery_number"
                 android:clickable="false"
                 android:text="@string/date"
-                android:textSize="14sp" />
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/lottery_number"
@@ -35,7 +35,7 @@
                 android:gravity="center"
                 android:text="@string/lottery_number"
                 android:textColor="@color/colorPrimary"
-                android:textSize="25sp"
+                android:textSize="21sp"
                 android:textStyle="bold" />
 
             <ImageView
@@ -47,7 +47,7 @@
                 android:layout_marginTop="7dp"
                 android:layout_marginEnd="10dp"
                 android:clickable="false"
-                android:src="@drawable/arrow_downward" />
+                android:src="@drawable/expend_down" />
 
         </RelativeLayout>
 

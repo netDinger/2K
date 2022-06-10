@@ -8,5 +8,5 @@ import java.util.ArrayList;
 import io.reactivex.Single;
 
 public interface BetRepository {
-    Single<Result> bet(ArrayList<LotteryModel> lotteryModels);
+    Single<Result> bet(ArrayList<LotteryModel> lotteryModels,double balance);
 }

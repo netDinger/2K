@@ -17,6 +17,10 @@ import com.dingar.twok.twoK.presentation.contract.DiceBetContract;
 
 import java.util.ArrayList;
 
+/**
+ * recycler view adapter to show lotteries
+ * {@link Activity_DiceBet}
+ */
 public class GridRecyclerviewAdapter extends RecyclerView.Adapter<GridRecyclerviewAdapter.ViewHolder> {
 
     private final String TAG = "GridRecyclerviewAdapter";
@@ -47,7 +51,8 @@ public class GridRecyclerviewAdapter extends RecyclerView.Adapter<GridRecyclervi
         holder.lottery_number.setText(lottery.getLotteryNumber());
 
         //set the background color according to it is selected or not
-        holder.lottery_number.setBackgroundColor(lottery.isSelected()?Color.parseColor("#DDAB12"):Color.parseColor("#1DAF3C"));
+        holder.lottery_number.setBackgroundColor(lottery.isSelected()?Color.parseColor("#DDAB12"):  //golden color
+                Color.parseColor("#188830"));   //green color
 
         //on a lottery is selected
         holder.lottery_number.setOnClickListener(view ->{

@@ -1,25 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- item profile-->
-    <string name="username">2K user</string>
-    <string name="id">ID: 11234511Ace</string>
-
-    <!-- item_balance-->
-    <string name="balance">Balance: 30000Kyats</string>
-    <string name="points">Points: 10000P</string>
-    <string name="coupons">Coupons</string>
-
-    <!--item_additionals-->
-    <string name="history">History</string>
-    <string name="help">Help and Complain</string>
-    <string name="privacy">Privacy Policy</string>
-    <string name="about">About</string>
-    <string name="share">Share</string>
-    <string name="language">Language</string>
-    <string name="phone_number">09 12345678</string>
-    <string name="phone_text">Phone Number</string>
-    <string name="change">Change</string>
-
-    <string name="logout">Logout</string>
 
 </resources>

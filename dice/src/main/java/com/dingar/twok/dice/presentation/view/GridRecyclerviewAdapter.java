@@ -47,7 +47,7 @@ public class GridRecyclerviewAdapter extends RecyclerView.Adapter<GridRecyclervi
 
         //set the background color according to it is selected or not
         holder.lottery_number.setBackgroundColor(lottery.isSelected()?Color.parseColor("#DDAB12")   //gold color
-                :Color.parseColor("#1DAF3C"));  // green color
+                :Color.parseColor("#188830"));  // green color
 
         //on a lottery is selected
         holder.lottery_number.setOnClickListener(view ->{

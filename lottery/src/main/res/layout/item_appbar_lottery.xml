@@ -18,7 +18,7 @@
             android:layout_height="?android:attr/actionBarSize"
             android:background="@drawable/gradient_color"
             app:popupTheme="@style/Theme.2K.PopupOverlay"
-            app:title="@string/appName"
+            app:title="@string/app_name"
             app:titleTextColor="@color/colorOnPrimary"
             app:titleMarginStart="12dp" />
 

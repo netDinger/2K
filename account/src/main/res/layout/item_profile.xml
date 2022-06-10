@@ -29,7 +29,7 @@
         android:layout_below="@id/username"
         android:layout_marginStart="10dp"
         android:layout_toEndOf="@id/profile"
-        android:text="@string/id"
+        android:text="@string/uid"
         android:textColor="@color/white" />
 
 

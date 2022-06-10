@@ -3,6 +3,7 @@ package com.dingar.twok.firebaseadapter;
 public class Static_Config {
     public static final String USERS = "users";
     public static final String BALANCE = "balance";
+    public static final String POINT = "point";
 
     public static final String EXCLUDED_BET = "excludedBet";
 
@@ -22,8 +23,10 @@ public class Static_Config {
 
     public static final String NEXT_WIN = "nextWin";
 
-    public static final String BETABLE_DATE = "betAbleDate";
+    public static final String BETABLE_DATE = "openDate";
 
     public static final String DATE = "date";
+
+    public static final String FORMULA = "formulae";
 
 }

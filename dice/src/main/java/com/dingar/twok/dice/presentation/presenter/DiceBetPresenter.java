@@ -114,7 +114,11 @@ public class DiceBetPresenter implements DiceBetContract.Presenter {
 
             @Override
             public void onNext(@NonNull String s) {
-                winDates.add(DateUtil.timeStampToDate(s));
+                try {
+                    winDates.add(DateUtil.timeStampToDate(s));
+                }catch (Exception e){
+                    Log.e(TAG,e.getMessage());
+                }
             }
 
             @Override
@@ -147,9 +151,9 @@ public class DiceBetPresenter implements DiceBetContract.Presenter {
 
     @Override
     public void dropView() {
+        if (timer!= null)
+            timer.cancel(); // remove timer
         view = null;
-        if(timer != null)
-        timer.cancel(); // remove timer
     }
 
     //calculate the time remaining to open the next lottery

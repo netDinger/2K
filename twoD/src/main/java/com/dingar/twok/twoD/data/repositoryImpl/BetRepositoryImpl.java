@@ -11,12 +11,15 @@ import javax.inject.Inject;
 
 import io.reactivex.Single;
 
+/**
+ * send the user's bet slips to server
+ */
 public class BetRepositoryImpl implements BetRepository {
     @Inject
     public BetRepositoryImpl(){}
 
     @Override
-    public Single<Result> bet(ArrayList<LotteryModel> lotteryModels) {
-        return FirebaseBetSlip.getInstance().bet(lotteryModels);
+    public Single<Result> bet(ArrayList<LotteryModel> lotteryModels,double balance) {
+        return FirebaseBetSlip.getInstance().bet(lotteryModels,balance);
     }
 }

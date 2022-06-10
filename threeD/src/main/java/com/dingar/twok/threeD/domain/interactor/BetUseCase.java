@@ -22,7 +22,7 @@ public class BetUseCase {
     @Inject
     public BetUseCase(){}
 
-    public Single<Result> execute(ArrayList<LotteryModel> lotteryModels){
-        return betRepository.bet(lotteryModels);
+    public Single<Result> execute(ArrayList<LotteryModel> lotteryModels,double balance){
+        return betRepository.bet(lotteryModels,balance);
     }
 }

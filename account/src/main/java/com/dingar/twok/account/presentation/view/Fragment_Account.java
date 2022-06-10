@@ -29,7 +29,8 @@ public class Fragment_Account extends Fragment implements AccountContract.View {
     AccountContract.Presenter presenter; //inject the presenter
 
     AccountComponent accountComponent;  //component
-    private TextView username,id,balance,points;
+    private TextView username,id,balance,points,coupons;
+    private TextView about,share,feedback;
 
     public Fragment_Account(){} //empty constructor
 
@@ -58,15 +59,23 @@ public class Fragment_Account extends Fragment implements AccountContract.View {
         RelativeLayout layout = view.findViewById(R.id.balance_layout);
         balance = layout.findViewById(R.id.balance);
         points = layout.findViewById(R.id.points);
+        coupons = layout.findViewById(R.id.coupons);
+        about = view.findViewById(R.id.about);
+        share = view.findViewById(R.id.share);
         TextView logout = view.findViewById(R.id.logout);
         logout.setOnClickListener(view1 -> {
+            presenter.logout();
             Toast.makeText(requireContext(),"Logout Successfully",Toast.LENGTH_SHORT).show();
-            presenter.logout();});
+            Intent intent = new Intent();
+            intent.setClassName(requireContext().getPackageName(),
+                    "com.dingar.twok.auth.presentation.view.Activity_Login");
+            startActivity(intent);
+        });
 
         id.setOnClickListener(v->{ //on user id textview is clicked
             //copy id to clipboard
             ClipboardManager manager = (ClipboardManager) requireContext().getSystemService(Context.CLIPBOARD_SERVICE);
-            ClipData clipData = ClipData.newPlainText(id.getText().toString(),id.getText().toString());
+            ClipData clipData = ClipData.newPlainText(id.getText().toString().substring(4),id.getText().toString().substring(4));
             manager.setPrimaryClip(clipData);
 
             Toast.makeText(requireContext(),"Copied to ClipBoard",Toast.LENGTH_SHORT).show();
@@ -74,23 +83,43 @@ public class Fragment_Account extends Fragment implements AccountContract.View {
 
         balance.setOnClickListener(view1 -> startActivity(new Intent(requireContext(),Activity_Balance.class)));
 
+        coupons.setOnClickListener(v->{
+            Toast.makeText(requireContext(),"No coupons yet!",Toast.LENGTH_SHORT).show();
+        });
+
+        about.setOnClickListener(v->startActivity(new Intent(requireContext(),Activity_About.class)));
+
+        share.setOnClickListener(v->{
+            //TODO: for test purpose
+            String url = "www.google.com";
+            Intent shareIntent = new Intent(Intent.ACTION_SEND);
+            shareIntent.setType("text/plain");
+            shareIntent.putExtra(Intent.EXTRA_TEXT,url);
+            startActivity(Intent.createChooser(shareIntent,"Send message"));
+        });
     }
 
     private void initiate() {
         presenter.setView(this);        //attach the view
         presenter.loadUserBalance();    //get user balance
+        presenter.loadUserPoint();      //get user point
         presenter.loadUserInfo();       //get user info
     }
 
     @Override
     public void onBalanceLoaded(String balance) {
         this.balance.setText(balance);
-        points.setText("1000 P");
+    }
+
+    @Override
+    public void onPointLoaded(String point) {
+        this.points.setText(point);
     }
 
     @Override
     public void onUserInfoLoaded(User user) {
        username.setText(user.getName());
-       id.setText(user.getUid());
+       String s = getResources().getString(R.string.uid)+ user.getUid();
+       id.setText(s);
     }
 }

@@ -1,5 +1,7 @@
 package com.dingar.twok.firebaseadapter;
 
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 
 import com.google.firebase.database.DataSnapshot;
@@ -12,6 +14,7 @@ import java.util.Objects;
 import io.reactivex.Single;
 
 public class GetBalance {
+    //Singleton
     private static GetBalance instance;
     private GetBalance(){}
     public static GetBalance getInstance(){
@@ -22,7 +25,7 @@ public class GetBalance {
 
     public Single<Double> gtBalance(){
         return Single.create(emitter -> {
-            FirebaseDatabase.getInstance().getReference().child(Static_Config.USERS)
+            FirebaseDatabase.getInstance().getReference().child(Static_Config.BALANCE)
                     .child(Get_Current_User.getCurrentUserID())
                     .child(Static_Config.BALANCE)
                     .addValueEventListener(new ValueEventListener() {
@@ -30,14 +33,14 @@ public class GetBalance {
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             if (snapshot.exists()){
                             try {
-                                emitter.onSuccess((Double) Objects.requireNonNull(snapshot.getValue()));
+                                emitter.onSuccess(Double.parseDouble(String.valueOf(Objects.requireNonNull(snapshot.getValue()))));
                             }
                             catch(Exception exception){
-                                exception.printStackTrace();
+                                emitter.onError(exception);
                             }
                             }
                             else
-                               emitter.onError(new NullPointerException("LOL no data"));
+                               emitter.onError(new NullPointerException("No data"));
                         }
 
                         @Override

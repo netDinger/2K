@@ -1,27 +1,33 @@
 package com.dingar.twok.account.presentation.presenter;
 
-import android.content.ClipboardManager;
-import android.content.Context;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
 
 import com.dingar.twok.account.data.model.User;
 import com.dingar.twok.account.domain.interactor.GetBalanceUseCase;
+import com.dingar.twok.account.domain.interactor.GetPointUseCase;
 import com.dingar.twok.account.domain.interactor.GetUserInfoUseCase;
 import com.dingar.twok.account.presentation.contract.AccountContract;
+import com.dingar.twok.firebaseadapter.LogOut;
 
 import io.reactivex.SingleObserver;
 import io.reactivex.disposables.Disposable;
 
 public class AccountPresenter implements AccountContract.Presenter {
 
+    private final String TAG = "AccountPresenter";
+
     public GetBalanceUseCase getBalanceUseCase;
     GetUserInfoUseCase getUserInfoUseCase;
+    GetPointUseCase getPointUseCase;
 
-    public AccountPresenter(GetBalanceUseCase getBalanceUseCase,GetUserInfoUseCase getUserInfoUseCase){
+    public AccountPresenter(GetBalanceUseCase getBalanceUseCase,
+                            GetUserInfoUseCase getUserInfoUseCase,
+                            GetPointUseCase getPointUseCase){
         this.getBalanceUseCase = getBalanceUseCase;
         this.getUserInfoUseCase = getUserInfoUseCase;
+        this.getPointUseCase = getPointUseCase;
     }
 
     private AccountContract.View view;
@@ -56,7 +62,32 @@ public class AccountPresenter implements AccountContract.Presenter {
     }
 
     @Override
-    public void logout() {}
+    public void loadUserPoint() {
+        getPointUseCase.getPoints().subscribe(new SingleObserver<Double>() {
+            @Override
+            public void onSubscribe(@NonNull Disposable d) {
+
+            }
+
+            @Override
+            public void onSuccess(@NonNull Double point) {
+                view.onPointLoaded("Points: "+point);
+            }
+
+            @Override
+            public void onError(@NonNull Throwable e) {
+                Log.e(TAG,e.getMessage());
+                view.onPointLoaded("Points: 0P");
+            }
+        });
+    }
+
+    @Override
+    public void logout() {
+        //this breaking the clean architecture
+        //TODO: replace this snippet with clean architecture
+        LogOut.getInstance().logoutUser();
+    }
 
     @Override
     public void loadUserInfo() {
