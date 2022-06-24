@@ -34,7 +34,7 @@ public class GetPoint {
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     if (snapshot.exists()){
                         try {
-                            emitter.onSuccess(Double.parseDouble(Objects.requireNonNull(snapshot.getValue(String.class))));
+                            emitter.onSuccess(Double.parseDouble(String.valueOf(Objects.requireNonNull(snapshot.getValue()))));
                         }
                         catch(Exception exception){
                             emitter.onError(exception);
