@@ -2,6 +2,7 @@ package com.dingar.twok.threeD.presentation.view;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.PopupMenu;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,9 +13,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
+
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -48,10 +50,10 @@ public class Activity_Bet_Slips extends AppCompatActivity implements BetListCont
     ArrayList<LotteryModel> betList;
     String amount,winDate;
 
-    private TextView balance,totalBet;
-    private ImageView addNewBet;
+    private TextView balance,totalBet,points;
     private EditText lotteryNumber,Amount;
     private AlertDialog newBetDialog;
+    private Button bet;
 
     private RecyclerView betsList;
     private BetListRecyclerviewAdapter betListRecyclerviewAdapter;
@@ -90,6 +92,11 @@ public class Activity_Bet_Slips extends AppCompatActivity implements BetListCont
         this.balance.setText(balance);
     }
 
+    @Override
+    public void onPointLoaded(String point) {
+        this.points.setText(point);
+    }
+
     /**
      * method to add amount to each model and add it to new {@link Activity_Bet_Slips#betList}
      */
@@ -115,18 +122,15 @@ public class Activity_Bet_Slips extends AppCompatActivity implements BetListCont
         betsList = findViewById(R.id.betSlips);
         balance = findViewById(R.id.balance);
         totalBet = findViewById(R.id.total);
-        LinearLayout v = findViewById(R.id.addBetSlip);
-        addNewBet = v.findViewById(R.id.add);
-        lotteryNumber = v.findViewById(R.id.lottery_number);
-        Amount = v.findViewById(R.id.amount);
+        points = findViewById(R.id.point);
+        ImageView addNewBet = findViewById(R.id.add);
 
-        findViewById(R.id.bet).setOnClickListener(view -> presenter.onBetClick());
+        bet = findViewById(R.id.bet);
+        bet.setOnClickListener(view -> showBetOptions(bet));
         betsList.setHasFixedSize(true);
         presenter.setView(this);
 
-        addNewBet.setOnClickListener(view->{
-            createAddBetDialog();
-        });
+        addNewBet.setOnClickListener(view-> createAddBetDialog());
     }
 
     private void initiate(){
@@ -146,6 +150,7 @@ public class Activity_Bet_Slips extends AppCompatActivity implements BetListCont
 
         this.setData();
         presenter.onLoadBalance();
+        presenter.loadPoint();
     }
 
     private void addToolbar() {
@@ -161,7 +166,6 @@ public class Activity_Bet_Slips extends AppCompatActivity implements BetListCont
         Toast.makeText(this,message,Toast.LENGTH_SHORT).show();
     }
 
-
     //dialog to show add new bet option
     private void createAddBetDialog(){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -173,15 +177,33 @@ public class Activity_Bet_Slips extends AppCompatActivity implements BetListCont
         builder.setCancelable(true);
         builder.setTitle(R.string.add_bet);
         builder.setPositiveButton(R.string.ok, (dialogInterface, i) -> {
-            betList.add(new LotteryModel(lotteryNumber.getText().toString(),
-                    Integer.parseInt(Amount.getText().toString())));
-            presenter.setBetList(betList);
-            betListRecyclerviewAdapter.notifyItemInserted(betList.size()-1);
-            presenter.onAmountChanged(betList.size()-1,Amount.getText().toString());
-            newBetDialog.dismiss();
+            if (!lotteryNumber.getText().toString().isEmpty()&&!Amount.getText().toString().isEmpty()){
+                betList.add(new LotteryModel(lotteryNumber.getText().toString(),
+                        Integer.parseInt(Amount.getText().toString())));
+                presenter.setBetList(betList);
+                betListRecyclerviewAdapter.notifyItemInserted(betList.size()-1);
+                presenter.onAmountChanged(betList.size()-1,Amount.getText().toString());
+                newBetDialog.dismiss();
+            }
+            else showToast(getString(R.string.lottery_warning));
         });
         newBetDialog = builder.create();
         newBetDialog.show();
+    }
+
+    //to show bet menu to bet with point or balance
+    private void showBetOptions(View anchor){
+        PopupMenu popupMenu= new PopupMenu(this,anchor);
+        popupMenu.getMenuInflater().inflate(R.menu.betmenu,popupMenu.getMenu());
+        //registering popup with OnMenuItemClickListener
+        popupMenu.setOnMenuItemClickListener(item -> {
+            if (item.getItemId() == R.id.betWithBalance)
+                presenter.onBetWithBalance();
+            else
+                presenter.onBetWithPoint();
+            return true;
+        });
+        popupMenu.show();
     }
 
     @Override

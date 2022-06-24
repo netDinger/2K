@@ -30,6 +30,7 @@
                 android:layout_centerVertical="true"
                 android:text="@string/time_remaining"
                 android:textSize="14sp"
+                android:layout_marginEnd="7dp"
                 android:textColor="@color/white"
                 android:layout_gravity="right"
                 tools:ignore="RtlHardcoded" />
@@ -52,6 +53,32 @@
             android:layout_centerVertical="true"
             android:padding="8dp"
             android:src="@drawable/history" />
+
+        <TextView
+            android:id="@+id/topping"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="21dp"
+            android:layout_toEndOf="@id/history"
+            android:padding="7dp"
+            android:background="@drawable/rounded_green"
+            android:textColor="@color/white"
+            android:text="@string/topping" />
+
+        <TextView
+            android:id="@+id/quick_choose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/quick_choose"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="7dp"
+            android:layout_centerVertical="true"
+            android:paddingVertical="7dp"
+            android:paddingHorizontal="14dp"
+            android:textColor="@color/white"
+            android:background="@drawable/rounded_green"
+            />
 
     </RelativeLayout>
 

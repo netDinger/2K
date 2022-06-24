@@ -43,6 +43,12 @@ public interface DiceBetContract {
          * {@link Presenter#loadBetableTime()}
          */
         void onBetAbleTimeLoaded(ArrayList<String> date);
+
+        /**
+         * @param topping list of topping
+         * {@link Presenter#loadToppings()}
+         */
+        void onToppingLoaded(ArrayList<String> topping);
     }
 
     interface Presenter extends BasePresenter<View> {
@@ -69,6 +75,12 @@ public interface DiceBetContract {
          * example: win dates { 11.11.2022 4:00PM,12.11.2022 10:00AM }
          */
         void loadBetableTime();
+
+        /**
+         * load the Topping(Prefix) of the lotteries
+         * example: A**,B**,...
+         */
+        void loadToppings();
     }
 
 }

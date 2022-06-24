@@ -12,6 +12,7 @@ import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import io.reactivex.Observable;
 
@@ -35,38 +36,28 @@ public class FirebaseGet2DBetSlip {
             FirebaseDatabase.getInstance().getReference()
                     .child(Static_Config.BETSLIP)// BetSlip
                     .child(Static_Config.TWOD)//TwoD
-                    .child(Get_Current_User.getCurrentUserID())//$uid
-            .addChildEventListener(new ChildEventListener() {
-                @Override
-                public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                    if (snapshot.exists()){
-                        try {
-                            BetSlipModel betSlipModel = snapshot.getValue(BetSlipModel.class);
-                            assert betSlipModel != null;
-                            betSlipModel.setBetSlipId(snapshot.getKey());
-                            emitter.onNext(betSlipModel);
-                        }catch (Exception e){
-                            Log.e(TAG,e.getMessage());
+                    .orderByChild(Static_Config.UID)
+                    .equalTo(Get_Current_User.getCurrentUserID())
+                    .addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            if (snapshot.exists()){
+                                try {
+                                    BetSlipModel betSlipModel = snapshot.getValue(BetSlipModel.class);
+                                    assert betSlipModel != null;
+                                    betSlipModel.setBetSlipId(snapshot.getKey());
+                                    emitter.onNext(betSlipModel);
+                                }catch (Exception e){
+                                    Log.e(TAG,e.getMessage());
+                                }
+                            }
                         }
-                    }
-                }
 
-                @Override
-                public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                }
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
 
-                @Override
-                public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-                }
-
-                @Override
-                public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-                }
-            });
+                        }
+                    });
         });
     }
 }

@@ -46,6 +46,7 @@ public class Activity_DiceBet extends AppCompatActivity implements DiceBetContra
     private AlertDialog alertDialog; //to show the available win date
 
     private ArrayList<LotteryModel> lotteryModels;  //contains user selected lotteries
+    private ArrayList<String> toppingList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,8 +65,9 @@ public class Activity_DiceBet extends AppCompatActivity implements DiceBetContra
         gridRecyclerviewAdapter = new GridRecyclerviewAdapter(this);
         gridRecyclerView.setAdapter(gridRecyclerviewAdapter);
 
-        initiate();
         widgets();
+        initiate();
+
     }
 
     @Override
@@ -112,6 +114,7 @@ public class Activity_DiceBet extends AppCompatActivity implements DiceBetContra
     private void widgets(){
         addToolbar();
         lotteryModels = new ArrayList<>();
+        toppingList = new ArrayList<>();
         Button bet = findViewById(R.id.bet);
         ImageView history = findViewById(R.id.history);
         amount = findViewById(R.id.amount);
@@ -179,5 +182,10 @@ public class Activity_DiceBet extends AppCompatActivity implements DiceBetContra
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(true);
         toolbar.setNavigationOnClickListener(v -> onBackPressed()); }
+
+    @Override
+    public void onToppingLoaded(ArrayList<String> toppings) {
+        this.toppingList = toppings;
+    }
 
 }

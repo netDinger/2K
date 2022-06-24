@@ -21,7 +21,7 @@ public class BetSlipPresenter implements BetListContract.Presenter {
     private BetListContract.View view;
     BetUseCase betUseCase;
     GetBalanceUseCase getBalanceUseCase;
-    private GetPointUseCase getPointUseCase;
+    private final GetPointUseCase getPointUseCase;
     private ArrayList<LotteryModel> lotteryModelArrayList;
     private double totalAmount;
     private double balance,points;
@@ -95,7 +95,7 @@ public class BetSlipPresenter implements BetListContract.Presenter {
 
             @Override
             public void onSuccess(@NonNull Double aDouble) {
-                view.onBalanceLoaded(String.valueOf(aDouble));
+                view.onBalanceLoaded("Balance:"+ aDouble);
                 balance = aDouble;
             }
 

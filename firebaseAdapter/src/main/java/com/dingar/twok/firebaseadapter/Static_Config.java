@@ -18,6 +18,7 @@ public class Static_Config {
     public static final String BETDATE  = "betDate";
     public static final String WINDATE  = "winDate";
     public static final String LUCKYNO  = "luckyNo";
+    public static final String UID = "uid";
 
     public static final String LUCKY_NUMBERS = "luckyNumbers";
 

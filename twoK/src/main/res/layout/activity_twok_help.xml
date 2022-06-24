@@ -9,7 +9,7 @@
 
     <include
         android:id="@+id/appbar_layout"
-        layout="@layout/item_appbar" />
+        layout="@layout/item_twok_appbar" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -23,7 +23,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/help_game"
+            android:text="@string/help_game_2k"
             android:textSize="16sp" />
 
     </RelativeLayout>

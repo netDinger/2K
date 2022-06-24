@@ -37,7 +37,8 @@ public class FirebaseGetTwoKBetSlip {
             FirebaseDatabase.getInstance().getReference()
                     .child(Static_Config.BETSLIP)// BetSlip
                     .child(Static_Config.TWOK)//twoK
-                    .child(Get_Current_User.getCurrentUserID())//$uid
+                    .orderByChild(Static_Config.UID)
+                    .equalTo(Get_Current_User.getCurrentUserID())
                     .addChildEventListener(new ChildEventListener() {
                         @Override
                         public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {

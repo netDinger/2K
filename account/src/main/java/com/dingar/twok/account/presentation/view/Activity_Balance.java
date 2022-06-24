@@ -67,7 +67,7 @@ public class Activity_Balance extends AppCompatActivity implements BalanceContra
 
 
     private void toViber(){
-        Intent shareIntent = new Intent(Intent.ACTION_SENDTO, Uri.parse("smsto:+959458871680"));
+        Intent shareIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("smsto:+959458871680"));
         shareIntent.setPackage("com.viber.voip"); //viber package name
         startActivity(Intent.createChooser(shareIntent,"Test Title"));
     }

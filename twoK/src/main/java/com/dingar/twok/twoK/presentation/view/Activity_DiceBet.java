@@ -40,12 +40,14 @@ public class Activity_DiceBet extends AppCompatActivity implements DiceBetContra
     TwoKBetComponent twoKBetComponent;
 
     private GridRecyclerviewAdapter gridRecyclerviewAdapter;
-    private TextView time_remaining;
+    private TextView time_remaining,quick_chooser, topping;
     private EditText amount;
 
-    private AlertDialog alertDialog; //to show the available win date
+    private AlertDialog winDateDialog; //to show the available win date
+    private AlertDialog toppingDialog;
 
     private ArrayList<LotteryModel> lotteryModels;  //contains user selected lotteries
+    private ArrayList<String> toppingList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,14 +66,20 @@ public class Activity_DiceBet extends AppCompatActivity implements DiceBetContra
         gridRecyclerviewAdapter = new GridRecyclerviewAdapter(this);
         gridRecyclerView.setAdapter(gridRecyclerviewAdapter);
 
-        initiate();
         widgets();
+        initiate();
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        initiate();
     }
 
     @Override
     public void onBackPressed() {
         presenter.dropView();
-        alertDialog = null;
+        winDateDialog = null;
         finish();
     }
 
@@ -102,26 +110,35 @@ public class Activity_DiceBet extends AppCompatActivity implements DiceBetContra
         winDatePicker(dates);
     }
 
+    @Override
+    public void onToppingLoaded(ArrayList<String> toppings) {
+        this.toppingList = toppings;
+    }
+
     private void initiate(){
         //load available bet slips (not all because some are excluded by provider)
-        presenter.loadLotteries();
+        presenter.loadLotteries("A");   //load lottery
         presenter.loadBetableTime();
         presenter.loadTimeRemaining();
+        presenter.loadToppings();
     }
 
     private void widgets(){
         addToolbar();
         lotteryModels = new ArrayList<>();
+        toppingList = new ArrayList<>();
         Button bet = findViewById(R.id.bet);
         ImageView history = findViewById(R.id.history);
+        quick_chooser = findViewById(R.id.quick_choose);
+        topping = findViewById(R.id.topping);
         amount = findViewById(R.id.amount);
         time_remaining = findViewById(R.id.time_remaining);
         ImageView help = findViewById(R.id.help);
         bet.setOnClickListener(v-> {
             if (presenter.isStringValid(amount.getText().toString())){ //if amount is not empty
                 if (!lotteryModels.isEmpty()) {  // if at least one lottery is selected
-                    if (alertDialog != null) {
-                        alertDialog.show();
+                    if (winDateDialog != null) {
+                        winDateDialog.show();
                     } else
                         Toast.makeText(this, R.string.wait, Toast.LENGTH_LONG).show();
                 }else
@@ -134,6 +151,37 @@ public class Activity_DiceBet extends AppCompatActivity implements DiceBetContra
         history.setOnClickListener(view -> startActivity(new Intent(this,Activity_Win_Lotteries.class)));
 
         help.setOnClickListener(view -> startActivity(new Intent(this,Activity_Help.class)));
+
+        topping.setOnClickListener(view->{
+            if (toppingList != null && !toppingList.isEmpty()) {
+                NumberPicker picker = new NumberPicker(this);
+                picker.setMinValue(0);
+                picker.setMaxValue(toppingList.size() - 1);
+                picker.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
+                picker.setDisplayedValues(toppingList.toArray(new String[0]));
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setTitle(R.string.select_topping);
+                builder.setView(picker);
+                builder.setCancelable(true);
+                builder.setPositiveButton(R.string.select, (dialogInterface, i) -> {
+                    toppingDialog.dismiss();
+                    //show selected prefix(topping) in textview
+                    String placeHolder = toppingList.get(picker.getValue())+getString(R.string.topping);
+                   topping.setText(placeHolder);
+                   //load the lotteries with selected prefix(topping)
+                   presenter.loadLotteries(toppingList.get(picker.getValue()));
+                });
+            toppingDialog = builder.create();
+            toppingDialog.show();
+            }
+        });
+
+        quick_chooser.setOnClickListener(view ->{
+            Log.e("size",toppingList.size()+"");
+            toppingList.add("00");
+        });
+
     }//widgets
 
     /**
@@ -155,22 +203,21 @@ public class Activity_DiceBet extends AppCompatActivity implements DiceBetContra
             builder.setView(picker);
             builder.setCancelable(true);
             builder.setPositiveButton(R.string.select, (dialogInterface, i) -> {
-                alertDialog.dismiss();
+                winDateDialog.dismiss();
                 Intent intent = new Intent();
                 intent.putExtra("betSlips",lotteryModels);
                 intent.putExtra("amount",amount.getText().toString().trim());
                 intent.putExtra("winDate",dates.get(picker.getValue()));
                 intent.setClass(this,Activity_Bet_Slips.class);
-                alertDialog = null;     // set null to prevent memory leakage
+                winDateDialog = null;     // set null to prevent memory leakage
                 startActivity(intent);
             });
-            alertDialog = builder.create();
+            winDateDialog = builder.create();
 
         }catch(Exception e){
             Log.e(TAG,e.getMessage());
         }
     }
-
 
     private void addToolbar() {
         Toolbar toolbar = findViewById(R.id.toolbar);

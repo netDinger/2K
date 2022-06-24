@@ -43,11 +43,11 @@ public class FirebaseBetSlip {
                     betMap.put(Static_Config.WINDATE, lotteryModel.getWinDate());
                     betMap.put(Static_Config.BETDATE, ServerValue.TIMESTAMP);
                     betMap.put(Static_Config.LUCKYNO, lotteryModel.getLotteryNumber());
+                    betMap.put(Static_Config.UID,Get_Current_User.getCurrentUserID());
 
                     FirebaseDatabase.getInstance().getReference()
                             .child(Static_Config.BETSLIP)// BetSlip
                             .child(Static_Config.THREED)//TwoD
-                            .child(Get_Current_User.getCurrentUserID()) //$uid
                             .push()
                             .updateChildren(betMap)
                             .addOnSuccessListener(unused -> {

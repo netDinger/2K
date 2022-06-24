@@ -22,7 +22,6 @@ public class Get_Current_TwoK_Formula {
      */
     public Single<String> getResult(){
         return Single.create(emitter -> {
-
         });
     }
 

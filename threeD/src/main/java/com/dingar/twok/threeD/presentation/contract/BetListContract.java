@@ -14,13 +14,20 @@ public interface BetListContract {
         void onTotalAmountCalculated(double totalAmount);
 
         void onBalanceLoaded(String balance);
+
+        void onPointLoaded(String point);
     }
 
     interface Presenter extends BasePresenter<View> {
-        void onBetClick();
+        void onBetWithBalance();
+        void onBetWithPoint();
 
         /**to get the user balance*/
         void onLoadBalance();
+
+        /**to get the user's point*/
+        void loadPoint();
+
 
         /**invoked by {@link com.dingar.twok.threeD.presentation.view.BetListRecyclerviewAdapter#onBindViewHolder(BetListRecyclerviewAdapter.ViewHolder, int)}
          * whenever bet amount is changed or lottery is removed

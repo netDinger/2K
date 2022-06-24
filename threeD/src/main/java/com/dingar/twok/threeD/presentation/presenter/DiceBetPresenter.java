@@ -39,6 +39,7 @@ public class DiceBetPresenter implements DiceBetContract.Presenter {
     ArrayList<Integer> excludedLotteriesList = new ArrayList<>();
 
     private final ArrayList<String> winDates;
+    private final ArrayList<String> toppings;
 
     LoadBetsUseCase loadBetsUseCase;    //to get the available lottery numbers
     CountDownUseCase countDownUseCase;  //to get the next bet opening time
@@ -52,6 +53,7 @@ public class DiceBetPresenter implements DiceBetContract.Presenter {
         this.countDownUseCase = countDownUseCase;
         this.betableTimeUseCase = betableTimeUseCase;
         winDates = new ArrayList<>();
+        toppings = new ArrayList<>();
     }
 
     //retrieve available lotteries
@@ -130,6 +132,14 @@ public class DiceBetPresenter implements DiceBetContract.Presenter {
                 view.onBetAbleTimeLoaded(winDates);
             }
         });
+    }
+
+    @Override
+    public void loadToppings() {
+        for(char topping = 'A';topping<='Z';topping++){
+            toppings.add(String.valueOf(topping));
+        }
+        view.onToppingLoaded(toppings);
     }
 
     /**invoked after {@link #loadLotteries()} get all excluded lotteries

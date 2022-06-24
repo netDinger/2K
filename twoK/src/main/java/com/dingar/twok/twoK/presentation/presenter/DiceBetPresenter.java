@@ -40,6 +40,8 @@ public class DiceBetPresenter implements DiceBetContract.Presenter {
 
     private final ArrayList<String> winDates;
 
+    private final ArrayList<String> toppings;
+
     LoadBetsUseCase loadBetsUseCase;    //to get the available lottery numbers
     CountDownUseCase countDownUseCase;  //to get the next bet opening time
     BetableTimeUseCase betableTimeUseCase; // to get the bet opening times
@@ -52,35 +54,13 @@ public class DiceBetPresenter implements DiceBetContract.Presenter {
         this.countDownUseCase = countDownUseCase;
         this.betableTimeUseCase = betableTimeUseCase;
         winDates = new ArrayList<>();
+        toppings = new ArrayList<>();
     }
 
     //retrieve available lotteries
     @Override
-    public void loadLotteries() {
-        //observe on excluded lotteries
-        //i.e lotteries blocked by admin
-        loadBetsUseCase.execute().subscribe(new Observer<String>() {
-            @Override
-            public void onSubscribe(@NonNull Disposable d) {
-            }
-            @Override
-            public void onNext(@NonNull String s) {
-                try {
-                    excludedLotteriesList.add(Integer.parseInt(s));
-                }catch (Exception exception){
-                    Log.e(TAG,exception.getMessage());
-                }
-            }
-
-            @Override
-            public void onError(@NonNull Throwable e) {
-            }
-
-            @Override
-            public void onComplete() {
-                initiateLotteryList();
-            }
-        });
+    public void loadLotteries(String topping) {
+        initiateLotteryList(topping);
     }
 
 
@@ -118,7 +98,6 @@ public class DiceBetPresenter implements DiceBetContract.Presenter {
                 }catch (Exception e){
                     Log.e(TAG,e.getMessage());
                 }
-
             }
 
             @Override
@@ -133,21 +112,24 @@ public class DiceBetPresenter implements DiceBetContract.Presenter {
         });
     }
 
-    /**invoked after {@link #loadLotteries()} get all excluded lotteries
-     * for 2d lotteries list 00 to 99, excluding numbers blocked by admin*/
-    private void initiateLotteryList(){
-        Log.e("THree D","load bet called");
-        String s;
-        for (int i=0; i<=999;i++){
-            if (excludedLotteriesList.contains(i))
-                //if number is in excluded list
-                continue;
+    @Override
+    public void loadToppings() {
+        for(char topping = 'A';topping<='Z';topping++){
+            toppings.add(String.valueOf(topping));
+        }
+        view.onToppingLoaded(toppings);
+    }
+
+    /**invoked after {@link #loadLotteries(String)} get all excluded lotteries
+     * for 2K lotteries list 00 to 99, excluding numbers blocked by admin*/
+    private void initiateLotteryList(String topping){
+        String s ;
+        lotteriesList = new ArrayList<>();
+        for (int i=0; i<=99;i++){
             if (i<10)//add prefix if number less than 10 (to get the formation of 00,01,...)
-                s = "00"+i;
-            else if (i<100)
-                s = "0"+i;
+                s = topping+"0"+i;
             else
-                s = String.valueOf(i);
+                s = topping+i;
             lotteriesList.add(new LotteryModel(s,false));
         }
         //tell the view to load the lotteries
@@ -196,7 +178,6 @@ public class DiceBetPresenter implements DiceBetContract.Presenter {
      */
     private void timerTask(long future,long current){
         Long diff = future - current;
-
         timer = new CountDownTimer(diff,1000){
             @Override
             public void onTick(long remainingTime) {
@@ -205,7 +186,6 @@ public class DiceBetPresenter implements DiceBetContract.Presenter {
                         TimeUnit.MILLISECONDS.toHours(remainingTime)%60,
                         TimeUnit.MILLISECONDS.toMinutes(remainingTime)%60,
                         TimeUnit.MILLISECONDS.toSeconds(remainingTime) % 60);
-
                 view.setTimeRemaining("ထီဖွင့်ရန်: "+remainTime);
             }
 

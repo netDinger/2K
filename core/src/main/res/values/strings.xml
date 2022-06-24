@@ -11,6 +11,11 @@
     <string name="default_amount" translatable="false">100</string>
     <string name="time_remaining">00:00:00</string>
     <string name="history">မှတ်တမ်း</string>
+    <string name="topping">ထိပ်စည်း</string>
+    <string name="quick_choose">အမြန်ရွေး</string>
+
+    <string name="not_enough_point">ပွိုင့်မလုံလောက်ပါ</string>
+    <string name="not_enough_balance">လက်ကျန်ငွေမလုံလောက်ပါ</string>
 
     <string name="amount_warning">ကျေးဇူးပြု၍ လောင်းကြေးထည့်ပါ</string>
     <string name="lottery_warning">ကျေးဇူးပြု၍ ထီရွေးပါ</string>
@@ -18,6 +23,7 @@
     <string name="date" translatable="false">date</string>
 
     <string name="select_win_date">ထီထွက်ချိန်ရွေးပါ</string>
+    <string name="select_topping">ထိပ်စည်းရွေးပါ</string>
     <string name="select">ရွေးမယ်</string>
     <string name="ok">ရပြီ</string>
     <string name="wait">ထီထိုးရန်အချိန်ရယူနေပါသည်။ ကျေးဇူးပြု၍ ခဏစောင့်ပါ</string>
