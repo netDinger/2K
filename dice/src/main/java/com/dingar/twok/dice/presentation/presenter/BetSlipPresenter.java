@@ -63,7 +63,7 @@ public class BetSlipPresenter implements BetListContract.Presenter {
     public void onBetWithPoint() {
         if(lotteryModelArrayList != null) {
             if (points>= totalAmount){
-                betUseCase.execute(lotteryModelArrayList,points).subscribe(new SingleObserver<Result>() {
+                betUseCase.betByPoint(lotteryModelArrayList,points).subscribe(new SingleObserver<Result>() {
                     @Override
                     public void onSubscribe(@NonNull Disposable d) {
                     }

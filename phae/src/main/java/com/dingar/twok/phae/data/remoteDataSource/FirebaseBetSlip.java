@@ -88,4 +88,63 @@ public class FirebaseBetSlip {
             }
         });
     }
+
+
+    public Single<Result> betByPoint(ArrayList<LotteryModel> lotteryModels,double points){
+        return Single.create(emitter -> {
+            count = 0;
+            totalAmount = 0;
+            for (LotteryModel lotteryModel :lotteryModels){
+                try {
+                    HashMap<String, Object> betMap = new HashMap<>();
+                    betMap.put(Static_Config.AMOUNT, String.valueOf(lotteryModel.getAmount()));
+                    betMap.put(Static_Config.WINDATE, lotteryModel.getWinDate());
+                    betMap.put(Static_Config.BETDATE, ServerValue.TIMESTAMP);
+                    betMap.put(Static_Config.LUCKYNO, lotteryModel.getLotteryNumber());
+
+                    FirebaseDatabase.getInstance().getReference()
+                            .child(Static_Config.BETSLIP)// BetSlip
+                            .child(Static_Config.PHAE)//TwoK
+                            .child(Get_Current_User.getCurrentUserID()) //$uid
+                            .push()
+                            .updateChildren(betMap)
+                            .addOnSuccessListener(unused -> {
+                                count += 1;
+                                //add amount to totalAmount on successfully betted
+                                totalAmount += lotteryModel.getAmount();
+                                if (count == lotteryModels.size()) { //means all lotteries are uploaded
+                                    //calculate the new balance by subtracting totalAmount from balance
+                                    double newBalance = points - totalAmount;
+                                    //and upload new balance to firebase (only on client side)
+                                    FirebaseDatabase.getInstance().getReference().child(Static_Config.BALANCE)
+                                            .child(Get_Current_User.getCurrentUserID())
+                                            .child(Static_Config.POINT)
+                                            .setValue(newBalance)
+                                            .addOnCompleteListener(task -> emitter.onSuccess(new Result(true)));
+                                }
+
+                            })
+                            .addOnFailureListener(e -> {
+                                count += 1;
+                                if (count == lotteryModels.size()) { //means all lotteries are uploaded
+                                    //calculate the new balance by subtracting totalAmount from balance
+                                    double newBalance = points - totalAmount;
+                                    //and upload new balance to firebase (only on client side)
+                                    FirebaseDatabase.getInstance().getReference().child(Static_Config.BALANCE)
+                                            .child(Get_Current_User.getCurrentUserID())
+                                            .child(Static_Config.POINT)
+                                            .setValue(newBalance)
+                                            .addOnCompleteListener(task -> emitter.onSuccess(new Result(true)));
+                                }
+
+                                Log.e("bet error", e.getMessage());
+                            });
+                }catch (Exception e){
+                    Log.e("bet error",e.getMessage());
+                }
+            }
+
+        });
+    }
+
 }

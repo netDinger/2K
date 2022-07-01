@@ -25,4 +25,8 @@ public class BetUseCase {
     public Single<Result> execute(ArrayList<LotteryModel> lotteryModels,double balance){
         return betRepository.bet(lotteryModels,balance);
     }
+
+    public Single<Result> betByPoint(ArrayList<LotteryModel> lotteryModels,double point){
+        return betRepository.betByPoint(lotteryModels,point);
+    }
 }

@@ -26,7 +26,6 @@ public class FirebaseGetBetableTimes {
     }
 
     public Observable<String> getTime(){
-
         return Observable.create(emitter ->
             FirebaseDatabase.getInstance().getReference(Static_Config.BETABLE_DATE)
                     .child(Static_Config.TWOK)

@@ -34,7 +34,7 @@ public class FirebaseGetTimeRemaining {
         FirebaseDatabase.getInstance().getReference().child(Static_Config.DATE).setValue(ServerValue.TIMESTAMP);
        return Single.create(emitter -> FirebaseDatabase.getInstance().getReference()
                .child(Static_Config.NEXT_WIN)
-               .child(Static_Config.TWOD)
+               .child(Static_Config.DICE)
                .addValueEventListener(new ValueEventListener() {
                    @Override
                    public void onDataChange(@NonNull DataSnapshot snapshot) {
