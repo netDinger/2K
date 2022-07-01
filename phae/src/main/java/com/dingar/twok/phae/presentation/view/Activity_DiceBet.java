@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.dingar.twok.core.ui.GridRecyclerView;
+import com.dingar.twok.core.util.DateUtil;
 import com.dingar.twok.phae.R;
 import com.dingar.twok.phae.data.model.LotteryModel;
 import com.dingar.twok.phae.di.component.ComponentProviderPhae;
@@ -160,7 +161,11 @@ public class Activity_DiceBet extends AppCompatActivity implements DiceBetContra
                 Intent intent = new Intent();
                 intent.putExtra("betSlips",lotteryModels);
                 intent.putExtra("amount",amount.getText().toString().trim());
-                intent.putExtra("winDate",dates.get(picker.getValue()));
+                try {
+                    intent.putExtra("winDate", DateUtil.dateToTimestamp(dates.get(picker.getValue())));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 intent.setClass(this,Activity_Bet_Slips.class);
                 alertDialog = null;     // set null to prevent memory leakage
                 startActivity(intent);

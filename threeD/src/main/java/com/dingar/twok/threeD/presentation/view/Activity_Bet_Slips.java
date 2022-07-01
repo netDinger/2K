@@ -48,7 +48,8 @@ public class Activity_Bet_Slips extends AppCompatActivity implements BetListCont
      * list of lotteries with amount
      */
     ArrayList<LotteryModel> betList;
-    String amount,winDate;
+    String amount;
+    long winDate;
 
     private TextView balance,totalBet,points;
     private EditText lotteryNumber,Amount;
@@ -138,7 +139,7 @@ public class Activity_Bet_Slips extends AppCompatActivity implements BetListCont
         lotteryModels = new ArrayList<>();
         lotteryModels = (ArrayList<LotteryModel>) getIntent().getSerializableExtra("betSlips");
         amount = getIntent().getStringExtra("amount");
-        winDate = getIntent().getStringExtra("winDate");
+        winDate = getIntent().getLongExtra("winDate",0L);
         betList = new ArrayList<>();
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
