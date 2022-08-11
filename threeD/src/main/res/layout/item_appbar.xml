@@ -13,7 +13,7 @@
         android:layout_height="?android:attr/actionBarSize"
         app:popupTheme="@style/Theme.2K.PopupOverlay"
         app:titleMarginStart="12dp"
-        app:title="@string/module_name"
+        app:title="@string/module_name_3D"
         app:titleTextColor="@color/white">
 
     </androidx.appcompat.widget.Toolbar>

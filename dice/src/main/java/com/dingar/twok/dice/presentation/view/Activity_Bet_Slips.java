@@ -12,6 +12,7 @@ import android.net.ParseException;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -51,6 +52,7 @@ public class Activity_Bet_Slips extends AppCompatActivity implements BetListCont
 
     private TextView balance,point,totalBet;
     private EditText lotteryNumber,Amount;
+    private Button bet;
 
     private RecyclerView betsList;
     private BetListRecyclerviewAdapter betListRecyclerviewAdapter;
@@ -127,17 +129,12 @@ public class Activity_Bet_Slips extends AppCompatActivity implements BetListCont
         lotteryNumber = v.findViewById(R.id.lottery_number);
         Amount = v.findViewById(R.id.amount);
 
-        findViewById(R.id.bet).setOnClickListener(view -> presenter.onBetWithBalance());
+        bet = findViewById(R.id.bet);
+        bet.setOnClickListener(view -> showBetOptions(bet));
         betsList.setHasFixedSize(true);
         presenter.setView(this);
 
-        addNewBet.setOnClickListener(view->{
-            betList.add(new LotteryModel(lotteryNumber.getText().toString(),
-                    Integer.parseInt(Amount.getText().toString())));
-            presenter.setBetList(betList);
-            betListRecyclerviewAdapter.notifyItemInserted(betList.size()-1);
-            presenter.onAmountChanged(betList.size()-1,Amount.getText().toString());
-        });
+        addNewBet.setOnClickListener(view->createAddBetDialog());
     }
 
     private void initiate(){
@@ -172,7 +169,6 @@ public class Activity_Bet_Slips extends AppCompatActivity implements BetListCont
     public void showToast(String message) {
         Toast.makeText(this,message,Toast.LENGTH_SHORT).show();
     }
-
 
     //dialog to show add new bet option
     private void createAddBetDialog(){

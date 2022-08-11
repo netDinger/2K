@@ -54,8 +54,9 @@ public interface DiceBetContract {
     interface Presenter extends BasePresenter<View> {
         /**
          * load the available lotteries by excluding the unavailable lotteries
+         * @param prefix prefix(the first digit) of the lottery
          */
-        void loadLotteries();
+        void loadLotteries(String prefix);
 
         /**
          *

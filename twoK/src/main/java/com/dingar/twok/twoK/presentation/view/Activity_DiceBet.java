@@ -176,7 +176,7 @@ public class Activity_DiceBet extends AppCompatActivity implements DiceBetContra
             toppingDialog = builder.create();
             toppingDialog.show();
             }
-        });
+        }); //topping onclick
 
         quick_chooser.setOnClickListener(view ->{
             Log.e("size",toppingList.size()+"");

@@ -61,24 +61,23 @@
             android:layout_centerVertical="true"
             android:layout_marginStart="21dp"
             android:layout_toEndOf="@id/history"
-            android:padding="7dp"
             android:background="@drawable/rounded_green"
-            android:textColor="@color/white"
-            android:text="@string/topping" />
+            android:padding="7dp"
+            android:text="@string/topping"
+            android:textColor="@color/white" />
 
         <TextView
             android:id="@+id/quick_choose"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/quick_choose"
             android:layout_alignParentEnd="true"
-            android:layout_marginEnd="7dp"
             android:layout_centerVertical="true"
-            android:paddingVertical="7dp"
-            android:paddingHorizontal="14dp"
-            android:textColor="@color/white"
+            android:layout_marginEnd="7dp"
             android:background="@drawable/rounded_green"
-            />
+            android:paddingHorizontal="14dp"
+            android:paddingVertical="7dp"
+            android:text="@string/quick_choose"
+            android:textColor="@color/white" />
 
     </RelativeLayout>
 

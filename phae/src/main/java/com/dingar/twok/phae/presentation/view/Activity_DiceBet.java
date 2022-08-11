@@ -115,7 +115,6 @@ public class Activity_DiceBet extends AppCompatActivity implements DiceBetContra
         lotteryModels = new ArrayList<>();
         Button bet = findViewById(R.id.bet);
         ImageView history = findViewById(R.id.history);
-
         amount = findViewById(R.id.amount);
         time_remaining = findViewById(R.id.time_remaining);
         ImageView help = findViewById(R.id.help);
@@ -136,6 +135,7 @@ public class Activity_DiceBet extends AppCompatActivity implements DiceBetContra
         history.setOnClickListener(view -> startActivity(new Intent(this,Activity_Win_Lotteries.class)));
 
         help.setOnClickListener(view -> startActivity(new Intent(this,Activity_Help.class)));
+
     }//widgets
 
     /**

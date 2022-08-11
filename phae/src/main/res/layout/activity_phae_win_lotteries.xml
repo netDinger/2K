@@ -8,7 +8,7 @@
 
     <include
         android:id="@+id/appbar_layout"
-        layout="@layout/item_appbar" />
+        layout="@layout/item_appbar_phae" />
 
     <RelativeLayout
         android:id="@+id/lottery_layout"

@@ -1,5 +1,6 @@
 package com.dingar.twok.core.ui;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
@@ -33,6 +34,7 @@ public class GridRecyclerView extends RecyclerView {
     private void init(Context context, AttributeSet attrs) {
         if (attrs != null) {
             int[] attrsArray = {android.R.attr.columnWidth};
+            @SuppressLint("ResourceType")
             TypedArray array = context.obtainStyledAttributes(attrs, attrsArray);
             columnWidth = array.getDimensionPixelSize(0, -1);
             array.recycle();

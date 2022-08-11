@@ -36,7 +36,7 @@ public class DiceBetPresenter implements DiceBetContract.Presenter {
     ArrayList<LotteryModel> lotteriesList = new ArrayList<>();
 
     /** list for adding excluded lotteries (user can't bet these lotteries)*/
-    ArrayList<Integer> excludedLotteriesList = new ArrayList<>();
+    ArrayList<String> excludedLotteriesList = new ArrayList<>();
 
     private final ArrayList<String> winDates;
 
@@ -66,7 +66,7 @@ public class DiceBetPresenter implements DiceBetContract.Presenter {
             @Override
             public void onNext(@NonNull String s) {
                 try {
-                    excludedLotteriesList.add(Integer.parseInt(s));
+                    excludedLotteriesList.add(s);
                 }catch (Exception exception){
                     Log.e(TAG,exception.getMessage());
                 }
@@ -135,19 +135,18 @@ public class DiceBetPresenter implements DiceBetContract.Presenter {
     /**invoked after {@link #loadLotteries()} get all excluded lotteries
      * for 2d lotteries list 00 to 99, excluding numbers blocked by admin*/
     private void initiateLotteryList(){
-        Log.e("THree D","load bet called");
+        Log.e("Phae","load bet called");
         String s;
-        for (int i=0; i<=999;i++){
-            if (excludedLotteriesList.contains(i))
-                //if number is in excluded list
-                continue;
-            if (i<10)//add prefix if number less than 10 (to get the formation of 00,01,...)
-                s = "00"+i;
-            else if (i<100)
-                s = "0"+i;
-            else
-                s = String.valueOf(i);
-            lotteriesList.add(new LotteryModel(s,false));
+        String[] lotteries = {"1","2","3","4","5","6","7","8","9","J","Q","K","A"};
+        for (String prefix: lotteries){
+            for(String suffix: lotteries) {
+                s = prefix+suffix;
+                if (excludedLotteriesList.contains(s))
+                    //if number is in excluded list
+                    continue;
+
+                lotteriesList.add(new LotteryModel(s,false));
+            }
         }
         //tell the view to load the lotteries
         view.onLotteriesLoad(lotteriesList);

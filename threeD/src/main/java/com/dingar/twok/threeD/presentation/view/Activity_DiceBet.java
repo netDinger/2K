@@ -41,11 +41,11 @@ public class Activity_DiceBet extends AppCompatActivity implements DiceBetContra
     ThreeDBetComponent threeDBetComponent;
 
     private GridRecyclerviewAdapter gridRecyclerviewAdapter;
-    private TextView time_remaining;
+    private TextView time_remaining,quick_chooser,prefix;
     private EditText amount;
 
     private AlertDialog alertDialog; //to show the available win date
-
+    private AlertDialog toppingDialog; // to show the prefix(first digit) of the lotteries
     private ArrayList<LotteryModel> lotteryModels;  //contains user selected lotteries
     private ArrayList<String> toppingList;
 
@@ -107,9 +107,10 @@ public class Activity_DiceBet extends AppCompatActivity implements DiceBetContra
 
     private void initiate(){
         //load available bet slips (not all because some are excluded by provider)
-        presenter.loadLotteries();
+        presenter.loadLotteries("0");
         presenter.loadBetableTime();
         presenter.loadTimeRemaining();
+        presenter.loadToppings();
     }
 
     private void widgets(){
@@ -120,6 +121,8 @@ public class Activity_DiceBet extends AppCompatActivity implements DiceBetContra
         ImageView history = findViewById(R.id.history);
         amount = findViewById(R.id.amount);
         time_remaining = findViewById(R.id.time_remaining);
+        quick_chooser = findViewById(R.id.quick_choose);
+        prefix = findViewById(R.id.topping);
         ImageView help = findViewById(R.id.help);
 
         bet.setOnClickListener(v-> {
@@ -139,6 +142,38 @@ public class Activity_DiceBet extends AppCompatActivity implements DiceBetContra
         history.setOnClickListener(view -> startActivity(new Intent(this,Activity_Win_Lotteries.class)));
 
         help.setOnClickListener(view -> startActivity(new Intent(this,Activity_Help.class)));
+
+
+        prefix.setOnClickListener(view->{
+            if (toppingList != null && !toppingList.isEmpty()) {
+                NumberPicker picker = new NumberPicker(this);
+                picker.setMinValue(0);
+                picker.setMaxValue(toppingList.size() - 1);
+                picker.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
+                picker.setDisplayedValues(toppingList.toArray(new String[0]));
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setTitle(R.string.select_topping);
+                builder.setView(picker);
+                builder.setCancelable(true);
+                builder.setPositiveButton(R.string.select, (dialogInterface, i) -> {
+                    toppingDialog.dismiss();
+                    //show selected prefix(topping) in textview
+                    String placeHolder = toppingList.get(picker.getValue())+getString(R.string.topping);
+                    prefix.setText(placeHolder);
+                    //load the lotteries with selected prefix(topping)
+                    presenter.loadLotteries(toppingList.get(picker.getValue()));
+                });
+                toppingDialog = builder.create();
+                toppingDialog.show();
+            }
+        });
+
+        quick_chooser.setOnClickListener(view ->{
+            Log.e("size",toppingList.size()+"");
+            toppingList.add("00");
+        });
+
     }//widgets
 
     /**

@@ -29,6 +29,7 @@
                 android:layout_centerVertical="true"
                 android:text="@string/time_remaining"
                 android:textSize="14sp"
+                android:layout_marginEnd="7dp"
                 android:textColor="@color/white"
                 android:layout_gravity="right"
                 tools:ignore="RtlHardcoded" />
@@ -52,8 +53,21 @@
             android:src="@drawable/history" />
 
 
+        <TextView
+            android:id="@+id/quick_choose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="7dp"
+            android:background="@drawable/rounded_green"
+            android:paddingHorizontal="14dp"
+            android:paddingVertical="7dp"
+            android:text="@string/quick_choose"
+            android:textColor="@color/white" />
 
     </RelativeLayout>
+
 
     <com.dingar.twok.core.ui.GridRecyclerView
         android:id="@+id/betSlips"
@@ -82,9 +96,9 @@
                 android:id="@+id/amount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
                 android:inputType="number"
                 android:paddingHorizontal="34dp"
-                android:layout_marginBottom="5dp"
                 android:text="@string/default_amount" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -96,6 +110,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
+            android:layout_marginEnd="7dp"
             android:padding="7dp"
             android:paddingStart="7dp"
             android:paddingBottom="3dp"

@@ -58,7 +58,7 @@ public class DiceBetPresenter implements DiceBetContract.Presenter {
 
     //retrieve available lotteries
     @Override
-    public void loadLotteries() {
+    public void loadLotteries(String prefix) {
         //observe on excluded lotteries
         //i.e lotteries blocked by admin
         loadBetsUseCase.execute().subscribe(new Observer<String>() {
@@ -80,7 +80,7 @@ public class DiceBetPresenter implements DiceBetContract.Presenter {
 
             @Override
             public void onComplete() {
-                initiateLotteryList();
+                initiateLotteryList(prefix);
             }
         });
     }
@@ -136,25 +136,23 @@ public class DiceBetPresenter implements DiceBetContract.Presenter {
 
     @Override
     public void loadToppings() {
-        for(char topping = 'A';topping<='Z';topping++){
-            toppings.add(String.valueOf(topping));
+        for(int prefix=0; prefix<=9;prefix++){
+            toppings.add(String.valueOf(prefix));
         }
         view.onToppingLoaded(toppings);
     }
 
-    /**invoked after {@link #loadLotteries()} get all excluded lotteries
+    /**invoked after {@link #loadLotteries(String prefix)} get all excluded lotteries
      * for 2d lotteries list 00 to 99, excluding numbers blocked by admin*/
-    private void initiateLotteryList(){
+    private void initiateLotteryList(String prefix){
         Log.e("THree D","load bet called");
         String s;
-        for (int i=0; i<=999;i++){
+        for (int i=0; i<=99;i++){
             if (excludedLotteriesList.contains(i))
                 //if number is in excluded list
                 continue;
             if (i<10)//add prefix if number less than 10 (to get the formation of 00,01,...)
-                s = "00"+i;
-            else if (i<100)
-                s = "0"+i;
+                s = prefix+"0"+i;
             else
                 s = String.valueOf(i);
             lotteriesList.add(new LotteryModel(s,false));

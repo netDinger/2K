@@ -177,6 +177,15 @@ public class Activity_DiceBet extends AppCompatActivity implements DiceBetContra
         }
     }
 
+    /**
+     * to show the quick choose dialog
+     */
+    //todo TODO
+    private void quick_chooser(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this)
+                .setTitle(R.string.quick_choose);
+    }
+
 
     private void addToolbar() {
         Toolbar toolbar = findViewById(R.id.toolbar);
