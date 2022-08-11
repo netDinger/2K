@@ -2,11 +2,13 @@ package com.dingar.twok.account.presentation.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.dingar.twok.account.R;
 import com.dingar.twok.account.di.component.BalanceComponent;
@@ -67,9 +69,15 @@ public class Activity_Balance extends AppCompatActivity implements BalanceContra
 
 
     private void toViber(){
-        Intent shareIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("smsto:+959458871680"));
-        shareIntent.setPackage("com.viber.voip"); //viber package name
-        startActivity(Intent.createChooser(shareIntent,"Test Title"));
+        String package_name ="org.telegram.messenger";
+        String phone = "09793168992";
+        try {
+            Intent shareIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("viber://pa?chatURI=publicaccounturi"));
+            shareIntent.setPackage("com.viber.voip"); //viber package name
+            startActivity(Intent.createChooser(shareIntent, "Test Title"));
+        }catch (ActivityNotFoundException exception){
+            Toast.makeText(this,exception.getMessage(),Toast.LENGTH_SHORT).show();
+        }
     }
 
 

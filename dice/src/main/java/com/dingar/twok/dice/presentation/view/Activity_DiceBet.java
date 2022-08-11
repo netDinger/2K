@@ -33,7 +33,7 @@ import javax.inject.Inject;
  * @see DiceBetContract for better understanding
  */
 public class Activity_DiceBet extends AppCompatActivity implements DiceBetContract.View {
-    private final String TAG = "Activity Dice Bet";
+    private static final String TAG = "Activity_DiceBet";
 
     @Inject
     public DiceBetContract.Presenter presenter;
