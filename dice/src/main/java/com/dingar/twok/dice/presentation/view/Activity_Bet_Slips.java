@@ -155,6 +155,7 @@ public class Activity_Bet_Slips extends AppCompatActivity implements BetListCont
         this.setData();
         presenter.onLoadBalance();
         presenter.loadPoint();
+
     }
 
     private void addToolbar() {
