@@ -93,9 +93,11 @@
 
     <string name="deposit">ငွေသွင်း</string>
     <string name="withdraw">ငွေထုတ်</string>
-    <string name="depositHelp">ငွေသွင်းနည်း</string>
-    <string name="withdrawHelp">ငွေထုတ်နည်း</string>
-
+    <string name="helpDeposit">ငွေသွင်းနည်း</string>
+    <string name="helpWithdraw">ငွေထုတ်နည်း</string>
+    <string name="helpBalance">ငွေသွင်းနည်းနှင့် ငွေထုတ်နည်း</string>
+    <string name="depositText">\t \tငွေသွင်းရန် \"ငွေသွင်း\" ခလုတ်ကိုနှိပ်ပြီး တယ်လီဂရမ်(Telegram) သို့သွားရောက်ပြီး၊ 2KMM Official channel တွင်‌ငွေသွင်းနိုင်ပါသည်။ \n အဆင့်(၁)။ အကောင့် စာမျက်နှာရှိ Account ID ကိုနှိပ်ပြီး copy ကူးထားပါ။\n အဆင့်(၂)။ 2KMM Official channel သို့သွားရောက်ပြီး \"ငွေသွင်းရန်\" ဟုရိုက်နှိပ်ပါ။ပြီးလျှင် copy ကူးထားသော User ID ကို paste လုပ်ပြီးပို့ပေးပါ။ \n အဆင့်(၃)။ admin team မှ ပို့ပေးသောဖုန်းနံပါတ်သို့ Wave Pay ဒါမှမဟုတ် KBZ Pay ဖြင့်ငွေသွင်းပြီး Screenshot ကို ‌‌ပေးပို့ရုံဖြင့် ငွေသွင်းနိုင်ပါသည်။ \n \n ** သွင်းငွေကို ၅မိနစ်အတွင်း လူကြီးမင်း၏အကောင့်သို့ ထည့်သွင်းပေးမည်ဖြစ်ပြီး အဆင်မပြေမှု တစ်စုံတစ်ရာရှိခဲ့ပါက 2KMM Official channel သို့ 24/7 စုံစမ်းမေးမြန်းနိုင်ပါသည်။**</string>
+    <string name="withdrawText">\t \tငွေထုတ်ရန် \"ငွေထုတ်\" ခလုတ်ကိုနှိပ်ပြီး တယ်လီဂရမ်(Telegram) သို့သွားရောက်ပြီး၊ 2KMM Official channel တွင်‌ငွေထုတ်နိုင်ပါသည်။ \n အဆင့်(၁)။ အကောင့် စာမျက်နှာရှိ Account ID ကိုနှိပ်ပြီး copy ကူးထားပါ။\n အဆင့်(၂)။ 2KMM Official channel သို့သွားရောက်ပြီး \"ငွေထုတ်ရန်\" ဟုရိုက်နှိပ်ပါ။ ပြီးလျှင် copy ကူးထားသော User ID ကို paste လုပ်ပြီးပို့ပေးပါ။ \n အဆင့်(၃)။ မိမိအသုံးပြုသော Wave Pay ဒါမှမဟုတ် KBZ Pay account နှင့် ထုတ်ယူလိုသောပမာဏကို admin team သို့ပို့ပေးပါ။ အဆင့်(၄)။လူကြီးမင်း၏ ငွေသွင်းငွေထုတ် စာမျက်နှာတွင် ကုဒ်(code) ၆လုံး‌ပေါ်လာပါလိမ့်မည်။ ထိုကုဒ်၆လုံးကို 2KMM Official channel သို့ပေးပို့ပြီးလျှင် ငွေထုတ်ခြင်း အောင်မြင်ပါပြီ။\n \n **ထုတ်ငွေကို ၅မိနစ်အတွင်း လူကြီးမင်း၏အကောင့်သို့ ထည့်သွင်းပေးမည်ဖြစ်ပြီး အဆင်မပြေမှု တစ်စုံတစ်ရာရှိခဲ့ပါက 2KMM Official channel သို့ 24/7 စုံစမ်းမေးမြန်းနိုင်ပါသည်။**</string>
     <string name="maung">Maung</string>
     <string name="body">Body</string>
 
@@ -108,5 +110,9 @@
     <string name="contact_phone">Phone: 09 458 871 680</string>
     <string name="contact_viber">Viber: </string>
     <string name="contact_facebook">Facebook:</string>
+
+    <!-- Warning and errors-->
+    <string name="oops">Oops…!</string>
+    <string name="not_betable">You can\'t bet to the time you have selected!!!</string>
 
 </resources>

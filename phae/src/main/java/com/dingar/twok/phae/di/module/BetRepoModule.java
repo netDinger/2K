@@ -1,6 +1,6 @@
 package com.dingar.twok.phae.di.module;
 
-import com.dingar.twok.phae.data.BetRepositoryImpl;
+import com.dingar.twok.phae.data.repoImpl.BetRepositoryImpl;
 import com.dingar.twok.phae.di.scope.FeatureScope;
 import com.dingar.twok.phae.domain.repository.BetRepository;
 

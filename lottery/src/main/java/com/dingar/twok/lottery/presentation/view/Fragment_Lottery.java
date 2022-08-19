@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.dingar.twok.lottery.R;
 
@@ -59,6 +60,9 @@ public class Fragment_Lottery extends Fragment {
 
         item_2k.setOnClickListener(view ->
                 toNextActivity("com.dingar.twok.twoK.presentation.view.Activity_DiceBet"));
+
+        item_body.setOnClickListener(view ->
+                Toast.makeText(requireContext(), "Not Available Yet", Toast.LENGTH_SHORT).show());
 
     }
 

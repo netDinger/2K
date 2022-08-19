@@ -23,5 +23,9 @@ public class WinHistoryUseCase {
         return winHistoryRepository.loadWinHistory();
     }
 
+    /**
+     *show the current 2K formula
+     * @return observable data of the 2K formula
+     */
     public Single<String> currentTwoD(){return winHistoryRepository.currentTwoD();}
 }

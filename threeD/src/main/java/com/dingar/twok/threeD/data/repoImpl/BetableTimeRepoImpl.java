@@ -1,4 +1,4 @@
-package com.dingar.twok.threeD.data;
+package com.dingar.twok.threeD.data.repoImpl;
 
 
 import com.dingar.twok.threeD.data.remoteDataSource.FirebaseGetBetableTimes;

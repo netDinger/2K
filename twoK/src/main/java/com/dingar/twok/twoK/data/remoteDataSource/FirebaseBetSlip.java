@@ -90,7 +90,12 @@ public class FirebaseBetSlip {
         });
     }
 
-
+    /**
+     * bet the user bet slip by using points
+     * @param lotteryModels user's bet slip
+     * @param points user's total points
+     * @return observable result to parent activity's presenter
+     */
     public Single<Result> betByPoint(ArrayList<LotteryModel> lotteryModels,double points){
         return Single.create(emitter -> {
             count = 0;

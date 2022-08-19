@@ -1,7 +1,7 @@
-package com.dingar.twok.threeD.data;
+package com.dingar.twok.phae.data.repoImpl;
 
-import com.dingar.twok.threeD.data.remoteDataSource.FirebaseGetTimeRemaining;
-import com.dingar.twok.threeD.domain.repository.TimeRemainRepository;
+import com.dingar.twok.phae.data.remoteDataSource.FirebaseGetTimeRemaining;
+import com.dingar.twok.phae.domain.repository.TimeRemainRepository;
 
 import javax.inject.Inject;
 

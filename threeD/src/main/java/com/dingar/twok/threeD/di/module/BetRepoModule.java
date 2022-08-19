@@ -1,6 +1,6 @@
 package com.dingar.twok.threeD.di.module;
 
-import com.dingar.twok.threeD.data.BetRepositoryImpl;
+import com.dingar.twok.threeD.data.repoImpl.BetRepositoryImpl;
 import com.dingar.twok.threeD.di.scope.FeatureScope;
 import com.dingar.twok.threeD.domain.repository.BetRepository;
 

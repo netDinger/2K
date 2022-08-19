@@ -39,6 +39,7 @@ public class Activity_DiceBet extends AppCompatActivity implements DiceBetContra
     public DiceBetContract.Presenter presenter;
 
     TwoDBetComponent twoDBetComponent;
+    long winDate; //holder for user selected win date
 
     private GridRecyclerviewAdapter gridRecyclerviewAdapter;
     private TextView time_remaining;
@@ -68,6 +69,12 @@ public class Activity_DiceBet extends AppCompatActivity implements DiceBetContra
 
         initiate();
         widgets();
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        initiate();
     }
 
     @Override
@@ -104,7 +111,27 @@ public class Activity_DiceBet extends AppCompatActivity implements DiceBetContra
         winDatePicker(dates);
     }
 
+    @Override
+    public void showDialog(String title, String message, boolean cancelable) {
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+        dialogBuilder.setTitle(title).setMessage(message).setCancelable(true);
+        alertDialog = dialogBuilder.create();
+        alertDialog.show();
+    }
+
+    @Override
+    public void bet() {
+        Intent intent = new Intent();
+        intent.putExtra("betSlips",lotteryModels);
+        intent.putExtra("amount",amount.getText().toString().trim());
+        intent.putExtra("winDate", winDate);
+        intent.setClass(this,Activity_Bet_Slips.class);
+        alertDialog = null;     // set null to prevent memory leakage
+        startActivity(intent);
+    }
+
     private void initiate(){
+        lotteryModels = new ArrayList<>();
         //load available bet slips (not all because some are excluded by provider)
         presenter.loadLotteries();
         presenter.loadBetableTime();
@@ -113,7 +140,6 @@ public class Activity_DiceBet extends AppCompatActivity implements DiceBetContra
 
     private void widgets(){
         addToolbar();
-        lotteryModels = new ArrayList<>();
         Button bet = findViewById(R.id.bet);
         ImageView history = findViewById(R.id.history);
         amount = findViewById(R.id.amount);
@@ -158,17 +184,12 @@ public class Activity_DiceBet extends AppCompatActivity implements DiceBetContra
             builder.setCancelable(true);
             builder.setPositiveButton(R.string.select, (dialogInterface, i) -> {
                 alertDialog.dismiss();
-                Intent intent = new Intent();
-                intent.putExtra("betSlips",lotteryModels);
-                intent.putExtra("amount",amount.getText().toString().trim());
+                presenter.checkBetable(dates.get(picker.getValue()));
                 try {
-                    intent.putExtra("winDate", DateUtil.dateToTimestamp(dates.get(picker.getValue())));
+                    winDate = DateUtil.dateToTimestamp(dates.get(picker.getValue()));
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                intent.setClass(this,Activity_Bet_Slips.class);
-                alertDialog = null;     // set null to prevent memory leakage
-                startActivity(intent);
             });
             alertDialog = builder.create();
 

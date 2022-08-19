@@ -1,7 +1,7 @@
 package com.dingar.twok.threeD.di.module;
 
 
-import com.dingar.twok.threeD.data.WinHistoryRepositoryImpl;
+import com.dingar.twok.threeD.data.repoImpl.WinHistoryRepositoryImpl;
 import com.dingar.twok.threeD.domain.repository.WinHistoryRepository;
 
 import dagger.Binds;

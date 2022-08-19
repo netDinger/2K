@@ -3,6 +3,9 @@ package com.dingar.twok.account.presentation.view;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ActivityNotFoundException;
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -28,7 +31,7 @@ public class Activity_Balance extends AppCompatActivity implements BalanceContra
     private BalanceComponent balanceComponent;
 
     private Button withdraw,deposit;
-    private TextView withdrawHelp,depositHelp,balance;
+    private TextView helpBalance,balance,code;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,18 +51,29 @@ public class Activity_Balance extends AppCompatActivity implements BalanceContra
         this.balance.setText(balance);
     }
 
+    @Override
+    public void onOTPLoaded(String code) {
+        this.code.setText(code);
+    }
+
     private void widgets(){
         withdraw = findViewById(R.id.withdraw);
         deposit = findViewById(R.id.deposit);
-        withdrawHelp = findViewById(R.id.withdrawHelp);
-        depositHelp = findViewById(R.id.depositHelp);
+        helpBalance = findViewById(R.id.helpBalance);
+        code = findViewById(R.id.code);
         balance = findViewById(R.id.balance);
 
         deposit.setOnClickListener(view -> toViber());
         withdraw.setOnClickListener(view -> toViber());
 
-        withdrawHelp.setOnClickListener(view->startActivity(new Intent(this,Activity_Balance_Help.class)));
-        depositHelp.setOnClickListener(view -> startActivity(new Intent(this,Activity_Balance_Help.class)));
+        code.setOnClickListener(view -> {
+            ClipboardManager manager = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+            ClipData data = ClipData.newPlainText(code.getText().toString(),code.getText().toString());
+            manager.setPrimaryClip(data);
+            Toast.makeText(this, "Copied to clipboard", Toast.LENGTH_SHORT).show();
+        });
+
+        helpBalance.setOnClickListener(view->startActivity(new Intent(this,Activity_Balance_Help.class)));
     }
 
     private void initiate(){
@@ -67,10 +81,9 @@ public class Activity_Balance extends AppCompatActivity implements BalanceContra
         presenter.loadBalance();
     }
 
-
     private void toViber(){
         String package_name ="org.telegram.messenger";
-        String phone = "09793168992";
+        String phone = "09458871680";
         try {
             Intent shareIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("viber://pa?chatURI=publicaccounturi"));
             shareIntent.setPackage("com.viber.voip"); //viber package name
@@ -79,6 +92,5 @@ public class Activity_Balance extends AppCompatActivity implements BalanceContra
             Toast.makeText(this,exception.getMessage(),Toast.LENGTH_SHORT).show();
         }
     }
-
 
 }

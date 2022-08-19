@@ -7,11 +7,15 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 
 import com.dingar.twok.core.firebase.Get_FirebaseCurrentTime;
+import com.dingar.twok.core.firebase.Result;
 import com.dingar.twok.core.util.DateUtil;
+import com.dingar.twok.twoK.data.CheckBetableRepositoryImpl;
 import com.dingar.twok.twoK.data.model.LotteryModel;
 import com.dingar.twok.twoK.domain.interactor.BetableTimeUseCase;
+import com.dingar.twok.twoK.domain.interactor.CheckBetableUseCase;
 import com.dingar.twok.twoK.domain.interactor.CountDownUseCase;
 import com.dingar.twok.twoK.domain.interactor.LoadBetsUseCase;
+import com.dingar.twok.twoK.presentation.contract.BetListContract;
 import com.dingar.twok.twoK.presentation.contract.DiceBetContract;
 
 import java.util.ArrayList;
@@ -45,12 +49,14 @@ public class DiceBetPresenter implements DiceBetContract.Presenter {
     LoadBetsUseCase loadBetsUseCase;    //to get the available lottery numbers
     CountDownUseCase countDownUseCase;  //to get the next bet opening time
     BetableTimeUseCase betableTimeUseCase; // to get the bet opening times
+    CheckBetableUseCase checkBetableUseCase; //to check if the user can still bet right now or not
 
     public DiceBetPresenter(LoadBetsUseCase loadBetsUseCase,
                             CountDownUseCase countDownUseCase,
-                            BetableTimeUseCase betableTimeUseCase){
+                            BetableTimeUseCase betableTimeUseCase,
+                            CheckBetableUseCase checkBetableUseCase){
         this.loadBetsUseCase = loadBetsUseCase;
-
+        this.checkBetableUseCase = checkBetableUseCase;
         this.countDownUseCase = countDownUseCase;
         this.betableTimeUseCase = betableTimeUseCase;
         winDates = new ArrayList<>();
@@ -120,6 +126,35 @@ public class DiceBetPresenter implements DiceBetContract.Presenter {
         view.onToppingLoaded(toppings);
     }
 
+    @Override
+    public void checkBetable(String date) {
+        try {
+            checkBetableUseCase.checkBetable(String.valueOf(DateUtil.dateToTimestamp(date)))
+                    .subscribe(new SingleObserver<Result>() {
+                        @Override
+                        public void onSubscribe(Disposable d) {
+
+                        }
+
+                        @Override
+                        public void onSuccess(Result result) {
+                            if (result.isSuccess())
+                                view.bet();
+                            else
+                                view.showDialog("R.string.oops","R.string.not_betable",true);
+                        }
+
+                        @Override
+                        public void onError(Throwable e) {
+
+                        }
+                    });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
     /**invoked after {@link #loadLotteries(String)} get all excluded lotteries
      * for 2K lotteries list 00 to 99, excluding numbers blocked by admin*/
     private void initiateLotteryList(String topping){
@@ -173,7 +208,7 @@ public class DiceBetPresenter implements DiceBetContract.Presenter {
 
     /**
      *
-     * @param future timestamp when next lottery will be opend
+     * @param future timestamp when next lottery will be open
      * @param current current server timestamp
      */
     private void timerTask(long future,long current){

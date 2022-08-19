@@ -52,25 +52,28 @@
 
 
     <TextView
-        android:id="@+id/withdrawHelp"
+        android:id="@+id/helpBalance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/withdraw"
-        android:layout_marginEnd="14dp"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="14dp"
-        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="14dp"
         android:padding="7dp"
-        android:text="@string/withdrawHelp" />
+        android:text="@string/helpBalance" />
 
     <TextView
-        android:id="@+id/depositHelp"
+        android:id="@+id/code"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/deposit"
-        android:layout_marginTop="14dp"
-        android:padding="7dp"
-        android:layout_marginStart="14dp"
-        android:text="@string/depositHelp" />
+        android:layout_below="@id/helpBalance"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="21dp"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:text="CODE 123"/>
+
+
 
 
 </RelativeLayout>

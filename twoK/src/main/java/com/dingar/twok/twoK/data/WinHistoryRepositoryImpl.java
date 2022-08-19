@@ -10,6 +10,9 @@ import javax.inject.Inject;
 import io.reactivex.Observable;
 import io.reactivex.Single;
 
+/**
+ * to show the current 2K formula and win history(lucky numbers history)
+ */
 public class WinHistoryRepositoryImpl implements WinHistoryRepository {
 
     @Inject

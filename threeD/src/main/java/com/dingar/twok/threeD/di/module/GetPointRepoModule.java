@@ -1,6 +1,6 @@
 package com.dingar.twok.threeD.di.module;
 
-import com.dingar.twok.threeD.data.GetPointRepoImpl;
+import com.dingar.twok.threeD.data.repoImpl.GetPointRepoImpl;
 import com.dingar.twok.threeD.domain.repository.GetPointRepository;
 
 import dagger.Binds;

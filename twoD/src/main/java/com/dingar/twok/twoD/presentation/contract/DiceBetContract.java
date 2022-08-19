@@ -29,8 +29,6 @@ public interface DiceBetContract {
          */
         void removeBetSlip(LotteryModel lotteryModel);
 
-
-
         /**
          * @param timeRemaining remaining timer countdown in string format
          * {@link Presenter#loadTimeRemaining()}
@@ -43,6 +41,20 @@ public interface DiceBetContract {
          * {@link Presenter#loadBetableTime()}
          */
         void onBetAbleTimeLoaded(ArrayList<String> date);
+
+        /**
+         * show the warning or error dialog
+         * @param title title of the alertdialog
+         * @param message message of the alertdialog
+         * @param cancelable is the dialog cancelable or not
+         */
+        void showDialog(String title,String message,boolean cancelable);
+
+        /**
+         * send betSlip if user meet the validation(amount,betDate...)
+         * {@link Presenter#checkBetable(String)}
+         */
+        void bet();
     }
 
     interface Presenter extends BasePresenter<View> {
@@ -69,6 +81,12 @@ public interface DiceBetContract {
          * example: win dates { 11.11.2022 4:00PM,12.11.2022 10:00AM }
          */
         void loadBetableTime();
+
+        /**
+         * check if the user can still bet for the specific time or not
+         * @param date win date which user want to bet
+         */
+        void checkBetable(String date);
     }
 
 }

@@ -1,7 +1,7 @@
-package com.dingar.twok.threeD.data;
+package com.dingar.twok.phae.data.repoImpl;
 
-import com.dingar.twok.threeD.data.remoteDataSource.FirebaseLoadBets;
-import com.dingar.twok.threeD.domain.repository.LoadBets;
+import com.dingar.twok.phae.data.remoteDataSource.FirebaseLoadBets;
+import com.dingar.twok.phae.domain.repository.LoadBets;
 
 import javax.inject.Inject;
 

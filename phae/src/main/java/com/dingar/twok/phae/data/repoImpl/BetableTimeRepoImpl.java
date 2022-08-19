@@ -1,4 +1,4 @@
-package com.dingar.twok.phae.data;
+package com.dingar.twok.phae.data.repoImpl;
 
 
 import com.dingar.twok.phae.data.remoteDataSource.FirebaseGetBetableTimes;

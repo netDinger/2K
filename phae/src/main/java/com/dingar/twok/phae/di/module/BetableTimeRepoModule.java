@@ -1,6 +1,6 @@
 package com.dingar.twok.phae.di.module;
 
-import com.dingar.twok.phae.data.BetableTimeRepoImpl;
+import com.dingar.twok.phae.data.repoImpl.BetableTimeRepoImpl;
 import com.dingar.twok.phae.di.scope.FeatureScope;
 import com.dingar.twok.phae.domain.repository.BetableTimeRepository;
 

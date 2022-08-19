@@ -111,9 +111,12 @@
         <entry key="..\:/2K/twoK/src/main/res/layout/item_lucky_lottery.xml" value="0.13223684210526315" />
         <entry key="..\:/2K/twoK/src/main/res/layout/item_twoK_appbar.xml" value="0.20244565217391305" />
         <entry key="..\:/2K/twoK/src/main/res/menu/betmenu.xml" value="0.33" />
+        <entry key="..\:/PPK/2K/account/src/main/res/layout/activity_balance.xml" value="0.1911231884057971" />
+        <entry key="..\:/PPK/2K/account/src/main/res/layout/activity_balance_help.xml" value="0.67" />
         <entry key="..\:/PPK/2K/core/src/main/res/layout/no_internet_layout.xml" value="0.15" />
         <entry key="..\:/PPK/2K/dice/src/main/res/layout/activity_bet.xml" value="0.17012448132780084" />
         <entry key="..\:/PPK/2K/dice/src/main/res/layout/activity_win_lotteries.xml" value="0.17074275362318841" />
+        <entry key="..\:/PPK/2K/lottery/src/main/res/layout/fragment__lottery.xml" value="0.18659420289855072" />
         <entry key="..\:/PPK/2K/phae/src/main/res/layout/activity_phae_bet.xml" value="0.13" />
         <entry key="..\:/PPK/2K/phae/src/main/res/layout/activity_phae_bet_slips.xml" value="0.2" />
         <entry key="..\:/PPK/2K/phae/src/main/res/layout/activity_phae_help.xml" value="0.2" />

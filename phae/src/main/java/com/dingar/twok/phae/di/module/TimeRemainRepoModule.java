@@ -1,7 +1,7 @@
 package com.dingar.twok.phae.di.module;
 
 
-import com.dingar.twok.phae.data.TimeRemainRepositoryImpl;
+import com.dingar.twok.phae.data.repoImpl.TimeRemainRepositoryImpl;
 import com.dingar.twok.phae.domain.repository.TimeRemainRepository;
 
 import dagger.Binds;

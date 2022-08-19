@@ -90,7 +90,7 @@ public class Fragment_Account extends Fragment implements AccountContract.View {
         about.setOnClickListener(v->startActivity(new Intent(requireContext(),Activity_About.class)));
 
         share.setOnClickListener(v->{
-            //TODO: for test purpose
+
             String url = "www.google.com";
             Intent shareIntent = new Intent(Intent.ACTION_SEND);
             shareIntent.setType("text/plain");

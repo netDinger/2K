@@ -2,6 +2,7 @@ package com.dingar.twok.twoK.di.module;
 
 import com.dingar.twok.twoK.di.scope.FeatureScope;
 import com.dingar.twok.twoK.domain.interactor.BetableTimeUseCase;
+import com.dingar.twok.twoK.domain.interactor.CheckBetableUseCase;
 import com.dingar.twok.twoK.domain.interactor.CountDownUseCase;
 import com.dingar.twok.twoK.domain.interactor.LoadBetsUseCase;
 import com.dingar.twok.twoK.presentation.contract.DiceBetContract;
@@ -13,15 +14,17 @@ import dagger.Provides;
 @Module(includes = {LoadBetRepoModule.class,
         GetBalanceRepoModule.class,
         TimeRemainRepoModule.class,
-        BetableTimeRepoModule.class})
+        BetableTimeRepoModule.class,
+        CheckBetableRepoModule.class})
 public class DiceBetModule {
 
     @FeatureScope
     @Provides
     public DiceBetContract.Presenter providePresenter(LoadBetsUseCase loadBetsUseCase,
                                                       CountDownUseCase countDownUseCase,
-                                                      BetableTimeUseCase betableTimeUseCase){
+                                                      BetableTimeUseCase betableTimeUseCase,
+                                                      CheckBetableUseCase checkBetableUseCase){
         return new DiceBetPresenter(loadBetsUseCase,
-                countDownUseCase,betableTimeUseCase);
+                countDownUseCase,betableTimeUseCase,checkBetableUseCase);
     }
 }
