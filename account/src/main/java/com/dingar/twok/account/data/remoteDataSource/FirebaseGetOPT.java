@@ -1,9 +1,21 @@
 package com.dingar.twok.account.data.remoteDataSource;
 
-import io.reactivex.Single;
-import io.reactivex.SingleEmitter;
-import io.reactivex.SingleOnSubscribe;
+import androidx.annotation.NonNull;
 
+import com.dingar.twok.firebaseadapter.Get_Current_User;
+import com.dingar.twok.firebaseadapter.Static_Config;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.text.ParseException;
+
+import io.reactivex.Single;
+
+/**
+ * when user withdraw the balance, user have to get the OTP code in order to identify he is the owner
+ */
 public class FirebaseGetOPT {
     //Singleton
     private FirebaseGetOPT(){}
@@ -16,7 +28,25 @@ public class FirebaseGetOPT {
 
     public Single<String> getOpt(){
         return Single.create(emitter -> {
-            //Todo implement later
+            FirebaseDatabase.getInstance().getReference().child(Static_Config.USERS)
+                    .child(Get_Current_User.getCurrentUserID()).child(Static_Config.OTP)
+                    .addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            try {
+                                if (snapshot.exists())
+                                    emitter.onSuccess(snapshot.getValue(String.class));
+                                else emitter.onError(new Exception("No Code To Get!"));
+                            }catch (Exception exception){
+                                emitter.onError(exception);
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+                            emitter.onError(new Exception("Error Retrieving Code!!!"));
+                        }
+                    });
         });
     }
 }

@@ -57,6 +57,7 @@ public interface DiceBetContract {
          * {@link Presenter#checkBetable(String)}
          */
         void bet();
+
     }
 
     interface Presenter extends BasePresenter<View> {
@@ -64,6 +65,13 @@ public interface DiceBetContract {
          * load the available lotteries by excluding the unavailable lotteries
          */
         void loadLotteries();
+
+        /**
+         * {@link #loadLotteries()}
+         * @param prefix user selected quick choose prefix
+         * @param suffix user selected quick choose suffix
+         */
+        void loadLotteries(String prefix, String suffix);
 
         /**
          *
@@ -89,6 +97,7 @@ public interface DiceBetContract {
          * @param date win date which user want to bet
          */
         void checkBetable(String date);
+
     }
 
 }

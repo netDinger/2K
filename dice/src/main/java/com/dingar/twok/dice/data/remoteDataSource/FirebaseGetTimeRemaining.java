@@ -41,9 +41,6 @@ public class FirebaseGetTimeRemaining {
                        if (snapshot.exists())
                        emitter.onSuccess(Objects.requireNonNull(String.valueOf(snapshot.getValue())));
 
-                       //TODO: for test case remove this later
-                       else
-                           emitter.onSuccess("1653750276007");
                    }
 
                    @Override

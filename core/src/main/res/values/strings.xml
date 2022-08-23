@@ -12,6 +12,7 @@
     <string name="time_remaining">00:00:00</string>
     <string name="history">မှတ်တမ်း</string>
     <string name="topping">ထိပ်စည်း</string>
+    <string name="suffix">နောက်ပိတ်</string>
     <string name="quick_choose">အမြန်ရွေး</string>
 
     <string name="not_enough_point">ပွိုင့်မလုံလောက်ပါ</string>
@@ -26,6 +27,7 @@
     <string name="select_topping">ထိပ်စည်းရွေးပါ</string>
     <string name="select">ရွေးမယ်</string>
     <string name="ok">ရပြီ</string>
+    <string name="cancel">အကုန်ပယ်ဖျက်</string>
     <string name="wait">ထီထိုးရန်အချိန်ရယူနေပါသည်။ ကျေးဇူးပြု၍ ခဏစောင့်ပါ</string>
     <string name="id">ထီအမှတ်စဥ်</string>
     <string name="win">နိုင်</string>

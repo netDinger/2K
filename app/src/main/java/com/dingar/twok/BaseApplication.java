@@ -48,9 +48,8 @@ public class BaseApplication extends Application implements LoginComponentProvid
         ComponentProviderHistory,    //for history module
         ComponentProviderTwoD,      //for twoD module
         ComponentProviderThreeD,    //for threeD module
-        ComponentProviderPhae,
-        ComponentProviderTwoK
-
+        ComponentProviderPhae,      //for Phae module
+        ComponentProviderTwoK       //for TwoK module
 {
     AppComponent appComponent;
 

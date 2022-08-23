@@ -5,9 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -25,6 +28,7 @@ import com.dingar.twok.dice.presentation.contract.DiceBetContract;
 
 import java.util.ArrayList;
 import java.util.Objects;
+import java.util.zip.Inflater;
 
 import javax.inject.Inject;
 
@@ -42,7 +46,7 @@ public class Activity_DiceBet extends AppCompatActivity implements DiceBetContra
     long winDate; //holder for user selected win date
 
     private GridRecyclerviewAdapter gridRecyclerviewAdapter;
-    private TextView time_remaining;
+    private TextView time_remaining,quick_choose;
     private EditText amount;
 
     private AlertDialog alertDialog; //to show the available win date
@@ -144,6 +148,8 @@ public class Activity_DiceBet extends AppCompatActivity implements DiceBetContra
         Button bet = findViewById(R.id.bet);
         ImageView history = findViewById(R.id.history);
         amount = findViewById(R.id.amount);
+        quick_choose = findViewById(R.id.quick_choose);
+        quick_choose.setOnClickListener(view-> showQuickChooseOptionDialog());
 
         ImageView help = findViewById(R.id.help);
         bet.setOnClickListener(v-> {    //bet the user selected bet slip
@@ -198,15 +204,6 @@ public class Activity_DiceBet extends AppCompatActivity implements DiceBetContra
         }
     }
 
-    /**
-     * to show the quick choose dialog
-     */
-    //todo TODO
-    private void quick_chooser(){
-        AlertDialog.Builder builder = new AlertDialog.Builder(this)
-                .setTitle(R.string.quick_choose);
-    }
-
     private void addToolbar() {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -214,4 +211,24 @@ public class Activity_DiceBet extends AppCompatActivity implements DiceBetContra
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(true);
         toolbar.setNavigationOnClickListener(v -> onBackPressed()); }
+
+    private void showQuickChooseOptionDialog(){
+        View view = View.inflate(this,R.layout.item_quick_choose,null);
+        EditText prefix,suffix;
+        prefix = view.findViewById(R.id.prefix);
+        suffix = view.findViewById(R.id.suffix);
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this)
+                .setTitle(R.string.quick_choose)
+                .setView(view)
+                .setCancelable(true)
+                .setPositiveButton(R.string.ok, (dialogInterface, i) -> {
+                    Toast.makeText(this, "prefix"+prefix.getText().toString(), Toast.LENGTH_SHORT).show();
+                    presenter.loadLotteries(prefix.getText().toString(),suffix.getText().toString());
+                })
+                .setNegativeButton(R.string.cancel, (dialogInterface, i) -> {
+                    Toast.makeText(this, "cancel", Toast.LENGTH_SHORT).show();
+                });
+        alertDialog = dialogBuilder.create();
+        alertDialog.show();
+    }
 }
