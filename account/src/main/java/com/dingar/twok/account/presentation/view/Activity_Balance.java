@@ -79,6 +79,7 @@ public class Activity_Balance extends AppCompatActivity implements BalanceContra
     private void initiate(){
         presenter.setView(this);
         presenter.loadBalance();
+        presenter.loadOTP();
     }
 
     private void toViber(){

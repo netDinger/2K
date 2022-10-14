@@ -15,6 +15,7 @@ public class Static_Config {
     public static final String PHAE = "phae";
     public static final String TWOK = "twoK";
 
+
     public static final String AMOUNT  = "amount";
     public static final String BETDATE  = "betDate";
     public static final String WINDATE  = "winDate";
@@ -30,5 +31,6 @@ public class Static_Config {
     public static final String DATE = "date";
 
     public static final String FORMULA = "formulae";
+
 
 }

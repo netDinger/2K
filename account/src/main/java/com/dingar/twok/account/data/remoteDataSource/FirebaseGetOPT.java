@@ -9,8 +9,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.text.ParseException;
-
 import io.reactivex.Single;
 
 /**
@@ -27,26 +25,25 @@ public class FirebaseGetOPT {
     }
 
     public Single<String> getOpt(){
-        return Single.create(emitter -> {
-            FirebaseDatabase.getInstance().getReference().child(Static_Config.USERS)
-                    .child(Get_Current_User.getCurrentUserID()).child(Static_Config.OTP)
-                    .addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            try {
-                                if (snapshot.exists())
-                                    emitter.onSuccess(snapshot.getValue(String.class));
-                                else emitter.onError(new Exception("No Code To Get!"));
-                            }catch (Exception exception){
-                                emitter.onError(exception);
-                            }
+        return Single.create(emitter -> FirebaseDatabase.getInstance().getReference()
+                .child(Static_Config.OTP)
+              .child(Get_Current_User.getCurrentUserID())
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        try {
+                            if (snapshot.exists())
+                                emitter.onSuccess(snapshot.getValue(String.class));
+                            else emitter.onError(new Exception("No Code To Get!"));
+                        }catch (Exception exception){
+                            emitter.onError(exception);
                         }
+                    }
 
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-                            emitter.onError(new Exception("Error Retrieving Code!!!"));
-                        }
-                    });
-        });
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        emitter.onError(new Exception("Error Retrieving Code!!!"));
+                    }
+                }));
     }
 }

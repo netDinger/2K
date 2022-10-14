@@ -125,10 +125,14 @@
         <entry key="..\:/PPK/2K/phae/src/main/res/layout/item_appbar.xml" value="0.2" />
         <entry key="..\:/PPK/2K/threeD/src/main/res/layout/item_appbar.xml" value="0.2" />
         <entry key="..\:/PPK/2K/twoK/src/main/res/layout/activity_twok_bet.xml" value="0.2" />
+        <entry key="..\:/PPK/Test Project/2K/account/src/main/res/drawable-anydpi/logout.xml" value="0.1" />
+        <entry key="..\:/PPK/Test Project/2K/account/src/main/res/drawable/gradient_color_round.xml" value="0.1" />
+        <entry key="..\:/PPK/Test Project/2K/account/src/main/res/layout/activity_balance.xml" value="0.14130434782608695" />
+        <entry key="..\:/PPK/Test Project/2K/account/src/main/res/layout/fragment_account.xml" value="0.14130434782608695" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
