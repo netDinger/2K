@@ -6,7 +6,7 @@ import com.dingar.twok.twoK.data.model.WinLotteryModel;
 public interface WinLotteryContract {
     interface View{
         void onLuckyHistoryLoaded(WinLotteryModel model);
-        void onCurrentTwoDLoaded(String twoD);
+        void onCurrentTwoDLoaded();
     }
 
     interface Presenter extends BasePresenter<View> {

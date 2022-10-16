@@ -54,26 +54,7 @@ public class WinLotteryPresenter implements WinLotteryContract.Presenter {
 
             @Override
             public void onComplete() {
-
-            }
-        });
-
-        //load current twoD result
-      winHistoryUseCase.currentTwoD().subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new SingleObserver<String>() {
-            @Override
-            public void onSubscribe(@NonNull Disposable d) {}
-
-            @Override
-            public void onSuccess(@NonNull String twoD) {
-                view.onCurrentTwoDLoaded(twoD);
-            }
-
-            @Override
-            public void onError(@NonNull Throwable e) {
-                e.printStackTrace();
-                view.onCurrentTwoDLoaded("--");
+              view.onCurrentTwoDLoaded();
             }
         });
 

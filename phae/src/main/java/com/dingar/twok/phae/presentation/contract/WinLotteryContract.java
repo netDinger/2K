@@ -6,7 +6,7 @@ import com.dingar.twok.phae.data.model.WinLotteryModel;
 public interface WinLotteryContract {
     interface View{
         void onLuckyHistoryLoaded(WinLotteryModel model);
-        void onCurrentTwoDLoaded(String twoD);
+        void onCurrentTwoDLoaded(); //just to show the last updated time
     }
 
     interface Presenter extends BasePresenter<View> {

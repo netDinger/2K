@@ -34,7 +34,7 @@ public class Activity_Win_Lotteries extends AppCompatActivity implements WinLott
     WinLotteryRecyclerViewAdapter winLotteryRecyclerViewAdapter;
 
     private RecyclerView winHistoryRecyclerview;
-    private TextView luckyNumber,updated_date;
+    private TextView updated_date;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,10 +54,11 @@ public class Activity_Win_Lotteries extends AppCompatActivity implements WinLott
     }
 
     @Override
-    public void onCurrentTwoDLoaded(String twoD) {
-        luckyNumber.setText(twoD);
+    public void onCurrentTwoDLoaded() {
+
         try {
-            updated_date.setText(DateUtil.timeStampToDate(String.valueOf(System.currentTimeMillis())));
+            String s = "Updated At: "+DateUtil.timeStampToDate(String.valueOf(System.currentTimeMillis()));
+            updated_date.setText(s);
         }catch (Exception e){
             Log.e("error",e.getMessage());
         }
@@ -67,7 +68,7 @@ public class Activity_Win_Lotteries extends AppCompatActivity implements WinLott
         addToolbar();
         winHistoryRecyclerview = findViewById(R.id.winHistory);
         //current TwoD result
-        luckyNumber = findViewById(R.id.lottery_number);
+
         updated_date = findViewById(R.id.updateDate);
     }
 

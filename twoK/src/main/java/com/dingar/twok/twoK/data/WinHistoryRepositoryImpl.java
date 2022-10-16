@@ -24,7 +24,7 @@ public class WinHistoryRepositoryImpl implements WinHistoryRepository {
     }
 
     @Override
-    public Single<String> currentTwoD() {
+    public Single<String> currentFormula() {
         return Get_Current_TwoK_Formula.getInstance().getResult();
     }
 

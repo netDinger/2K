@@ -6,7 +6,6 @@ import com.dingar.twok.dice.domain.repository.WinHistoryRepository;
 import javax.inject.Inject;
 
 import io.reactivex.Observable;
-import io.reactivex.Single;
 
 /**
  * execute to get lucky number history (win history)
