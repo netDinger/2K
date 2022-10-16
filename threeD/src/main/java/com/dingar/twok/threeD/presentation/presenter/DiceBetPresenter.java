@@ -187,7 +187,7 @@ public class DiceBetPresenter implements DiceBetContract.Presenter {
             if (i<10)//add prefix if number less than 10 (to get the formation of 00,01,...)
                 s = prefix+"0"+i;
             else
-                s = String.valueOf(i);
+                s = prefix+i;
             lotteriesList.add(new LotteryModel(s,false));
         }
         //tell the view to load the lotteries

@@ -10,40 +10,13 @@
         android:id="@+id/appbar_layout"
         layout="@layout/item_appbar_phae" />
 
-    <RelativeLayout
-        android:id="@+id/lottery_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/appbar_layout"
-        android:visibility="gone">
-
-        <TextView
-            android:id="@+id/updated_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/lottery_number"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="7dp"
-            android:text="@string/date"
-            android:textSize="21sp" />
-
-        <TextView
-            android:id="@+id/lottery_number"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="7dp"
-            android:text="@string/default_lottery"
-            android:textColor="@color/colorPrimary"
-            android:textSize="120sp"
-            android:textStyle="bold" />
-    </RelativeLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/winHistory"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/lottery_layout"
-        tools:listitem="@layout/item_lucky_lottery" />
+        android:layout_below="@id/appbar_layout"
+        tools:listitem="@layout/item_lucky_lottery"
+        />
 
 </RelativeLayout>

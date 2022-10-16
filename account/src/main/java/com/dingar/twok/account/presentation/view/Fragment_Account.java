@@ -75,7 +75,7 @@ public class Fragment_Account extends Fragment implements AccountContract.View {
         id.setOnClickListener(v->{ //on user id textview is clicked
             //copy id to clipboard
             ClipboardManager manager = (ClipboardManager) requireContext().getSystemService(Context.CLIPBOARD_SERVICE);
-            ClipData clipData = ClipData.newPlainText(id.getText().toString().substring(4),id.getText().toString().substring(4));
+            ClipData clipData = ClipData.newPlainText(id.getText().toString().substring(3),id.getText().toString().substring(3));
             manager.setPrimaryClip(clipData);
 
             Toast.makeText(requireContext(),"Copied to ClipBoard",Toast.LENGTH_SHORT).show();
@@ -84,7 +84,7 @@ public class Fragment_Account extends Fragment implements AccountContract.View {
         balance.setOnClickListener(view1 -> startActivity(new Intent(requireContext(),Activity_Balance.class)));
 
         coupons.setOnClickListener(v->{
-            Toast.makeText(requireContext(),"No coupons yet!",Toast.LENGTH_SHORT).show();
+            showToast("No Coupons Yet!!!");
         });
 
         about.setOnClickListener(v->startActivity(new Intent(requireContext(),Activity_About.class)));
@@ -121,5 +121,9 @@ public class Fragment_Account extends Fragment implements AccountContract.View {
        username.setText(user.getName());
        String s = getResources().getString(R.string.uid)+ user.getUid();
        id.setText(s);
+    }
+
+    @Override public void showToast(String message) {
+        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show();
     }
 }

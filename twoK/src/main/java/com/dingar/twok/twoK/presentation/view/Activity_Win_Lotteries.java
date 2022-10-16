@@ -16,7 +16,6 @@ import com.dingar.twok.twoK.di.component.ComponentProviderTwoK;
 import com.dingar.twok.twoK.di.component.TwoKWinLotteryComponent;
 import com.dingar.twok.twoK.presentation.contract.WinLotteryContract;
 
-import java.util.ArrayList;
 import java.util.Objects;
 
 import javax.inject.Inject;
@@ -34,9 +33,8 @@ public class Activity_Win_Lotteries extends AppCompatActivity implements WinLott
 
     WinLotteryRecyclerViewAdapter winLotteryRecyclerViewAdapter;
 
-    private ArrayList<WinLotteryModel> winLotteryArrayList;
     private RecyclerView winHistoryRecyclerview;
-    private TextView luckyNumber,updated_date;
+    private TextView updated_date;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,13 +52,11 @@ public class Activity_Win_Lotteries extends AppCompatActivity implements WinLott
 
     @Override
     public void onLuckyHistoryLoaded(WinLotteryModel model) {
-        winLotteryArrayList.add(model);
-        winLotteryRecyclerViewAdapter.notifyItemInserted(winLotteryArrayList.size()-1);
     }
 
     @Override
     public void onCurrentTwoDLoaded(String twoD) {
-        luckyNumber.setText(twoD);
+
         try {
             updated_date.setText(DateUtil.timeStampToDate(String.valueOf(System.currentTimeMillis())));
         }catch (Exception e){
@@ -72,14 +68,14 @@ public class Activity_Win_Lotteries extends AppCompatActivity implements WinLott
     private void widgets(){
         addToolbar();
         winHistoryRecyclerview = findViewById(R.id.winHistory);
+        updated_date = findViewById(R.id.updateDate);
     }
 
     private void initiate(){
-        winLotteryArrayList = new ArrayList<>();
         LinearLayoutManager layoutManager = new LinearLayoutManager(this,RecyclerView.VERTICAL,false);
         winHistoryRecyclerview.setLayoutManager(layoutManager);
         winLotteryRecyclerViewAdapter =
-                new WinLotteryRecyclerViewAdapter(winLotteryArrayList);
+                new WinLotteryRecyclerViewAdapter();
         winHistoryRecyclerview.setAdapter(winLotteryRecyclerViewAdapter);
 
         presenter.setView(this);

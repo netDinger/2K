@@ -27,7 +27,7 @@ public class FirebaseGetWinHistory {
     public Observable<WinLotteryModel> getWinHistory(){
         return Observable.create(emitter ->
             FirebaseDatabase.getInstance().getReference().child(Static_Config.LUCKY_NUMBERS)
-                    .child(Static_Config.TWOD)
+                    .child(Static_Config.DICE)
                     .addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {

@@ -1,6 +1,6 @@
 package com.dingar.twok.dice.di.module;
 
-import com.dingar.twok.dice.data.GetBalanceImpl;
+import com.dingar.twok.dice.data.repositoryImpl.GetBalanceImpl;
 import com.dingar.twok.dice.domain.repository.GetBalanceRepository;
 
 import dagger.Binds;

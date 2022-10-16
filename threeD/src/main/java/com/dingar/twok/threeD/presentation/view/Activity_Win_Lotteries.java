@@ -16,7 +16,6 @@ import com.dingar.twok.threeD.di.component.ComponentProviderThreeD;
 import com.dingar.twok.threeD.di.component.ThreeDWinLotteryComponent;
 import com.dingar.twok.threeD.presentation.contract.WinLotteryContract;
 
-import java.util.ArrayList;
 import java.util.Objects;
 
 import javax.inject.Inject;
@@ -34,7 +33,6 @@ public class Activity_Win_Lotteries extends AppCompatActivity implements WinLott
 
     WinLotteryRecyclerViewAdapter winLotteryRecyclerViewAdapter;
 
-    private ArrayList<WinLotteryModel> winLotteryArrayList;
     private RecyclerView winHistoryRecyclerview;
     private TextView luckyNumber,updated_date;
 
@@ -51,11 +49,8 @@ public class Activity_Win_Lotteries extends AppCompatActivity implements WinLott
         initiate();
     }
 
-
-    @Override
-    public void onLuckyHistoryLoaded(WinLotteryModel model) {
-        winLotteryArrayList.add(model);
-        winLotteryRecyclerViewAdapter.notifyItemInserted(winLotteryArrayList.size()-1);
+    @Override public void onLuckyHistoryLoaded(WinLotteryModel model) {
+        winLotteryRecyclerViewAdapter.addData(model);
     }
 
     @Override
@@ -73,15 +68,14 @@ public class Activity_Win_Lotteries extends AppCompatActivity implements WinLott
         winHistoryRecyclerview = findViewById(R.id.winHistory);
         //current TwoD result
         luckyNumber = findViewById(R.id.lottery_number);
-        updated_date = findViewById(R.id.updated_date);
+        updated_date = findViewById(R.id.updateDate);
     }
 
     private void initiate(){
-        winLotteryArrayList = new ArrayList<>();
         LinearLayoutManager layoutManager = new LinearLayoutManager(this,RecyclerView.VERTICAL,false);
         winHistoryRecyclerview.setLayoutManager(layoutManager);
         winLotteryRecyclerViewAdapter =
-                new WinLotteryRecyclerViewAdapter(winLotteryArrayList);
+                new WinLotteryRecyclerViewAdapter();
         winHistoryRecyclerview.setAdapter(winLotteryRecyclerViewAdapter);
 
         presenter.setView(this);

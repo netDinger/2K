@@ -54,7 +54,7 @@ public class BalancePresenter implements BalanceContract.Presenter {
 
             @Override
             public void onError(Throwable e) {
-
+                view.showToast(e.getMessage());
             }
         });
     }

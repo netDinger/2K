@@ -63,8 +63,8 @@ public class Activity_Balance extends AppCompatActivity implements BalanceContra
         code = findViewById(R.id.code);
         balance = findViewById(R.id.balance);
 
-        deposit.setOnClickListener(view -> toViber());
-        withdraw.setOnClickListener(view -> toViber());
+        deposit.setOnClickListener(view -> toTelegram());
+        withdraw.setOnClickListener(view -> toTelegram());
 
         code.setOnClickListener(view -> {
             ClipboardManager manager = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
@@ -82,16 +82,19 @@ public class Activity_Balance extends AppCompatActivity implements BalanceContra
         presenter.loadOTP();
     }
 
-    private void toViber(){
+    private void toTelegram(){
         String package_name ="org.telegram.messenger";
         String phone = "09458871680";
         try {
             Intent shareIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("viber://pa?chatURI=publicaccounturi"));
-            shareIntent.setPackage("com.viber.voip"); //viber package name
+            shareIntent.setPackage(package_name); //viber package name
             startActivity(Intent.createChooser(shareIntent, "Test Title"));
         }catch (ActivityNotFoundException exception){
             Toast.makeText(this,exception.getMessage(),Toast.LENGTH_SHORT).show();
         }
     }
 
+    @Override public void showToast(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
 }

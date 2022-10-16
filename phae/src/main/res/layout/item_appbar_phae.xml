@@ -16,6 +16,19 @@
         app:title="@string/module_name_phae"
         app:titleTextColor="@color/white">
 
+        <TextView
+            android:id="@+id/updateDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:text="@string/date"
+            android:textSize="14sp"
+            android:layout_marginEnd="7dp"
+            android:textColor="@color/white"
+            android:layout_gravity="end|center"
+            />
+
     </androidx.appcompat.widget.Toolbar>
 
 </com.google.android.material.appbar.AppBarLayout>

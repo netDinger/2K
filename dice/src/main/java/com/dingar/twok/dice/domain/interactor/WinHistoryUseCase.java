@@ -22,6 +22,4 @@ public class WinHistoryUseCase {
     public Observable<WinLotteryModel> execute(){
         return winHistoryRepository.loadWinHistory();
     }
-
-    public Single<String> currentTwoD(){return winHistoryRepository.currentTwoD();}
 }

@@ -1,9 +1,10 @@
 package com.dingar.twok.account.presentation.contract;
 
 import com.dingar.twok.core.BasePresenter;
+import com.dingar.twok.core.BaseView;
 
 public interface BalanceContract {
-    interface View{
+    interface View extends BaseView {
 
         /**
          * @param balance user's balance

@@ -1,4 +1,4 @@
-package com.dingar.twok.dice.data;
+package com.dingar.twok.dice.data.repositoryImpl;
 
 import com.dingar.twok.dice.data.remoteDataSource.FirebaseGetTimeRemaining;
 import com.dingar.twok.dice.domain.repository.TimeRemainRepository;

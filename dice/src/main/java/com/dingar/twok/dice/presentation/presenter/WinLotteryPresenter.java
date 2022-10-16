@@ -7,10 +7,8 @@ import com.dingar.twok.dice.domain.interactor.WinHistoryUseCase;
 import com.dingar.twok.dice.presentation.contract.WinLotteryContract;
 
 import io.reactivex.Observer;
-import io.reactivex.SingleObserver;
-import io.reactivex.android.schedulers.AndroidSchedulers;
+
 import io.reactivex.disposables.Disposable;
-import io.reactivex.schedulers.Schedulers;
 
 /**
  * {@link com.dingar.twok.dice.presentation.view.Activity_Win_Lotteries}
@@ -54,7 +52,7 @@ public class WinLotteryPresenter implements WinLotteryContract.Presenter {
 
             @Override
             public void onComplete() {
-
+                view.onCurrentTwoDLoaded();
             }
         });
 

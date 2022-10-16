@@ -19,15 +19,14 @@ public class WinLotteryRecyclerViewAdapter extends RecyclerView.Adapter<WinLotte
 
     private ArrayList<WinLotteryModel> winLotteryArrayList;
 
-    public WinLotteryRecyclerViewAdapter(ArrayList<WinLotteryModel> winLotteryArrayList){
+    public WinLotteryRecyclerViewAdapter(){
         this.winLotteryArrayList = new ArrayList<>();
-        this.winLotteryArrayList = winLotteryArrayList;
     }
 
-    public void setData(ArrayList<WinLotteryModel> winLotteryArrayList){
-        this.winLotteryArrayList = winLotteryArrayList;
-    }
-
+  public void addData(WinLotteryModel model){
+        winLotteryArrayList.add(model);
+        notifyItemInserted(winLotteryArrayList.size()-1);
+  }
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

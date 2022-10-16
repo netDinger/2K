@@ -18,15 +18,16 @@ import java.util.ArrayList;
 
 public class WinLotteryRecyclerViewAdapter extends RecyclerView.Adapter<WinLotteryRecyclerViewAdapter.ViewHolder> {
 
-    private ArrayList<WinLotteryModel> winLotteryArrayList;
+    private final ArrayList<WinLotteryModel> winLotteryArrayList;
 
-    public WinLotteryRecyclerViewAdapter(ArrayList<WinLotteryModel> winLotteryArrayList){
+    public WinLotteryRecyclerViewAdapter(){
         this.winLotteryArrayList = new ArrayList<>();
-        this.winLotteryArrayList = winLotteryArrayList;
+
     }
 
-    public void setData(ArrayList<WinLotteryModel> winLotteryArrayList){
-        this.winLotteryArrayList = winLotteryArrayList;
+    public void addData(WinLotteryModel model){
+        winLotteryArrayList.add(model);
+        notifyItemInserted(winLotteryArrayList.size()-1);
     }
 
     @NonNull

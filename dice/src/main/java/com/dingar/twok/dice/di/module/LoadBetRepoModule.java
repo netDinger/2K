@@ -1,6 +1,6 @@
 package com.dingar.twok.dice.di.module;
 
-import com.dingar.twok.dice.data.LoadBetsImpl;
+import com.dingar.twok.dice.data.repositoryImpl.LoadBetsImpl;
 import com.dingar.twok.dice.domain.repository.LoadBets;
 
 import dagger.Binds;

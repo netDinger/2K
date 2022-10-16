@@ -1,6 +1,6 @@
 package com.dingar.twok.dice.di.module;
 
-import com.dingar.twok.dice.data.GetPointRepoImpl;
+import com.dingar.twok.dice.data.repositoryImpl.GetPointRepoImpl;
 import com.dingar.twok.dice.domain.repository.GetPointRepository;
 
 import dagger.Binds;

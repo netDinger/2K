@@ -1,5 +1,6 @@
 package com.dingar.twok.dice.presentation.view;
 
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -16,7 +17,6 @@ import com.dingar.twok.dice.di.component.ComponentProviderDice;
 import com.dingar.twok.dice.di.component.DiceWinLotteryComponent;
 import com.dingar.twok.dice.presentation.contract.WinLotteryContract;
 
-import java.util.ArrayList;
 import java.util.Objects;
 
 import javax.inject.Inject;
@@ -36,9 +36,8 @@ public class Activity_Win_Lotteries extends AppCompatActivity implements WinLott
 
     WinLotteryRecyclerViewAdapter winLotteryRecyclerViewAdapter;
 
-    private ArrayList<WinLotteryModel> winLotteryArrayList;
     private RecyclerView winHistoryRecyclerview;
-    private TextView luckyNumber,updated_date;
+    private TextView updated_date;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,18 +52,18 @@ public class Activity_Win_Lotteries extends AppCompatActivity implements WinLott
         initiate();
     }
 
-
     @Override
     public void onLuckyHistoryLoaded(WinLotteryModel model) {
-        winLotteryArrayList.add(model);
-        winLotteryRecyclerViewAdapter.notifyItemInserted(winLotteryArrayList.size()-1);
+        showToast(model.getLucky_number());
+        winLotteryRecyclerViewAdapter.addData(model);
     }
 
+
     @Override
-    public void onCurrentTwoDLoaded(String twoD) {
-        luckyNumber.setText(twoD);
+    public void onCurrentTwoDLoaded() {
         try {
-            updated_date.setText(DateUtil.timeStampToDate(String.valueOf(System.currentTimeMillis())));
+            String s = "Updated At: "+DateUtil.timeStampToDate(String.valueOf(System.currentTimeMillis()));
+            updated_date.setText(s);
         }catch (Exception e){
             Log.e(TAG,e.getMessage());
         }
@@ -74,16 +73,15 @@ public class Activity_Win_Lotteries extends AppCompatActivity implements WinLott
         addToolbar();
         winHistoryRecyclerview = findViewById(R.id.winHistory);
         //current TwoD result
-        luckyNumber = findViewById(R.id.lottery_number);
-        updated_date = findViewById(R.id.updated_date);
+        updated_date = findViewById(R.id.updateDate);
     }
 
     private void initiate(){
-        winLotteryArrayList = new ArrayList<>();
+
         LinearLayoutManager layoutManager = new LinearLayoutManager(this,RecyclerView.VERTICAL,false);
         winHistoryRecyclerview.setLayoutManager(layoutManager);
         winLotteryRecyclerViewAdapter =
-                new WinLotteryRecyclerViewAdapter(winLotteryArrayList);
+                new WinLotteryRecyclerViewAdapter();
         winHistoryRecyclerview.setAdapter(winLotteryRecyclerViewAdapter);
 
         presenter.setView(this);
@@ -98,4 +96,8 @@ public class Activity_Win_Lotteries extends AppCompatActivity implements WinLott
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(true);
         toolbar.setNavigationOnClickListener(v -> onBackPressed()); }
+
+    @Override public void showToast(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
 }

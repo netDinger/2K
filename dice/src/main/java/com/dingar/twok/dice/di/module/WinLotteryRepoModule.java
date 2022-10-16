@@ -1,6 +1,6 @@
 package com.dingar.twok.dice.di.module;
 
-import com.dingar.twok.dice.data.WinHistoryRepositoryImpl;
+import com.dingar.twok.dice.data.repositoryImpl.WinHistoryRepositoryImpl;
 import com.dingar.twok.dice.domain.repository.WinHistoryRepository;
 
 import dagger.Binds;

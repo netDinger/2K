@@ -19,13 +19,18 @@ public class WinLotteryRecyclerViewAdapter extends RecyclerView.Adapter<WinLotte
 
     private ArrayList<WinLotteryModel> winLotteryArrayList;
 
-    public WinLotteryRecyclerViewAdapter(ArrayList<WinLotteryModel> winLotteryArrayList){
+    public WinLotteryRecyclerViewAdapter(){
         this.winLotteryArrayList = new ArrayList<>();
-        this.winLotteryArrayList = winLotteryArrayList;
+
     }
 
     public void setData(ArrayList<WinLotteryModel> winLotteryArrayList){
         this.winLotteryArrayList = winLotteryArrayList;
+    }
+
+    public void addData(WinLotteryModel winLotteryModel){
+        this.winLotteryArrayList.add(winLotteryModel);
+        notifyItemInserted(winLotteryArrayList.size()-1);
     }
 
     @NonNull
@@ -60,4 +65,3 @@ public class WinLotteryRecyclerViewAdapter extends RecyclerView.Adapter<WinLotte
         }
     }
 }
-

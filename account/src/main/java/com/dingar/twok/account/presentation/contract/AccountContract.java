@@ -2,10 +2,11 @@ package com.dingar.twok.account.presentation.contract;
 
 import com.dingar.twok.account.data.model.User;
 import com.dingar.twok.core.BasePresenter;
+import com.dingar.twok.core.BaseView;
 
 public interface AccountContract {
 
-    interface View{
+    interface View extends BaseView {
         void onBalanceLoaded(String balance);
         void onPointLoaded(String point);
         void onUserInfoLoaded(User user);
