@@ -1,10 +1,11 @@
 package com.dingar.twok.twoK.presentation.contract;
 
 import com.dingar.twok.core.BasePresenter;
+import com.dingar.twok.core.BaseView;
 import com.dingar.twok.twoK.data.model.WinLotteryModel;
 
 public interface WinLotteryContract {
-    interface View{
+    interface View extends BaseView {
         void onLuckyHistoryLoaded(WinLotteryModel model);
         void onCurrentTwoDLoaded();
     }

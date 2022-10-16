@@ -179,6 +179,7 @@ public class DiceBetPresenter implements DiceBetContract.Presenter {
      * for 2d lotteries list 00 to 99, excluding numbers blocked by admin*/
     private void initiateLotteryList(String prefix){
         Log.e("THree D","load bet called");
+        lotteriesList.clear();
         String s;
         for (int i=0; i<=99;i++){
             if (excludedLotteriesList.contains(i))

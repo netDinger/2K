@@ -1,5 +1,6 @@
 package com.dingar.twok.twoK.data.remoteDataSource;
 
+import android.util.Log;
 import androidx.annotation.NonNull;
 
 
@@ -33,11 +34,15 @@ public class FirebaseGetWinHistory {
                     .addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
+                          if (snapshot.exists()){
                             for (DataSnapshot dataSnapshot : snapshot.getChildren()){
+                              Log.e("datasnapshot",String.valueOf(dataSnapshot.getValue()));
                                 emitter.onNext(new WinLotteryModel(dataSnapshot.getKey(),
                                         String.valueOf(dataSnapshot.getValue())));
                             }
                             emitter.onComplete();
+                          }
+                          else emitter.onError(new Exception("No data"));
                         }
 
                         @Override

@@ -1,5 +1,6 @@
 package com.dingar.twok.twoK.presentation.view;
 
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -52,6 +53,8 @@ public class Activity_Win_Lotteries extends AppCompatActivity implements WinLott
 
     @Override
     public void onLuckyHistoryLoaded(WinLotteryModel model) {
+        winLotteryRecyclerViewAdapter.addData(model);
+    showToast(model.getDate());
     }
 
     @Override
@@ -91,4 +94,7 @@ public class Activity_Win_Lotteries extends AppCompatActivity implements WinLott
         getSupportActionBar().setDisplayShowTitleEnabled(true);
         toolbar.setNavigationOnClickListener(v -> onBackPressed()); }
 
+    @Override public void showToast(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
 }

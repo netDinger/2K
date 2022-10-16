@@ -40,7 +40,6 @@ public class WinLotteryPresenter implements WinLotteryContract.Presenter {
     public void loadLuckyHistory() {
         winHistoryUseCase.execute().subscribe(new Observer<WinLotteryModel>() {
             @Override public void onSubscribe(@NonNull Disposable d) {
-
             }
 
             @Override
@@ -50,6 +49,7 @@ public class WinLotteryPresenter implements WinLotteryContract.Presenter {
 
             @Override
             public void onError(@NonNull Throwable e) {
+                view.showToast(e.getMessage());
             }
 
             @Override
