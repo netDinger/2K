@@ -9,6 +9,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import io.reactivex.Observable;
 import io.reactivex.Single;
 
 /**
@@ -24,8 +25,8 @@ public class FirebaseGetOPT {
         return instance;
     }
 
-    public Single<String> getOpt(){
-        return Single.create(emitter -> FirebaseDatabase.getInstance().getReference()
+    public Observable<String> getOpt(){
+        return Observable.create(emitter -> FirebaseDatabase.getInstance().getReference()
                 .child(Static_Config.OTP)
               .child(Get_Current_User.getCurrentUserID())
                 .addValueEventListener(new ValueEventListener() {
@@ -33,7 +34,7 @@ public class FirebaseGetOPT {
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         try {
                             if (snapshot.exists())
-                                emitter.onSuccess(snapshot.getValue(String.class));
+                                emitter.onNext(snapshot.getValue(String.class));
                             else emitter.onError(new Exception("No Code To Get!"));
                         }catch (Exception exception){
                             emitter.onError(exception);

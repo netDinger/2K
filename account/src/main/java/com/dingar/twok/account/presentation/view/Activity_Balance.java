@@ -13,11 +13,13 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.widget.Toolbar;
 import com.dingar.twok.account.R;
 import com.dingar.twok.account.di.component.BalanceComponent;
 import com.dingar.twok.account.di.component.ComponentProviderAccount;
 import com.dingar.twok.account.presentation.contract.BalanceContract;
 
+import java.util.Objects;
 import javax.inject.Inject;
 
 /**
@@ -37,6 +39,7 @@ public class Activity_Balance extends AppCompatActivity implements BalanceContra
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_balance);
+        addToolbar();
 
         //initiate component
         balanceComponent = ((ComponentProviderAccount)getApplicationContext()).provideBalanceComponent();
@@ -97,4 +100,13 @@ public class Activity_Balance extends AppCompatActivity implements BalanceContra
     @Override public void showToast(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
+
+    private void addToolbar() {
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled(true);
+        toolbar.setNavigationOnClickListener(v -> onBackPressed()); }
+
 }

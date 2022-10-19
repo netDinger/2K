@@ -49,7 +49,7 @@ public class FirebaseGetPhaeBetSlip {
                                     Log.e("is win","aaa"+ betSlipModel.isWin());
                                     emitter.onNext(betSlipModel);
                                 }catch (Exception e){
-                                    Log.e(TAG,e.getMessage());
+                                   emitter.onError(e);
                                 }
                             }
                         }

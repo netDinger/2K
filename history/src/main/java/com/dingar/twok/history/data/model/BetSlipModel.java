@@ -16,7 +16,7 @@ public class BetSlipModel {
     String amount;
 
     @PropertyName("winDate")
-    String winDate;
+    long winDate;
 
     String betSlipId;
 
@@ -67,13 +67,11 @@ public class BetSlipModel {
         this.amount = amount;
     }
 
-    @PropertyName("winDate")
-    public String getWinDate() {
+    public long getWinDate() {
         return winDate;
     }
 
-    @PropertyName("winDate")
-    public void setWinDate(String winDate) {
+    public void setWinDate(long winDate) {
         this.winDate = winDate;
     }
 

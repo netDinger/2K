@@ -39,6 +39,7 @@ public class FirebaseGetTwoKBetSlip {
                     .child(Static_Config.TWOK)//twoK
                     .orderByChild(Static_Config.UID)
                     .equalTo(Get_Current_User.getCurrentUserID())
+                    .orderByChild(Static_Config.BETDATE)
                     .addChildEventListener(new ChildEventListener() {
                         @Override
                         public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
@@ -47,12 +48,13 @@ public class FirebaseGetTwoKBetSlip {
                                     BetSlipModel betSlipModel = snapshot.getValue(BetSlipModel.class);
                                     assert betSlipModel != null;
                                     betSlipModel.setBetSlipId(snapshot.getKey());
-                                    Log.e("is win","aaa"+ betSlipModel.isWin());
                                     emitter.onNext(betSlipModel);
                                 }catch (Exception e){
-                                    Log.e(TAG,e.getMessage());
+                                   emitter.onError(e);
                                 }
                             }
+                            else
+                              emitter.onError(new Exception("No Data To Get"));
                         }
 
                         @Override

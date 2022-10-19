@@ -2,6 +2,7 @@ package com.dingar.twok.history.presentation.view;
 
 import android.os.Bundle;
 
+import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -109,5 +110,9 @@ public class Fragment_History extends Fragment implements HistoryContract.View {
         betHistoryRecyclerView.setAdapter(recyclerViewAdapter);
         recyclerViewAdapter.setContext(requireContext());
         presenter.load2DHistory();
+    }
+
+    @Override public void showToast(String message) {
+        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show();
     }
 }

@@ -30,7 +30,7 @@ public class Fragment_Account extends Fragment implements AccountContract.View {
 
     AccountComponent accountComponent;  //component
     private TextView username,id,balance,points,coupons;
-    private TextView about,share,feedback;
+    private TextView about,share,helpFeedback,privacyPolicy,language,changePhone;
 
     public Fragment_Account(){} //empty constructor
 
@@ -62,6 +62,12 @@ public class Fragment_Account extends Fragment implements AccountContract.View {
         coupons = layout.findViewById(R.id.coupons);
         about = view.findViewById(R.id.about);
         share = view.findViewById(R.id.share);
+        helpFeedback = view.findViewById(R.id.help);
+        language = view.findViewById(R.id.language);
+        privacyPolicy = view.findViewById(R.id.privacyPolicy);
+        changePhone = view.findViewById(R.id.change_ph_no);
+
+
         TextView logout = view.findViewById(R.id.logout);
         logout.setOnClickListener(view1 -> {
             presenter.logout();
@@ -97,6 +103,11 @@ public class Fragment_Account extends Fragment implements AccountContract.View {
             shareIntent.putExtra(Intent.EXTRA_TEXT,url);
             startActivity(Intent.createChooser(shareIntent,"Send message"));
         });
+
+        changePhone.setOnClickListener(v->showToast("Not Available Yet!!!"));
+        helpFeedback.setOnClickListener(v->showToast("Not Available Yet!!!"));
+        language.setOnClickListener(v->showToast("Not Available Yet!!!"));
+        privacyPolicy.setOnClickListener(v->showToast("Not Available Yet!!!"));
     }
 
     private void initiate() {

@@ -60,12 +60,11 @@ public class Activity_Win_Lotteries extends AppCompatActivity implements WinLott
     @Override
     public void onCurrentTwoDLoaded() {
         try {
-            String s = "Updated At: "+DateUtil.timeStampToDate(String.valueOf(System.currentTimeMillis()));
+            String s = "Updated Now ";//+DateUtil.timeStampToDate(String.valueOf(System.currentTimeMillis()));
             updated_date.setText(s);
         }catch (Exception e){
             Log.e("error",e.getMessage());
         }
-
     }
 
     private void widgets(){

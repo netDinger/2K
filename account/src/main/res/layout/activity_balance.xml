@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -6,6 +7,14 @@
     android:layout_height="match_parent"
     android:gravity="center_vertical"
     tools:context=".presentation.view.Activity_Balance">
+    <include android:id="@+id/appbar"
+        layout="@layout/item_app_bar_account"/>
+
+    <RelativeLayout
+        android:layout_below="@id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center">
 
     <TextView
         android:id="@+id/balance_text"
@@ -75,6 +84,6 @@
         />
 
 
-
+</RelativeLayout>
 
 </RelativeLayout>

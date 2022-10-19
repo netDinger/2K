@@ -9,39 +9,44 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:padding="7dp">
 
         <TextView
             android:id="@+id/date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
             android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
             android:layout_toStartOf="@id/lottery_number"
             android:text="@string/date"
-            android:textSize="21sp" />
+            android:textSize="14sp"
+            />
 
         <TextView
             android:id="@+id/lottery_number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:layout_marginEnd="35dp"
+            android:layout_marginTop="7dp"
+            android:layout_marginEnd="21dp"
             android:gravity="center"
             android:text="@string/default_lottery"
-            android:textSize="34sp"
-            android:textStyle="bold" />
+            android:textSize="21sp"
+            android:textStyle="bold"
+            />
 
         <TextView
             android:id="@+id/amount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/amount"
-            android:textSize="21sp"
             android:layout_below="@id/lottery_number"
             android:layout_alignParentEnd="true"
-            android:layout_marginEnd="35dp"
+            android:layout_marginEnd="21dp"
+            android:layout_centerVertical="true"
+            android:text="@string/amount"
+            android:textSize="14sp"
+            android:visibility="gone"
             />
 
     </RelativeLayout>

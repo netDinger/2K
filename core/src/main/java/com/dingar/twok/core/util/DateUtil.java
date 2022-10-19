@@ -1,5 +1,6 @@
 package com.dingar.twok.core.util;
 
+import android.annotation.SuppressLint;
 import android.text.format.DateFormat;
 import android.util.Log;
 
@@ -26,8 +27,9 @@ public class DateUtil {
         return DateFormat.format("dd-MM-yyyy hh:mm a", cal).toString();
     }
 
+
     public static long dateToTimestamp(String dateString) throws Exception{
-        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy hh:mm a");
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy hh:mm a");
         Date date = (Date)formatter.parse(dateString);
         assert date != null;
         return date.getTime();

@@ -127,8 +127,12 @@
         <entry key="..\:/PPK/2K/twoK/src/main/res/layout/activity_twok_bet.xml" value="0.2" />
         <entry key="..\:/PPK/Test Project/2K/account/src/main/res/drawable-anydpi/logout.xml" value="0.1" />
         <entry key="..\:/PPK/Test Project/2K/account/src/main/res/drawable/gradient_color_round.xml" value="0.1" />
-        <entry key="..\:/PPK/Test Project/2K/account/src/main/res/layout/activity_balance.xml" value="0.3333333333333333" />
-        <entry key="..\:/PPK/Test Project/2K/account/src/main/res/layout/fragment_account.xml" value="0.14130434782608695" />
+        <entry key="..\:/PPK/Test Project/2K/account/src/main/res/layout/activity_about.xml" value="0.16576086956521738" />
+        <entry key="..\:/PPK/Test Project/2K/account/src/main/res/layout/activity_balance.xml" value="0.13333333333333333" />
+        <entry key="..\:/PPK/Test Project/2K/account/src/main/res/layout/activity_balance_help.xml" value="0.16576086956521738" />
+        <entry key="..\:/PPK/Test Project/2K/account/src/main/res/layout/fragment_account.xml" value="0.2291220556745182" />
+        <entry key="..\:/PPK/Test Project/2K/account/src/main/res/layout/item_additionals.xml" value="0.19814814814814816" />
+        <entry key="..\:/PPK/Test Project/2K/account/src/main/res/layout/item_app_bar_account.xml" value="0.16576086956521738" />
         <entry key="..\:/PPK/Test Project/2K/dice/src/main/res/layout/activity_bet.xml" value="0.15670289855072464" />
         <entry key="..\:/PPK/Test Project/2K/dice/src/main/res/layout/activity_win_lotteries.xml" value="0.15670289855072464" />
         <entry key="..\:/PPK/Test Project/2K/dice/src/main/res/layout/item_appbar.xml" value="0.15670289855072464" />
@@ -139,12 +143,13 @@
         <entry key="..\:/PPK/Test Project/2K/threeD/src/main/res/layout/activity_threed_win_lotteries.xml" value="0.15715579710144928" />
         <entry key="..\:/PPK/Test Project/2K/threeD/src/main/res/layout/item_appbar.xml" value="0.15715579710144928" />
         <entry key="..\:/PPK/Test Project/2K/threeD/src/main/res/layout/item_bet_slip.xml" value="0.15715579710144928" />
-        <entry key="..\:/PPK/Test Project/2K/twoK/src/main/res/layout/activity_twok_lotteries.xml" value="0.16576086956521738" />
+        <entry key="..\:/PPK/Test Project/2K/twoK/src/main/res/layout/activity_twok_lotteries.xml" value="0.3333333333333333" />
+        <entry key="..\:/PPK/Test Project/2K/twoK/src/main/res/layout/item_lucky_lottery.xml" value="0.23160173160173161" />
         <entry key="..\:/PPK/Test Project/2K/twoK/src/main/res/layout/item_twok_appbar.xml" value="0.16576086956521738" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="11" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

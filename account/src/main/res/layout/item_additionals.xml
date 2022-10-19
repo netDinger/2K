@@ -8,14 +8,16 @@
         android:id="@+id/phoneNumberLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingStart="21dp">
+        android:paddingStart="21dp"
+        >
 
         <TextView
             android:id="@+id/phoneNumberText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/phone_text"
-            android:textSize="17sp" />
+            android:textSize="17sp"
+            />
 
         <TextView
             android:id="@+id/phoneNumber"
@@ -23,7 +25,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/phoneNumberText"
             android:layout_marginTop="7dp"
-            android:text="@string/phone_number" />
+            android:text="@string/phone_number"
+            />
 
 
         <TextView
@@ -33,7 +36,8 @@
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="7dp"
             android:text="@string/change"
-            android:textColor="@color/colorPrimary" />
+            android:textColor="@color/colorPrimary"
+            />
     </RelativeLayout>
 
 
@@ -45,7 +49,8 @@
         android:gravity="center_vertical"
         android:paddingStart="21dp"
         android:text="@string/language"
-        android:textSize="17sp" />
+        android:textSize="17sp"
+        />
 
     <TextView
         android:id="@+id/help"

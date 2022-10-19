@@ -43,7 +43,7 @@ public class HistoryPresenter implements HistoryContract.Presenter {
 
             @Override
             public void onError(@NonNull Throwable e) {
-
+                view.showToast(e.getMessage());
             }
 
             @Override
@@ -68,7 +68,7 @@ public class HistoryPresenter implements HistoryContract.Presenter {
 
             @Override
             public void onError(@NonNull Throwable e) {
-
+                view.showToast(e.getMessage());
             }
 
             @Override
@@ -118,7 +118,7 @@ public class HistoryPresenter implements HistoryContract.Presenter {
 
             @Override
             public void onError(@NonNull Throwable e) {
-
+                view.showToast(e.getMessage());
             }
 
             @Override
@@ -143,7 +143,7 @@ public class HistoryPresenter implements HistoryContract.Presenter {
 
             @Override
             public void onError(@NonNull Throwable e) {
-
+                view.showToast(e.getMessage());
             }
 
             @Override

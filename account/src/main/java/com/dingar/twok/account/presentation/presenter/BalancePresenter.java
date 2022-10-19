@@ -6,6 +6,7 @@ import com.dingar.twok.account.domain.interactor.GetBalanceUseCase;
 import com.dingar.twok.account.domain.interactor.GetOTPUseCase;
 import com.dingar.twok.account.presentation.contract.BalanceContract;
 
+import io.reactivex.Observer;
 import io.reactivex.SingleObserver;
 import io.reactivex.disposables.Disposable;
 
@@ -43,18 +44,21 @@ public class BalancePresenter implements BalanceContract.Presenter {
 
     @Override
     public void loadOTP() {
-        getOTPUseCase.getOtp().subscribe(new SingleObserver<String>() {
-            @Override
-            public void onSubscribe(Disposable d) {}
+        getOTPUseCase.getOtp().subscribe(new Observer<String>() {
+            @Override public void onSubscribe(Disposable d) {
 
-            @Override
-            public void onSuccess(String s) {
+            }
+
+            @Override public void onNext(String s) {
                 view.onOTPLoaded(s);
             }
 
-            @Override
-            public void onError(Throwable e) {
+            @Override public void onError(Throwable e) {
                 view.showToast(e.getMessage());
+            }
+
+            @Override public void onComplete() {
+
             }
         });
     }

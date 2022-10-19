@@ -46,10 +46,9 @@ public class FirebaseGet3DBetSlip {
                                     BetSlipModel betSlipModel = snapshot.getValue(BetSlipModel.class);
                                     assert betSlipModel != null;
                                     betSlipModel.setBetSlipId(snapshot.getKey());
-                                    Log.e("is win","aaa"+ betSlipModel.isWin());
                                     emitter.onNext(betSlipModel);
                                 }catch (Exception e){
-                                    Log.e(TAG,e.getMessage());
+                                   emitter.onError(e);
                                 }
                             }
                         }
