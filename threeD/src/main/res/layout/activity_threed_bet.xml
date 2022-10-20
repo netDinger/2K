@@ -92,7 +92,8 @@
         android:layout_below="@id/additional_layout"
         android:background="#F4ECEC"
         android:columnWidth="65dp"
-        tools:listitem="@layout/item_lottery" />
+        tools:listitem="@layout/item_lottery"
+        />
 
     <RelativeLayout
         android:id="@+id/betLayout"
@@ -105,6 +106,7 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:minWidth="120dp"
             android:layout_marginStart="7dp"
             android:hint="@string/amount">
 
@@ -112,9 +114,9 @@
                 android:id="@+id/amount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
+                android:layout_marginBottom="1dp"
                 android:inputType="number"
-                android:paddingHorizontal="34dp"
+                android:paddingHorizontal="14dp"
                 android:text="@string/default_amount" />
 
         </com.google.android.material.textfield.TextInputLayout>

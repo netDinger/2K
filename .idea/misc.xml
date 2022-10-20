@@ -133,18 +133,31 @@
         <entry key="..\:/PPK/Test Project/2K/account/src/main/res/layout/fragment_account.xml" value="0.2291220556745182" />
         <entry key="..\:/PPK/Test Project/2K/account/src/main/res/layout/item_additionals.xml" value="0.19814814814814816" />
         <entry key="..\:/PPK/Test Project/2K/account/src/main/res/layout/item_app_bar_account.xml" value="0.16576086956521738" />
-        <entry key="..\:/PPK/Test Project/2K/dice/src/main/res/layout/activity_bet.xml" value="0.15670289855072464" />
+        <entry key="..\:/PPK/Test Project/2K/dice/src/main/res/layout/activity_bet.xml" value="0.6666666666666666" />
         <entry key="..\:/PPK/Test Project/2K/dice/src/main/res/layout/activity_win_lotteries.xml" value="0.15670289855072464" />
         <entry key="..\:/PPK/Test Project/2K/dice/src/main/res/layout/item_appbar.xml" value="0.15670289855072464" />
+        <entry key="..\:/PPK/Test Project/2K/dice/src/main/res/layout/item_lucky_lottery.xml" value="0.14130434782608695" />
         <entry key="..\:/PPK/Test Project/2K/lottery/src/main/res/layout/activity_lottery_main.xml" value="0.1721014492753623" />
         <entry key="..\:/PPK/Test Project/2K/lottery/src/main/res/layout/fragment__lottery.xml" value="0.4466666666666667" />
+        <entry key="..\:/PPK/Test Project/2K/phae/src/main/res/layout/activity_phae_bet.xml" value="0.17552083333333332" />
         <entry key="..\:/PPK/Test Project/2K/phae/src/main/res/layout/activity_phae_win_lotteries.xml" value="0.17552083333333332" />
         <entry key="..\:/PPK/Test Project/2K/phae/src/main/res/layout/item_appbar_phae.xml" value="0.15715579710144928" />
+        <entry key="..\:/PPK/Test Project/2K/phae/src/main/res/layout/item_lucky_lottery.xml" value="0.14130434782608695" />
+        <entry key="..\:/PPK/Test Project/2K/threeD/src/main/res/layout/activity_threed_bet.xml" value="0.17552083333333332" />
         <entry key="..\:/PPK/Test Project/2K/threeD/src/main/res/layout/activity_threed_win_lotteries.xml" value="0.15715579710144928" />
         <entry key="..\:/PPK/Test Project/2K/threeD/src/main/res/layout/item_appbar.xml" value="0.15715579710144928" />
         <entry key="..\:/PPK/Test Project/2K/threeD/src/main/res/layout/item_bet_slip.xml" value="0.15715579710144928" />
+        <entry key="..\:/PPK/Test Project/2K/threeD/src/main/res/layout/item_lucky_lottery.xml" value="0.14130434782608695" />
+        <entry key="..\:/PPK/Test Project/2K/twoD/src/main/res/layout/activity_2d_help.xml" value="0.17552083333333332" />
+        <entry key="..\:/PPK/Test Project/2K/twoD/src/main/res/layout/activity_2d_win_lotteries.xml" value="0.14130434782608695" />
+        <entry key="..\:/PPK/Test Project/2K/twoD/src/main/res/layout/activity_twod_bet.xml" value="0.17552083333333332" />
+        <entry key="..\:/PPK/Test Project/2K/twoD/src/main/res/layout/item_appbar_towd.xml" value="0.14130434782608695" />
+        <entry key="..\:/PPK/Test Project/2K/twoD/src/main/res/layout/item_lottery.xml" value="0.14130434782608695" />
+        <entry key="..\:/PPK/Test Project/2K/twoD/src/main/res/layout/item_lucky_lottery.xml" value="0.14130434782608695" />
+        <entry key="..\:/PPK/Test Project/2K/twoK/src/main/res/layout/activity_twok_bet.xml" value="0.8333333333333334" />
         <entry key="..\:/PPK/Test Project/2K/twoK/src/main/res/layout/activity_twok_lotteries.xml" value="0.3333333333333333" />
-        <entry key="..\:/PPK/Test Project/2K/twoK/src/main/res/layout/item_lucky_lottery.xml" value="0.23160173160173161" />
+        <entry key="..\:/PPK/Test Project/2K/twoK/src/main/res/layout/item_bet_slip.xml" value="0.17552083333333332" />
+        <entry key="..\:/PPK/Test Project/2K/twoK/src/main/res/layout/item_lucky_lottery.xml" value="0.2" />
         <entry key="..\:/PPK/Test Project/2K/twoK/src/main/res/layout/item_twok_appbar.xml" value="0.16576086956521738" />
       </map>
     </option>

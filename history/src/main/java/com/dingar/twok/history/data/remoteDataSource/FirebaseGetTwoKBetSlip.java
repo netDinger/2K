@@ -1,7 +1,5 @@
 package com.dingar.twok.history.data.remoteDataSource;
 
-import android.util.Log;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
@@ -39,7 +37,6 @@ public class FirebaseGetTwoKBetSlip {
                     .child(Static_Config.TWOK)//twoK
                     .orderByChild(Static_Config.UID)
                     .equalTo(Get_Current_User.getCurrentUserID())
-                    .orderByChild(Static_Config.BETDATE)
                     .addChildEventListener(new ChildEventListener() {
                         @Override
                         public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {

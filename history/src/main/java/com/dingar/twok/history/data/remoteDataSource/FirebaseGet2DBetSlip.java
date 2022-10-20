@@ -1,7 +1,5 @@
 package com.dingar.twok.history.data.remoteDataSource;
 
-import android.util.Log;
-
 import androidx.annotation.NonNull;
 
 import com.dingar.twok.firebaseadapter.Get_Current_User;
@@ -36,7 +34,6 @@ public class FirebaseGet2DBetSlip {
                     .child(Static_Config.TWOD)//TwoD
                     .orderByChild(Static_Config.UID)
                     .equalTo(Get_Current_User.getCurrentUserID())
-                    .orderByChild(Static_Config.BETDATE)
                     .addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -54,7 +51,7 @@ public class FirebaseGet2DBetSlip {
 
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {
-
+                          emitter.onError(error.toException());
                         }
                     });
         });

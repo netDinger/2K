@@ -67,6 +67,7 @@ public class FirebaseGet3DBetSlip {
 
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {
+                          emitter.onError(error.toException());
                         }
                     });
         });

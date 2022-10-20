@@ -151,12 +151,12 @@ public class DiceBetPresenter implements DiceBetContract.Presenter {
                             if (result.isSuccess())
                                 view.bet();
                             else
-                                view.showDialog("R.string.oops","R.string.not_betable",true);
+                                view.showDialog("Oops...","ထိုးချိန်ကျော်သွားပါပြီ",true);
                         }
 
                         @Override
                         public void onError(Throwable e) {
-
+                            view.showDialog("Oops...",e.getMessage(),true);
                         }
                     });
         } catch (Exception e) {

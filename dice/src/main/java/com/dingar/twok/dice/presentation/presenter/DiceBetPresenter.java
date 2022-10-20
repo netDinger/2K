@@ -17,7 +17,6 @@ import com.dingar.twok.dice.domain.interactor.LoadBetsUseCase;
 import com.dingar.twok.dice.domain.model.LotteryModel;
 import com.dingar.twok.dice.presentation.contract.DiceBetContract;
 
-import java.text.ParseException;
 import java.util.ArrayList;
 
 import java.util.concurrent.TimeUnit;
@@ -189,12 +188,12 @@ public class DiceBetPresenter implements DiceBetContract.Presenter {
                             if (result.isSuccess())
                                 view.bet();
                             else
-                                view.showDialog("R.string.oops","R.string.not_betable",true);
+                                view.showDialog("Oops...","ထိုးချိန်ကျော်သွားပါပြီ",true);
                         }
 
                         @Override
                         public void onError(Throwable e) {
-
+                            view.showDialog("Oops...",e.getMessage(),true);
                         }
                     });
         } catch (Exception e) {

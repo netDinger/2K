@@ -88,12 +88,15 @@ public class Activity_Balance extends AppCompatActivity implements BalanceContra
     private void toTelegram(){
         String package_name ="org.telegram.messenger";
         String phone = "09458871680";
+
+        //Two_K_MM
+        //Two_KMyanmar
         try {
            // Intent shareIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("viber://pa?chatURI=publicaccounturi"));
            // shareIntent.setPackage(package_name); //viber package name
            // startActivity(Intent.createChooser(shareIntent, "Test Title"));
 
-            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("tg://resolve?domain=partsilicon"));
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("tg://resolve?domain=Two_K_MM"));
             startActivity(intent);
         }catch (ActivityNotFoundException exception){
             Toast.makeText(this,exception.getMessage(),Toast.LENGTH_SHORT).show();

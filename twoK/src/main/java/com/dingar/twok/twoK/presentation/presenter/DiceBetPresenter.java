@@ -9,13 +9,11 @@ import androidx.annotation.NonNull;
 import com.dingar.twok.core.firebase.Get_FirebaseCurrentTime;
 import com.dingar.twok.core.firebase.Result;
 import com.dingar.twok.core.util.DateUtil;
-import com.dingar.twok.twoK.data.CheckBetableRepositoryImpl;
 import com.dingar.twok.twoK.data.model.LotteryModel;
 import com.dingar.twok.twoK.domain.interactor.BetableTimeUseCase;
 import com.dingar.twok.twoK.domain.interactor.CheckBetableUseCase;
 import com.dingar.twok.twoK.domain.interactor.CountDownUseCase;
 import com.dingar.twok.twoK.domain.interactor.LoadBetsUseCase;
-import com.dingar.twok.twoK.presentation.contract.BetListContract;
 import com.dingar.twok.twoK.presentation.contract.DiceBetContract;
 
 import java.util.ArrayList;
@@ -141,12 +139,12 @@ public class DiceBetPresenter implements DiceBetContract.Presenter {
                             if (result.isSuccess())
                                 view.bet();
                             else
-                                view.showDialog("R.string.oops","R.string.not_betable",true);
+                                view.showDialog("Oops...","ထိုးချိန်ကျော်သွားပါပြီ",true);
                         }
 
                         @Override
                         public void onError(Throwable e) {
-
+                            view.showDialog("Oops...",e.getMessage(),true);
                         }
                     });
         } catch (Exception e) {
