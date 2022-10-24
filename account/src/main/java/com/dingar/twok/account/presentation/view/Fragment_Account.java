@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
+import android.widget.ImageView;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -30,6 +31,7 @@ public class Fragment_Account extends Fragment implements AccountContract.View {
 
     AccountComponent accountComponent;  //component
     private TextView username,id,balance,points,coupons;
+    private ImageView verified;
     private TextView about,share,helpFeedback,privacyPolicy,language,changePhone;
 
     public Fragment_Account(){} //empty constructor
@@ -66,6 +68,7 @@ public class Fragment_Account extends Fragment implements AccountContract.View {
         language = view.findViewById(R.id.language);
         privacyPolicy = view.findViewById(R.id.privacyPolicy);
         changePhone = view.findViewById(R.id.change_ph_no);
+        verified = view.findViewById(R.id.verified);
 
 
         TextView logout = view.findViewById(R.id.logout);
@@ -132,6 +135,7 @@ public class Fragment_Account extends Fragment implements AccountContract.View {
        username.setText(user.getName());
        String s = getResources().getString(R.string.uid)+ user.getUid();
        id.setText(s);
+       verified.setImageResource(user.isVerified()?R.drawable.ic_verified:R.drawable.ic_baseline_pending_24);
     }
 
     @Override public void showToast(String message) {

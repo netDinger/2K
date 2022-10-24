@@ -34,7 +34,7 @@ public class FirebaseUserInfo {
                             try {
                                 Log.e("user info",snapshot.getKey());
                                 User user = snapshot.getValue(User.class);
-                                Log.e("user info",""+user.getName());
+                                assert user != null;
                                 user.setUid(snapshot.getKey());
 
                                 emitter.onSuccess(user);

@@ -133,13 +133,15 @@
         <entry key="..\:/PPK/Test Project/2K/account/src/main/res/layout/fragment_account.xml" value="0.2291220556745182" />
         <entry key="..\:/PPK/Test Project/2K/account/src/main/res/layout/item_additionals.xml" value="0.19814814814814816" />
         <entry key="..\:/PPK/Test Project/2K/account/src/main/res/layout/item_app_bar_account.xml" value="0.16576086956521738" />
-        <entry key="..\:/PPK/Test Project/2K/dice/src/main/res/layout/activity_bet.xml" value="0.6666666666666666" />
+        <entry key="..\:/PPK/Test Project/2K/account/src/main/res/layout/item_profile.xml" value="0.7333333333333334" />
+        <entry key="..\:/PPK/Test Project/2K/core/src/main/res/drawable/round_corner.xml" value="0.154" />
+        <entry key="..\:/PPK/Test Project/2K/dice/src/main/res/layout/activity_bet.xml" value="0.36439499304589706" />
         <entry key="..\:/PPK/Test Project/2K/dice/src/main/res/layout/activity_win_lotteries.xml" value="0.15670289855072464" />
         <entry key="..\:/PPK/Test Project/2K/dice/src/main/res/layout/item_appbar.xml" value="0.15670289855072464" />
         <entry key="..\:/PPK/Test Project/2K/dice/src/main/res/layout/item_lucky_lottery.xml" value="0.14130434782608695" />
         <entry key="..\:/PPK/Test Project/2K/lottery/src/main/res/layout/activity_lottery_main.xml" value="0.1721014492753623" />
         <entry key="..\:/PPK/Test Project/2K/lottery/src/main/res/layout/fragment__lottery.xml" value="0.4466666666666667" />
-        <entry key="..\:/PPK/Test Project/2K/phae/src/main/res/layout/activity_phae_bet.xml" value="0.17552083333333332" />
+        <entry key="..\:/PPK/Test Project/2K/phae/src/main/res/layout/activity_phae_bet.xml" value="0.40494590417310666" />
         <entry key="..\:/PPK/Test Project/2K/phae/src/main/res/layout/activity_phae_win_lotteries.xml" value="0.17552083333333332" />
         <entry key="..\:/PPK/Test Project/2K/phae/src/main/res/layout/item_appbar_phae.xml" value="0.15715579710144928" />
         <entry key="..\:/PPK/Test Project/2K/phae/src/main/res/layout/item_lucky_lottery.xml" value="0.14130434782608695" />

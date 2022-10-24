@@ -9,12 +9,15 @@ public class User {
     @PropertyName("phone")
     String phone;
     String uid;
+    boolean verified;
 
     public User(){}
-    public User(String name, String phone, String uid) {
+
+    public User(String name, String phone, String uid, boolean verified) {
         this.name = name;
         this.phone = phone;
         this.uid = uid;
+        this.verified = verified;
     }
 
     @PropertyName("name")
@@ -43,5 +46,13 @@ public class User {
     @PropertyName("phone")
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public boolean isVerified() {
+        return verified;
+    }
+
+    public void setVerified(boolean verified) {
+        this.verified = verified;
     }
 }

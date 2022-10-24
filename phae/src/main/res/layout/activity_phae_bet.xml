@@ -78,12 +78,14 @@
         android:layout_below="@id/additional_layout"
         android:background="#F4ECEC"
         android:columnWidth="65dp"
-        tools:listitem="@layout/item_lottery" />
+        tools:listitem="@layout/item_lottery"
+        />
 
     <RelativeLayout
         android:id="@+id/betLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="3dp"
         android:layout_alignParentBottom="true">
 
         <com.google.android.material.textfield.TextInputLayout

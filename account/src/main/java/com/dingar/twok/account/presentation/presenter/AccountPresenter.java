@@ -55,7 +55,7 @@ public class AccountPresenter implements AccountContract.Presenter {
 
           @Override
           public void onError(@NonNull Throwable e) {
-              Log.e("error balance",e.getMessage());
+              view.showToast(e.getMessage());
               view.onBalanceLoaded("Balance: 0.0K");
           }
       });
@@ -76,7 +76,7 @@ public class AccountPresenter implements AccountContract.Presenter {
 
             @Override
             public void onError(@NonNull Throwable e) {
-                Log.e(TAG,e.getMessage());
+                view.showToast(e.getMessage());
                 view.onPointLoaded("Points: 0P");
             }
         });
@@ -102,7 +102,7 @@ public class AccountPresenter implements AccountContract.Presenter {
 
             @Override
             public void onError(@NonNull Throwable e) {
-                Log.e("Account Presenter",e.getMessage());
+                view.showToast(e.getMessage());
             }
         });
     }

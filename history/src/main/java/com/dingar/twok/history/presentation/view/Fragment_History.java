@@ -65,6 +65,10 @@ public class Fragment_History extends Fragment implements HistoryContract.View {
         recyclerViewAdapter.setData(betSlipModel);
     }
 
+    @Override public void onAllHistoryLoaded() {
+        recyclerViewAdapter.sortData();
+    }
+
     private void widgets(View view){
         betHistoryRecyclerView = view.findViewById(R.id.betHistory);
         presenter.setView(this);

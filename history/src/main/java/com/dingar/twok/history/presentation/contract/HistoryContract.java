@@ -7,6 +7,11 @@ import com.dingar.twok.history.data.model.BetSlipModel;
 public interface HistoryContract {
     interface View extends BaseView {
         void onHistoryLoaded(BetSlipModel betSlipModel);
+
+        /**
+         * just tell the view that all histories are observed successfully
+         */
+        void onAllHistoryLoaded();
     }
 
     interface Presenter extends BasePresenter<View>{

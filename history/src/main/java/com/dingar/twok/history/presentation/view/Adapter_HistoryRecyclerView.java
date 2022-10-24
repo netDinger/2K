@@ -20,6 +20,9 @@ import com.dingar.twok.history.R;
 import com.dingar.twok.history.data.model.BetSlipModel;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.function.Function;
 
 public class Adapter_HistoryRecyclerView extends RecyclerView.Adapter<Adapter_HistoryRecyclerView.ViewHolder> {
 
@@ -34,7 +37,12 @@ public class Adapter_HistoryRecyclerView extends RecyclerView.Adapter<Adapter_Hi
 
     protected void setData(BetSlipModel betSlipModel){
         this.betSlipModelArrayList.add(betSlipModel);
-        notifyItemInserted(betSlipModelArrayList.size()-1);
+    }
+
+    //Sort the betSlips by betDate
+    @SuppressLint("NotifyDataSetChanged") protected void sortData(){
+        Collections.sort(betSlipModelArrayList);
+        notifyDataSetChanged();
     }
 
     protected void setContext(Context context){
@@ -84,6 +92,7 @@ public class Adapter_HistoryRecyclerView extends RecyclerView.Adapter<Adapter_Hi
             manager.setPrimaryClip(clipData);
             Toast.makeText(context,"Copied to ClipBoard",Toast.LENGTH_SHORT).show();
         });
+
 
     }
 

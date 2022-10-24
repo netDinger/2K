@@ -39,10 +39,12 @@ public class FirebaseGet2DBetSlip {
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             if (snapshot.exists()){
                                 try {
-                                    BetSlipModel betSlipModel = snapshot.getValue(BetSlipModel.class);
+                                  for (DataSnapshot dataSnapshot: snapshot.getChildren()) {
+                                    BetSlipModel betSlipModel = dataSnapshot.getValue(BetSlipModel.class);
                                     assert betSlipModel != null;
                                     betSlipModel.setBetSlipId(snapshot.getKey());
                                     emitter.onNext(betSlipModel);
+                                  }
                                 }catch (Exception e){
                                    emitter.onError(e);
                                 }

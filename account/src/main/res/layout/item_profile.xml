@@ -15,22 +15,41 @@
         android:id="@+id/username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
         android:layout_toEndOf="@id/profile"
         android:text="@string/username"
         android:textColor="@color/white"
         android:textSize="21sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        />
 
     <TextView
         android:id="@+id/id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/username"
-        android:layout_marginStart="10dp"
+        android:layout_marginTop="7dp"
         android:layout_toEndOf="@id/profile"
         android:text="@string/uid"
         android:textColor="@color/white" />
+    <TextView
+        android:id="@+id/verified_Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/id"
+        android:layout_marginTop="7dp"
+        android:text="@string/verified"
+        android:textColor="@color/white"
+        />
+    <ImageView
+        android:id="@+id/verified"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/id"
+        android:layout_marginStart="7dp"
+        android:layout_marginTop="7dp"
+        android:layout_toEndOf="@id/verified_Text"
+        android:src="@drawable/ic_baseline_pending_24"
+        />
 
 
 </RelativeLayout>

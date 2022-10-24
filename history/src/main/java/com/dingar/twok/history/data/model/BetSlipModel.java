@@ -5,7 +5,7 @@ import com.google.firebase.database.PropertyName;
 /**
  * to show the user bets
  */
-public class BetSlipModel {
+public class BetSlipModel implements Comparable<BetSlipModel>{
     @PropertyName("betDate")
     long date;
 
@@ -97,5 +97,10 @@ public class BetSlipModel {
 
     public void setVisible(boolean visible) {
         this.visible = visible;
+    }
+
+
+    @Override public int compareTo(BetSlipModel betSlipModel) {
+        return this.getDate()> betSlipModel.getDate()?1:-1;
     }
 }
