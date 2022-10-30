@@ -32,6 +32,7 @@ public class FirebaseUploadUser {
             Map<String,Object> userMap = new HashMap<>();
             userMap.put("name", username);
             userMap.put("phone",phoneNumber);
+            userMap.put("verified",false);
             reference.child(Get_Current_User.getCurrentUserID()).updateChildren(userMap)
                     .addOnCompleteListener(task -> {
                         //if upload user info complete

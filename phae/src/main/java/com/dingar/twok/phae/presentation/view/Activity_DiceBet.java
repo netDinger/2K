@@ -1,5 +1,6 @@
 package com.dingar.twok.phae.presentation.view;
 
+import android.view.View;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -42,7 +43,7 @@ public class Activity_DiceBet extends AppCompatActivity implements DiceBetContra
     long winDate; //holder for user selected win date
 
     private GridRecyclerviewAdapter gridRecyclerviewAdapter;
-    private TextView time_remaining;
+    private TextView time_remaining,quick_choose;
     private EditText amount;
 
     private AlertDialog alertDialog; //to show the available win date and some warning or error alert
@@ -144,6 +145,9 @@ public class Activity_DiceBet extends AppCompatActivity implements DiceBetContra
         amount = findViewById(R.id.amount);
         time_remaining = findViewById(R.id.time_remaining);
         ImageView help = findViewById(R.id.help);
+        quick_choose = findViewById(R.id.quick_choose);
+        quick_choose.setOnClickListener(view-> showQuickChooseOptionDialog());
+
         bet.setOnClickListener(v-> {
             if (presenter.isStringValid(amount.getText().toString())){ //if amount is not empty
                 if (!lotteryModels.isEmpty()) {  // if at least one lottery is selected
@@ -206,5 +210,26 @@ public class Activity_DiceBet extends AppCompatActivity implements DiceBetContra
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(true);
         toolbar.setNavigationOnClickListener(v -> onBackPressed()); }
+
+
+    private void showQuickChooseOptionDialog(){
+        View view = View.inflate(this,R.layout.item_quick_choose,null);
+        EditText prefix,suffix;
+        prefix = view.findViewById(R.id.prefix);
+        suffix = view.findViewById(R.id.suffix);
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this)
+            .setTitle(R.string.quick_choose)
+            .setView(view)
+            .setCancelable(true)
+            .setPositiveButton(R.string.ok, (dialogInterface, i) -> {
+                Toast.makeText(this, "prefix"+prefix.getText().toString(), Toast.LENGTH_SHORT).show();
+                presenter.loadLotteries(prefix.getText().toString(),suffix.getText().toString());
+            })
+            .setNegativeButton(R.string.cancel, (dialogInterface, i) -> {
+                Toast.makeText(this, "cancel", Toast.LENGTH_SHORT).show();
+            });
+        alertDialog = dialogBuilder.create();
+        alertDialog.show();
+    }
 
 }

@@ -5,6 +5,7 @@ public class Static_Config {
     public static final String BALANCE = "balance";
     public static final String POINT = "point";
     public static final String OTP = "otp";
+    public static final String VERIFIED = "verified";
 
     public static final String EXCLUDED_BET = "excludedBet";
 

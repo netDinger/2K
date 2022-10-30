@@ -38,12 +38,12 @@
         </androidx.appcompat.widget.Toolbar>
 
     </com.google.android.material.appbar.AppBarLayout>
-
     <RelativeLayout
         android:id="@+id/additional_layout"
         android:layout_width="match_parent"
-        android:layout_height="?android:attr/actionBarSize"
-        android:layout_below="@id/appbar">
+        android:layout_height="?attr/actionBarSize"
+        android:layout_below="@id/appbar"
+        >
 
         <ImageView
             android:id="@+id/history"
@@ -51,7 +51,23 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:padding="8dp"
-            android:src="@drawable/history" />
+            android:src="@drawable/history"
+            />
+
+
+        <TextView
+            android:id="@+id/quick_choose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="7dp"
+            android:background="@drawable/rounded_green"
+            android:paddingHorizontal="14dp"
+            android:paddingVertical="7dp"
+            android:text="@string/quick_choose"
+            android:textColor="@color/white"
+            />
 
     </RelativeLayout>
 

@@ -29,8 +29,6 @@ public interface DiceBetContract {
          */
         void removeBetSlip(LotteryModel lotteryModel);
 
-
-
         /**
          * @param timeRemaining remaining timer countdown in string format
          * {@link Presenter#loadTimeRemaining()}

@@ -110,7 +110,7 @@ public class Fragment_Account extends Fragment implements AccountContract.View {
         changePhone.setOnClickListener(v->showToast("Not Available Yet!!!"));
         helpFeedback.setOnClickListener(v->showToast("Not Available Yet!!!"));
         language.setOnClickListener(v->showToast("Not Available Yet!!!"));
-        privacyPolicy.setOnClickListener(v->showToast("Not Available Yet!!!"));
+        privacyPolicy.setOnClickListener(v->startActivity(new Intent(requireContext(),ActivityPrivacyPolicy.class)));
     }
 
     private void initiate() {

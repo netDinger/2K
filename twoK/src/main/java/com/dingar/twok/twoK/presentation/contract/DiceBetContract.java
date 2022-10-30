@@ -73,6 +73,13 @@ public interface DiceBetContract {
         void loadLotteries(String topping);
 
         /**
+         * {@link #loadLotteries(String topping)}
+         * @param prefix user selected quick choose prefix
+         * @param suffix user selected quick choose suffix
+         */
+        void loadLotteries(String prefix, String suffix);
+
+        /**
          *
          * @param amount bet amount
          * @return if amount is empty or less than minimum amount

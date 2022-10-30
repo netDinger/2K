@@ -87,6 +87,40 @@ public class DiceBetPresenter implements DiceBetContract.Presenter {
         });
     }
 
+    @Override public void loadLotteries(String prefix, String suffix) {
+        int prefx = 0,suffx=0;
+        try{
+            if (prefix != null&& !prefix.isEmpty()) // null prefix means there is no user selected prefix
+                prefx = Integer.parseInt(prefix);
+            if (suffix != null && !suffix.isEmpty()) //null suffix means there is no user selected suffix
+                suffx = Integer.parseInt(suffix);
+
+            if (prefx >0 && prefx<=6 &&suffx > 0 && suffx<=6 ){//this means user selected both prefix and suffix to get a single bet slip
+                lotteriesList.clear();//clear all the previous betSlip
+                lotteriesList.add(new LotteryModel(prefix+suffix,false));
+                view.onLotteriesLoad(lotteriesList);
+                return;
+            }
+
+            if (prefx >0 && prefx<=6){ //this means user selected prefix
+                lotteriesList.clear();//clear all the previous betSlip
+                for (int suf=1; suf<=6; suf++){ //load suffix and combine with selected prefix
+                    lotteriesList.add(new LotteryModel(prefix+suf,false));
+                }
+                view.onLotteriesLoad(lotteriesList);
+
+            }
+            else if(suffx > 0 && suffx<=6){ //this means user selected suffix
+                lotteriesList.clear();//clear all the previous betSlip
+                for (int pref=1; pref<=6;pref++) //load suffix and combine with selected suffix
+                    lotteriesList.add(new LotteryModel(suffix+pref,false));
+                view.onLotteriesLoad(lotteriesList);
+            }
+
+        }catch (Exception exception){
+            view.showDialog("ERROR",exception.getMessage(),true);
+        }
+    }
 
     @Override
     public boolean isStringValid(String amount) {
