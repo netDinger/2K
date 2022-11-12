@@ -30,7 +30,7 @@
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:layout_centerHorizontal="true"
-          android:layout_marginTop="21dp"
+          android:layout_marginTop="30dp"
           android:src="@mipmap/ic_launcher"
           />
 
@@ -42,27 +42,30 @@
           android:layout_centerHorizontal="true"
           android:layout_marginTop="7dp"
           android:text="@string/app_name"
-          android:textSize="21sp"
+          android:textSize="30sp"
           android:textStyle="bold"
           />
 
       <TextView
-        android:id="@+id/appVersion"
-        android:layout_below="@id/app_Name"
-        android:layout_centerHorizontal="true"
+          android:id="@+id/appVersion"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:textSize="14sp"
-        android:text="Version 1.0 (Beta) "/>
+          android:layout_below="@id/app_Name"
+          android:layout_centerHorizontal="true"
+          android:layout_marginTop="14dp"
+          android:text="Version 1.0 (Beta) "
+          android:textSize="17sp"
+          android:textStyle="bold"
+          />
 
       <TextView
           android:id="@+id/about_text"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:layout_below="@id/appVersion"
-          android:layout_marginTop="7dp"
           android:layout_centerHorizontal="true"
+          android:layout_marginTop="7dp"
+          android:padding="7dp"
           android:text="@string/about_app"
           android:textSize="14sp"
           />
@@ -73,6 +76,7 @@
           android:layout_height="wrap_content"
           android:layout_below="@id/about_text"
           android:layout_centerHorizontal="true"
+          android:layout_marginTop="14dp"
           android:gravity="center"
           android:text="@string/contact_phone"
           android:textSize="14sp"
@@ -84,6 +88,7 @@
           android:layout_below="@id/phone"
           android:layout_centerHorizontal="true"
           android:gravity="center"
+          android:layout_marginTop="7dp"
           android:text="@string/contact_viber"
           android:textSize="14sp"
           />
@@ -95,6 +100,7 @@
           android:layout_below="@id/viber"
           android:layout_centerHorizontal="true"
           android:gravity="center"
+          android:layout_marginTop="7dp"
           android:text="@string/contact_facebook"
           android:textSize="14sp"
           />

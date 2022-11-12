@@ -104,9 +104,9 @@
     <string name="maung">Maung</string>
     <string name="body">Body</string>
 
-    <string name="about_app">2K is an online gambling app.
-        The main difference from other apps is that up to 90% profit of 2K will be donated. \n
-    2K ဆိုတာ အွန်လိုင်း လောင်းကစားဂိမ်းတစ်ခုဖြစ်ပါသည်။
+    <string name="about_app">\t2K is an online gambling app.
+        The main difference from other apps is that up to 90% profit of 2K will be donated. \n\n
+    \t2K ဆိုတာ အွန်လိုင်း လောင်းကစားဂိမ်းတစ်ခုဖြစ်ပါသည်။
 ဤဂိမ်း၏ထူးခြားချက်မှာ ဂိမ်းမှအမြတ်ငွေ၏ ၉၀% ထိကို  လိုအပ်သော နေရာများတွင် လှူဒါန်းသွားမည်ဖြစ်ပါသည်။
 </string>
 
